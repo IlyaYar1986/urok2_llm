@@ -52,7 +52,12 @@ nav::-webkit-scrollbar{display:none}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:7px;padding:5px 16px;
   background:#eef2ff;border:1px solid #c7d2fe;border-radius:100px;
-  font-size:.79rem;font-weight:700;color:var(--indigo);margin-bottom:24px
+  font-size:.79rem;font-weight:700;color:var(--indigo);margin-bottom:24px;
+  text-decoration:none;cursor:pointer;
+  transition:background .2s,box-shadow .2s,transform .15s
+}
+.hero-eyebrow:hover{
+  background:#e0e7ff;box-shadow:0 4px 16px rgba(99,102,241,.2);transform:translateY(-1px)
 }
 .hero-title{
   font-size:clamp(2.5rem,6.5vw,5rem);font-weight:900;line-height:1.06;
@@ -201,10 +206,10 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
 
 <!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
-  <div class="hero-eyebrow">
+  <a href="https://iivobrazovanii.club/" target="_blank" rel="noopener" class="hero-eyebrow">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    Семинар · Клуб Образование
-  </div>
+    Клуб «ИИ в ОбразованИИ»
+  </a>
   <h1 class="hero-title">Большие языковые<br><em>модели (LLM)</em></h1>
   <p class="hero-sub">Как они работают на самом деле — от сбора данных до цепочки мыслей</p>
   <div class="hero-img">
