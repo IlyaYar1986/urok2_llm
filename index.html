@@ -164,6 +164,30 @@ nav::-webkit-scrollbar{display:none}
 /* ── FOOTER ── */
 footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;border-top:1px solid var(--border);background:white}
 
+/* ── HERO CTA BUTTON ── */
+.hero-cta{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 26px;margin-bottom:40px;
+  background:var(--indigo);color:#fff;
+  border-radius:100px;font-size:.95rem;font-weight:700;
+  text-decoration:none;
+  box-shadow:0 6px 24px rgba(99,102,241,.35);
+  transition:background .2s,transform .15s,box-shadow .2s
+}
+.hero-cta:hover{background:var(--indigo-dark);transform:translateY(-2px);box-shadow:0 10px 32px rgba(99,102,241,.45)}
+.hero-cta svg{flex-shrink:0}
+.hero-cta .cta-arrow{opacity:.75;font-size:1.1rem}
+
+/* ── NAV ANSWERS LINK ── */
+.nav-link-cta{
+  padding:5px 12px;border-radius:6px;font-size:.73rem;font-weight:700;
+  color:var(--indigo);background:var(--indigo-lt);
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
+  border:1px solid #c7d2fe;
+  transition:background .2s,box-shadow .2s
+}
+.nav-link-cta:hover{background:#e0e7ff;box-shadow:0 2px 8px rgba(99,102,241,.2)}
+
 @media(max-width:720px){.row2{grid-template-columns:1fr}}
 </style>
 </head>
@@ -202,6 +226,8 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
   <a class="nav-link" href="#s5">5. Обучение</a>
   <a class="nav-link" href="#s6">6. Генерация</a>
   <a class="nav-link" href="#s7">7. Эволюция</a>
+  <div class="nav-sep"></div>
+  <a class="nav-link-cta" href="web/ответы-участников.html">Ответы участникам →</a>
 </nav>
 
 <!-- ══════════════ HERO ══════════════ -->
@@ -212,6 +238,11 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
   </a>
   <h1 class="hero-title">Большие языковые<br><em>модели (LLM)</em></h1>
   <p class="hero-sub">Как они работают на самом деле — от сбора данных до цепочки мыслей</p>
+  <a href="web/ответы-участников.html" class="hero-cta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Ответы на вопросы участников
+    <span class="cta-arrow">→</span>
+  </a>
   <div class="hero-img">
     <img src="png/ChatGPT Image 26 апр. 2026 г., 16_35_12.png" alt="LLM Overview" onclick="openLb(this.src,'Обзор')">
   </div>
