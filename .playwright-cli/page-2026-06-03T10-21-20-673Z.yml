@@ -1,0 +1,631 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]: "LLM: Как работает"
+    - link "Начало" [ref=e5] [cursor=pointer]:
+      - /url: "#hero"
+    - link "1. Данные" [ref=e6] [cursor=pointer]:
+      - /url: "#s1"
+    - link "2. Токены" [ref=e7] [cursor=pointer]:
+      - /url: "#s2"
+    - link "3. Эмбеддинги" [ref=e8] [cursor=pointer]:
+      - /url: "#s3"
+    - link "4. Трансформер" [ref=e9] [cursor=pointer]:
+      - /url: "#s4"
+    - link "5. Обучение" [ref=e10] [cursor=pointer]:
+      - /url: "#s5"
+    - link "6. Генерация" [ref=e11] [cursor=pointer]:
+      - /url: "#s6"
+    - link "7. Эволюция" [ref=e12] [cursor=pointer]:
+      - /url: "#s7"
+    - 'link "Занятие 2: агенты →" [ref=e14] [cursor=pointer]':
+      - /url: web/agentnye_sistemy.html
+    - link "Ответы участникам →" [ref=e15] [cursor=pointer]:
+      - /url: web/ответы-участников.html
+  - generic [ref=e16]:
+    - link "Клуб «ИИ в ОбразованИИ»" [ref=e17] [cursor=pointer]:
+      - /url: https://iivobrazovanii.club/
+      - img [ref=e18]
+      - text: Клуб «ИИ в ОбразованИИ»
+    - heading "Большие языковые модели (LLM)" [level=1] [ref=e21]:
+      - text: Большие языковые
+      - emphasis [ref=e22]: модели (LLM)
+    - paragraph [ref=e23]: Как они работают на самом деле — от сбора данных до цепочки мыслей
+    - generic [ref=e24]:
+      - 'link "Занятие 2: агентные системы →" [ref=e25] [cursor=pointer]':
+        - /url: web/agentnye_sistemy.html
+        - img [ref=e26]
+        - text: "Занятие 2: агентные системы"
+        - generic [ref=e28]: →
+      - link "Ответы на вопросы участников →" [ref=e29] [cursor=pointer]:
+        - /url: web/ответы-участников.html
+        - img [ref=e30]
+        - text: Ответы на вопросы участников
+        - generic [ref=e33]: →
+    - img "LLM Overview" [ref=e35]
+  - generic [ref=e36]:
+    - generic [ref=e38]:
+      - 'heading "Введение: Откуда появился GPT?" [level=2] [ref=e39]'
+      - paragraph [ref=e40]:
+        - strong [ref=e41]: G
+        - text: — Generative ·
+        - strong [ref=e42]: P
+        - text: — Pre-trained ·
+        - strong [ref=e43]: T
+        - text: — Transformer
+    - img "Архитектура GPT" [ref=e45]
+    - img "Схема GPT" [ref=e47]
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]: "1"
+        - heading "Сбор данных и очистка" [level=2] [ref=e54]
+        - paragraph [ref=e55]: Краулеры собирают триллионы токенов. Очистка удаляет мусор и дубликаты. Доминирование английского языка формирует «англоязычный акцент» ИИ навсегда.
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e63]: Симуляция веб-краулера
+          - button "На весь экран" [ref=e64] [cursor=pointer]:
+            - img [ref=e65]
+            - text: На весь экран
+        - iframe [ref=e67]:
+          - generic [ref=f2e2]:
+            - generic [ref=f2e3]:
+              - heading "Очередь URL" [level=2] [ref=f2e4]
+              - generic [ref=f2e5]:
+                - generic [ref=f2e6]: https://habr.com/ru/feed/
+                - generic [ref=f2e7]: https://tech.yandex.ru/news
+                - generic [ref=f2e8]: https://vc.ru/tech
+                - generic [ref=f2e9]: https://tproger.ru/articles/
+            - generic [ref=f2e11]: Парсер
+            - heading "База данных" [level=2] [ref=f2e13]
+            - generic [ref=f2e15]:
+              - heading "Статистика" [level=2] [ref=f2e16]
+              - generic [ref=f2e17]:
+                - generic [ref=f2e18]:
+                  - generic [ref=f2e19]: "0"
+                  - text: Обработано URL
+                - generic [ref=f2e20]:
+                  - generic [ref=f2e21]: "0"
+                  - text: Найдено ссылок
+            - generic [ref=f2e22]:
+              - heading "Панель управления" [level=2] [ref=f2e23]
+              - generic [ref=f2e24]:
+                - generic [ref=f2e25]: Медленно
+                - slider [ref=f2e26] [cursor=pointer]: "5"
+                - generic [ref=f2e27]: Быстро
+              - generic [ref=f2e28]:
+                - button "▶ Пуск" [ref=f2e29] [cursor=pointer]
+                - button "■ Стоп" [disabled] [ref=f2e30]
+    - img "Сбор данных" [ref=e69]
+    - img "Очистка данных" [ref=e71]
+  - generic [ref=e75]:
+    - generic [ref=e76]:
+      - generic [ref=e77]: "2"
+      - heading "Токенизация" [level=2] [ref=e78]
+      - paragraph [ref=e79]: Нейросети работают только с числами. BPE находит самые частые пары символов и объединяет их. Модель предсказывает не слово, а следующий токен.
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e87]: Интерактивный токенизатор — сравни три режима
+          - button "На весь экран" [ref=e88] [cursor=pointer]:
+            - img [ref=e89]
+            - text: На весь экран
+        - iframe [ref=e91]:
+          - generic [ref=f3e2]:
+            - heading "Визуализатор Токенизации" [level=1] [ref=f3e3]
+            - textbox "Введите текст..." [ref=f3e5]: Нейросети разбирают сложные слова на части.
+            - generic [ref=f3e6]:
+              - generic [ref=f3e7] [cursor=pointer]: По словам
+              - generic [ref=f3e8] [cursor=pointer]: По буквам
+              - generic [ref=f3e9] [cursor=pointer]: Токены (Subword)
+            - generic [ref=f3e10]:
+              - generic [ref=f3e11]: Нейросе
+              - generic [ref=f3e12]: ти
+              - generic [ref=f3e13]: ␣
+              - generic [ref=f3e14]: разбирают
+              - generic [ref=f3e15]: ␣
+              - generic [ref=f3e16]: слож
+              - generic [ref=f3e17]: ные
+              - generic [ref=f3e18]: ␣
+              - generic [ref=f3e19]: слова
+              - generic [ref=f3e20]: ␣
+              - generic [ref=f3e21]: на
+              - generic [ref=f3e22]: ␣
+              - generic [ref=f3e23]: части.
+            - generic [ref=f3e24]:
+              - generic [ref=f3e25]:
+                - generic [ref=f3e26]: "13"
+                - text: Длина последовательности
+              - generic [ref=f3e27]:
+                - generic [ref=f3e28]: Оптимальный (~50к)
+                - text: Размер словаря модели
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e99]: Алгоритм BPE
+            - button "На весь экран" [ref=e100] [cursor=pointer]:
+              - img [ref=e101]
+              - text: На весь экран
+          - iframe [ref=e103]:
+            - generic [ref=f4e2]:
+              - heading "Симулятор алгоритма BPE" [level=1] [ref=f4e3]
+              - paragraph [ref=f4e4]: "Корпус: «eat eats eated». Шаг 1 — убираем пробелы, раскладываем на отдельные символы. Далее BPE находит самую частую пару и объединяет её в новый токен."
+              - generic [ref=f4e5]:
+                - generic [ref=f4e6]: e
+                - generic [ref=f4e7]: a
+                - generic [ref=f4e8]: t
+                - generic [ref=f4e9]: e
+                - generic [ref=f4e10]: a
+                - generic [ref=f4e11]: t
+                - generic [ref=f4e12]: s
+                - generic [ref=f4e13]: e
+                - generic [ref=f4e14]: a
+                - generic [ref=f4e15]: t
+                - generic [ref=f4e16]: e
+                - generic [ref=f4e17]: d
+              - generic [ref=f4e19]:
+                - generic [ref=f4e20]:
+                  - generic [ref=f4e21]: Пары символов
+                  - generic [ref=f4e22]: Частота
+                - generic [ref=f4e23]:
+                  - generic [ref=f4e24]:
+                    - generic [ref=f4e25]: e + a
+                    - generic [ref=f4e26]: "3"
+                  - generic [ref=f4e27]:
+                    - generic [ref=f4e28]: a + t
+                    - generic [ref=f4e29]: "3"
+                  - generic [ref=f4e30]:
+                    - generic [ref=f4e31]: t + e
+                    - generic [ref=f4e32]: "2"
+                  - generic [ref=f4e33]:
+                    - generic [ref=f4e34]: t + s
+                    - generic [ref=f4e35]: "1"
+                  - generic [ref=f4e36]:
+                    - generic [ref=f4e37]: s + e
+                    - generic [ref=f4e38]: "1"
+              - generic [ref=f4e39]:
+                - button "Выполнить слияние" [ref=f4e40] [cursor=pointer]
+                - button "Сброс" [ref=f4e41] [cursor=pointer]
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e110]: SentencePiece
+            - button "На весь экран" [ref=e111] [cursor=pointer]:
+              - img [ref=e112]
+              - text: На весь экран
+          - iframe [ref=e114]:
+            - generic [ref=f5e2]:
+              - heading "Визуализация SentencePiece" [level=1] [ref=f5e3]
+              - generic [ref=f5e4]: Нажмите "Следующий шаг", чтобы начать процесс обработки текста.
+              - generic [ref=f5e6]: Мы используем токены, потому что это быстро.
+              - generic [ref=f5e7]:
+                - button "Следующий шаг" [ref=f5e8] [cursor=pointer]
+                - button "Сброс" [ref=f5e9] [cursor=pointer]
+              - generic [ref=f5e10]: Символ _ заменяет пробел, позволяя алгоритму объединять слова.
+      - link "Попробуй токенизатор GPT-4 онлайн — tiktokenizer.vercel.app" [ref=e115] [cursor=pointer]:
+        - /url: https://tiktokenizer.vercel.app/
+        - img [ref=e116]
+        - text: Попробуй токенизатор GPT-4 онлайн — tiktokenizer.vercel.app
+        - img [ref=e119]
+  - generic [ref=e122]:
+    - generic [ref=e123]:
+      - generic [ref=e124]:
+        - generic [ref=e125]: "3"
+        - heading "Эмбеддинги и латентное пространство" [level=2] [ref=e126]
+        - paragraph [ref=e127]: Каждое слово — точка в пространстве из тысяч измерений. Контекстуальные эмбеддинги меняют координаты «на лету», учитывая соседей — так модель различает омонимы.
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e135]: 3D-латентное пространство — вращай и исследуй
+            - button "На весь экран" [ref=e136] [cursor=pointer]:
+              - img [ref=e137]
+              - text: На весь экран
+          - iframe [ref=e139]:
+            - generic [active] [ref=f6e1]:
+              - generic [ref=f6e3]:
+                - heading "Управление осями (6D)" [level=1] [ref=f6e4]
+                - generic [ref=f6e5]:
+                  - generic [ref=f6e6]:
+                    - generic [ref=f6e7]: Ось X (Горизонталь)
+                    - combobox [ref=f6e8] [cursor=pointer]
+                  - generic [ref=f6e9]:
+                    - generic [ref=f6e10]: Ось Y (Вертикаль)
+                    - combobox [ref=f6e11] [cursor=pointer]
+                  - generic [ref=f6e12]:
+                    - generic [ref=f6e13]: Ось Z (Глубина)
+                    - combobox [ref=f6e14] [cursor=pointer]
+              - generic [ref=f6e15]:
+                - text: "Вращение: ЛКМ"
+                - text: "Панорама: ПКМ"
+                - text: "Зум: Колесико мыши"
+              - generic [ref=f6e16]:
+                - generic [ref=f6e17]: Полный вектор слова (6 измерений)
+                - generic [ref=f6e18]: Выберите сферу кликом
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - generic [ref=e146]: Омонимы и контекст — как слово меняет смысл
+            - button "На весь экран" [ref=e147] [cursor=pointer]:
+              - img [ref=e148]
+              - text: На весь экран
+          - iframe [ref=e150]:
+            - generic [ref=f7e2]:
+              - generic [ref=f7e3]:
+                - heading "Обновление вектора (Внимание)" [level=1] [ref=f7e4]
+                - generic [ref=f7e5]:
+                  - button "Контекст 1 (Рыцарь)" [ref=f7e6] [cursor=pointer]
+                  - button "Контекст 2 (Вор)" [ref=f7e7] [cursor=pointer]
+              - generic [ref=f7e8]:
+                - generic [ref=f7e9]:
+                  - generic [ref=f7e10]: Рыцарь
+                  - generic [ref=f7e11]: вошел
+                  - generic [ref=f7e12]: в
+                  - generic [ref=f7e13]: старый
+                  - generic [ref=f7e14]: ЗАМОК
+                - generic [ref=f7e15]:
+                  - button "Следующее слово" [ref=f7e16] [cursor=pointer]
+                  - button "Сброс" [ref=f7e17] [cursor=pointer]
+              - generic [ref=f7e18]:
+                - generic [ref=f7e21]: Эпос / Средневековье
+                - generic [ref=f7e22]: Современность / Быт
+                - generic [ref=f7e23]: Механизмы
+                - generic [ref=f7e24]: Архитектура
+                - generic [ref=f7e27]: ЗАМОК
+              - generic [ref=f7e28]: Нажмите «Следующее слово», чтобы начать пошаговый анализ предложения.
+    - img "Эмбеддинги" [ref=e152]
+  - generic [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - generic [ref=e158]: "4"
+        - heading "Архитектура Трансформера и механизм внимания" [level=2] [ref=e159]
+        - paragraph [ref=e160]: Self-Attention позволяет каждому слову «видеть» все остальные. MLP-слои хранят выученные факты. 12 голов внимания работают параллельно, каждая со своей специализацией.
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - generic [ref=e163]:
+            - generic [ref=e168]: Механизм Self-Attention — умный прожектор
+            - button "На весь экран" [ref=e169] [cursor=pointer]:
+              - img [ref=e170]
+              - text: На весь экран
+          - iframe [ref=e172]:
+            - generic [active] [ref=f8e1]:
+              - img
+              - generic [ref=f8e2]:
+                - generic [ref=f8e3]:
+                  - 'heading "Трансформер: Позиция и Восприятие" [level=1] [ref=f8e4]'
+                  - generic [ref=f8e5]:
+                    - 'button "Фраза 1: «Собака укусила человека»" [ref=f8e6] [cursor=pointer]'
+                    - 'button "Фраза 2: «Человек укусил собаку»" [ref=f8e7] [cursor=pointer]'
+                - generic [ref=f8e8]:
+                  - generic [ref=f8e9]:
+                    - generic [ref=f8e10]: "Метка: Поз 1"
+                    - generic [ref=f8e11]: Собака
+                  - generic [ref=f8e12]:
+                    - generic [ref=f8e13]: "Метка: Поз 2"
+                    - generic [ref=f8e14]: укусила
+                  - generic [ref=f8e15]:
+                    - generic [ref=f8e16]: "Метка: Поз 3"
+                    - generic [ref=f8e17]: человека
+                - generic [ref=f8e18]:
+                  - generic [ref=f8e19]:
+                    - generic [ref=f8e20]:
+                      - generic [ref=f8e21]: Кто агрессор?
+                      - generic [ref=f8e22]: Ищу слово с меткой [Поз 1]
+                    - generic [ref=f8e23]:
+                      - generic [ref=f8e24]: Кого укусили?
+                      - generic [ref=f8e25]: Ищу слово с меткой [Поз 3]
+                  - generic [ref=f8e26]:
+                    - generic [ref=f8e27]:
+                      - generic [ref=f8e28]: "Агрессор:"
+                      - generic [ref=f8e30]: Собака
+                    - generic [ref=f8e31]:
+                      - generic [ref=f8e32]: "Жертва:"
+                      - generic [ref=f8e34]: человека
+                - generic [ref=f8e35]: "Фраза 1: Модель Внимания ищет метку Позиции 1 и находит там СОБАКУ. Ответ сформирован верно."
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e179]: Математика QKV — Query · Key · Value
+            - button "На весь экран" [ref=e180] [cursor=pointer]:
+              - img [ref=e181]
+              - text: На весь экран
+          - iframe [ref=e183]:
+            - generic [ref=f9e2]:
+              - 'heading "Внимание: Анимация векторов" [level=1] [ref=f9e4]'
+              - generic [ref=f9e5]:
+                - button "Следующий шаг" [ref=f9e6] [cursor=pointer]
+                - button "Сброс" [ref=f9e7] [cursor=pointer]
+              - generic [ref=f9e8]:
+                - generic [ref=f9e9]: Пушистая
+                - generic [ref=f9e10]: кошка
+                - generic [ref=f9e11]: спит
+              - generic [ref=f9e12]:
+                - generic [ref=f9e13]:
+                  - generic [ref=f9e14]: "K: [3, 0, 0]"
+                  - generic [ref=f9e16]: "V: [10, 0]"
+                - generic [ref=f9e17]:
+                  - generic [ref=f9e18]: "Q: [2, 1, 0]"
+                  - generic [ref=f9e19]: "K: [1, 1, 0]"
+                  - generic [ref=f9e21]: "V: [0, 10]"
+                - generic [ref=f9e22]:
+                  - generic [ref=f9e23]: "K: [0, 1, 1]"
+                  - generic [ref=f9e25]: "V: [-10, 0]"
+                - generic: "Итог: [5, 3]"
+              - generic [ref=f9e26]:
+                - strong [ref=f9e27]: "Шаг 0:"
+                - text: "Цель — обновить смысл слова «кошка». Обратите внимание: у каждого слова теперь есть конкретные числовые векторы."
+    - img "Трансформер" [ref=e185]
+    - img "Многоголовое внимание" [ref=e187]
+    - generic [ref=e190]:
+      - generic [ref=e191]:
+        - generic [ref=e196]: Слои MLP — хранилище знаний нейросети
+        - button "На весь экран" [ref=e197] [cursor=pointer]:
+          - img [ref=e198]
+          - text: На весь экран
+      - iframe [ref=e200]:
+        - generic [ref=f10e2]:
+          - 'heading "MLP: Векторная математика и активация (ReLU)" [level=1] [ref=f10e4]'
+          - generic [ref=f10e5]:
+            - button "Следующий шаг" [ref=f10e6] [cursor=pointer]
+            - button "Сброс" [ref=f10e7] [cursor=pointer]
+          - generic [ref=f10e8]:
+            - img
+            - generic [ref=f10e9]:
+              - generic [ref=f10e10]:
+                - text: Вход
+                - text: (Размер 3)
+              - generic [ref=f10e11]: "2"
+              - generic [ref=f10e12]: "-1"
+              - generic [ref=f10e13]: "1"
+            - generic [ref=f10e14]:
+              - generic [ref=f10e15]:
+                - text: Скрытый слой W1
+                - text: (Размер 12)
+              - generic [ref=f10e16]: "-5"
+              - generic [ref=f10e17]: "-2"
+              - generic [ref=f10e18]: "8"
+              - generic [ref=f10e19]: "-1"
+              - generic [ref=f10e20]: "-4"
+              - generic [ref=f10e21]: "-3"
+              - generic [ref=f10e22]: "6"
+              - generic [ref=f10e23]: "-7"
+              - generic [ref=f10e24]: "-2"
+              - generic [ref=f10e25]: "5"
+              - generic [ref=f10e26]: "-1"
+              - generic [ref=f10e27]: "-8"
+            - generic [ref=f10e28]:
+              - generic [ref=f10e29]:
+                - text: Выход W2
+                - text: (Размер 3)
+              - generic [ref=f10e30]: "4"
+              - generic [ref=f10e31]: "3"
+              - generic [ref=f10e32]: "2"
+            - generic: "Активация: ReLU(x) = max(0, x)"
+            - generic: "Итог: Координаты слова ПАРИЖ"
+          - generic [ref=f10e33]:
+            - strong [ref=f10e34]: "Шаг 0:"
+            - text: "Контекст собран! Вектор [Столица] + [Франция] дал нам итоговый входной запрос: [2, -1, 1]."
+  - generic [ref=e202]:
+    - generic [ref=e204]:
+      - generic [ref=e205]: "5"
+      - heading "Этапы обучения" [level=2] [ref=e206]
+      - paragraph [ref=e207]: "Pre-training: чтение всего интернета — предсказание следующего токена. SFT: тонкая настройка на примерах диалогов. RLHF: оценки людей «выравнивают» модель под человеческие ценности."
+    - img "Этапы обучения" [ref=e209]
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - generic [ref=e218]: SFT · LoRA · RLHF — три этапа превращения модели в ассистента
+        - button "На весь экран" [ref=e219] [cursor=pointer]:
+          - img [ref=e220]
+          - text: На весь экран
+      - iframe [ref=e222]:
+        - generic [ref=f11e2]:
+          - heading "От сырой модели к ассистенту" [level=1] [ref=f11e3]
+          - generic [ref=f11e4]:
+            - generic [ref=f11e5] [cursor=pointer]: 1 · SFT — инструкции
+            - generic [ref=f11e6] [cursor=pointer]: 2 · LoRA — оптимизация
+            - generic [ref=f11e7] [cursor=pointer]: 3 · RLHF — выравнивание
+          - generic [ref=f11e8]:
+            - heading "Supervised Fine-Tuning — цикл тонкой настройки" [level=2] [ref=f11e9]
+            - paragraph [ref=f11e10]: Нажимайте «Шаг обучения», чтобы увидеть, как модель генерирует ответ, вычисляет ошибку по сравнению с эталоном и корректирует веса (Backpropagation).
+            - generic [ref=f11e11]:
+              - generic [ref=f11e12]:
+                - generic [ref=f11e13]: 1. Данные от экспертов (Эталон)
+                - generic [ref=f11e14]: "Инструкция: «Напиши код для калькулятора на Python»"
+                - generic [ref=f11e15]: "Идеальный ответ: def calc(a, b, op): ..."
+              - generic [ref=f11e16]: ⬇️ Прямой проход (Генерация)
+              - generic [ref=f11e17]:
+                - generic [ref=f11e18]: 2. Нейросеть (Матрицы весов)
+                - generic [ref=f11e19]: "Эпоха обучения: 0"
+                - generic [ref=f11e22]: Веса базовой модели (сырые)
+              - generic [ref=f11e23]:
+                - generic [ref=f11e24]: 3. Текущий ответ модели
+                - generic [ref=f11e25]: ...калькулятор онлайн бесплатно без регистрации
+              - generic [ref=f11e26]: ⬇️ Сравнение ответа с эталоном
+              - generic [ref=f11e27]:
+                - generic [ref=f11e28]:
+                  - generic [ref=f11e29]: 4. Функция потерь (Loss)
+                  - text: Насколько модель ошиблась?
+                - generic [ref=f11e30]: "8.45"
+              - button "Сделать шаг обучения (Backpropagation) 🔄" [ref=f11e31] [cursor=pointer]
+  - generic [ref=e224]:
+    - generic [ref=e225]:
+      - generic [ref=e226]:
+        - generic [ref=e227]: "6"
+        - heading "Управление генерацией" [level=2] [ref=e228]
+        - paragraph [ref=e229]: Каждый ответ — статистический бросок кубика со 100 000 гранями. Температура, Top-K, Top-P и Min-P задают баланс точности и креативности.
+      - generic [ref=e231]:
+        - generic [ref=e232]:
+          - generic [ref=e237]: Инференс и сэмплирование — как рождается ответ
+          - button "На весь экран" [ref=e238] [cursor=pointer]:
+            - img [ref=e239]
+            - text: На весь экран
+        - iframe [ref=e241]:
+          - generic [ref=f12e2]:
+            - heading "Инференс и Сэмплирование" [level=1] [ref=f12e3]
+            - generic [ref=f12e4]: Как нейросеть выбирает следующее слово (токен)
+            - generic [ref=f12e5]:
+              - generic [ref=f12e6]: 1. Текущий контекст (Промт)
+              - generic [ref=f12e7]: Привет, как
+            - generic [ref=f12e8]: ⬇️ Миллиарды замороженных весов делают вычисления...
+            - generic [ref=f12e9]:
+              - generic [ref=f12e10]: 2. Логиты (Оценки) → 3. Softmax (Вероятности)
+              - paragraph [ref=f12e11]: Нейросеть оценивает все слова в словаре. Softmax превращает эти сырые оценки (логиты) в проценты, сумма которых равна 100%.
+              - generic [ref=f12e12]:
+                - generic [ref=f12e13]: Токен-кандидат
+                - generic [ref=f12e14]: Логит (Оценка)
+                - generic [ref=f12e15]: Softmax (Вероятность)
+            - generic [ref=f12e16]: ⬇️ Бросок многогранной кости (Сэмплирование)
+            - generic [ref=f12e17]:
+              - generic [ref=f12e18]: 4. Сэмплирование (Weighted Random)
+              - paragraph [ref=f12e19]: Мы не всегда берем слово №1. Мы бросаем "кубик" (красный ползунок). Чем больше процент, тем шире сектор слова на рулетке.
+              - generic [ref=f12e21]: ▼
+            - button "Сгенерировать следующий токен 🎲" [ref=f12e23] [cursor=pointer]
+    - img "Параметры генерации" [ref=e243]
+    - generic [ref=e246]:
+      - generic [ref=e247]:
+        - generic [ref=e252]: Рычаги управления — Temperature · Top-K · Top-P · Min-P
+        - button "На весь экран" [ref=e253] [cursor=pointer]:
+          - img [ref=e254]
+          - text: На весь экран
+      - iframe [ref=e256]:
+        - generic [ref=f13e2]:
+          - 'heading "Визуализация: Температура и Сэмплирование" [level=1] [ref=f13e3]'
+          - generic [ref=f13e4]: "Контекст: \"Я купил себе...\" -> Что выберет модель дальше?"
+          - generic [ref=f13e5]:
+            - generic [ref=f13e6]:
+              - generic [ref=f13e7]:
+                - generic [ref=f13e8]:
+                  - generic [ref=f13e9]: Temperature (T)
+                  - generic [ref=f13e10]: "1.00"
+                - slider [ref=f13e11] [cursor=pointer]: "1"
+                - generic [ref=f13e12]: Сглаживает (высокая) или заостряет (низкая) распределение. При T > 2.0 начинается хаос.
+              - generic [ref=f13e13]:
+                - generic [ref=f13e14]:
+                  - generic [ref=f13e15]: Top-K
+                  - generic [ref=f13e16]: "12"
+                - slider [ref=f13e17] [cursor=pointer]: "12"
+                - generic [ref=f13e18]: Оставляет только K лучших вариантов. Остальные отбрасываются.
+              - generic [ref=f13e19]:
+                - generic [ref=f13e20]:
+                  - generic [ref=f13e21]: Top-P (Nucleus)
+                  - generic [ref=f13e22]: "1.00"
+                - slider [ref=f13e23] [cursor=pointer]: "1"
+                - generic [ref=f13e24]: Оставляет токены, пока их суммарная вероятность не достигнет P (например, 90%).
+              - generic [ref=f13e25]:
+                - generic [ref=f13e26]:
+                  - generic [ref=f13e27]: Min-P
+                  - generic [ref=f13e28]: "0.00"
+                - slider [ref=f13e29] [cursor=pointer]: "0"
+                - generic [ref=f13e30]: Удаляет токены, вероятность которых меньше Х% от лидера.
+              - generic [ref=f13e31]:
+                - button "Код / Факты (T=0.1)" [ref=f13e32] [cursor=pointer]
+                - button "Креатив (T=1.2, P=0.9)" [ref=f13e33] [cursor=pointer]
+                - button "Сброс по умолчанию" [ref=f13e34] [cursor=pointer]
+            - generic [ref=f13e35]:
+              - generic [ref=f13e36]: Вероятности после применения фильтров (готовые к сэмплированию)
+              - generic [ref=f13e37]:
+                - generic [ref=f13e38]:
+                  - generic [ref=f13e39]: 56.2%
+                  - 'generic "До фильтров: 56.2%" [ref=f13e40]'
+                  - generic [ref=f13e41]: книгу
+                - generic [ref=f13e42]:
+                  - generic [ref=f13e43]: 27.9%
+                  - 'generic "До фильтров: 27.9%" [ref=f13e44]'
+                  - generic [ref=f13e45]: машину
+                - generic [ref=f13e46]:
+                  - generic [ref=f13e47]: 7.6%
+                  - 'generic "До фильтров: 7.6%" [ref=f13e48]'
+                  - generic [ref=f13e49]: кофе
+                - generic [ref=f13e50]:
+                  - generic [ref=f13e51]: 4.6%
+                  - 'generic "До фильтров: 4.6%" [ref=f13e52]'
+                  - generic [ref=f13e53]: ноутбук
+                - generic [ref=f13e54]:
+                  - generic [ref=f13e55]: 2.1%
+                  - 'generic "До фильтров: 2.1%" [ref=f13e56]'
+                  - generic [ref=f13e57]: билет
+                - generic [ref=f13e58]:
+                  - generic [ref=f13e59]: 1.0%
+                  - 'generic "До фильтров: 1.0%" [ref=f13e60]'
+                  - generic [ref=f13e61]: немного
+                - generic [ref=f13e62]:
+                  - generic [ref=f13e63]: 0.4%
+                  - 'generic "До фильтров: 0.4%" [ref=f13e64]'
+                  - generic [ref=f13e65]: проблему
+                - generic [ref=f13e66]:
+                  - generic [ref=f13e67]: 0.1%
+                  - 'generic "До фильтров: 0.1%" [ref=f13e68]'
+                  - generic [ref=f13e69]: радость
+                - generic [ref=f13e70]:
+                  - generic [ref=f13e71]: 0.1%
+                  - 'generic "До фильтров: 0.1%" [ref=f13e72]'
+                  - generic [ref=f13e73]: сингуляр
+                - generic [ref=f13e74]:
+                  - generic [ref=f13e75]: 0.0%
+                  - 'generic "До фильтров: 0.0%" [ref=f13e76]'
+                  - generic [ref=f13e77]: пшрщ
+                - generic [ref=f13e78]:
+                  - generic [ref=f13e79]: 0.0%
+                  - 'generic "До фильтров: 0.0%" [ref=f13e80]'
+                  - generic [ref=f13e81]: в
+                - generic [ref=f13e82]:
+                  - generic [ref=f13e83]: 0.0%
+                  - 'generic "До фильтров: 0.0%" [ref=f13e84]'
+                  - generic [ref=f13e85]: ы
+    - img "Промпт-инжиниринг" [ref=e258]
+  - generic [ref=e261]:
+    - generic [ref=e263]:
+      - generic [ref=e264]: "7"
+      - heading "Эволюция ИИ — «Думающие» модели" [level=2] [ref=e265]
+      - paragraph [ref=e266]: От «Системы 1» (мгновенный рефлекс) к «Системе 2» (медленное обдумывание). Reasoning-модели тратят вычислительные ресурсы на рассуждение, самопроверку и поиск ошибок прежде чем ответить.
+    - img "Эволюция ИИ" [ref=e268]
+    - generic [ref=e271]:
+      - generic [ref=e272]:
+        - generic [ref=e277]: Эволюция ИИ — Система 1 против Системы 2
+        - button "На весь экран" [ref=e278] [cursor=pointer]:
+          - img [ref=e279]
+          - text: На весь экран
+      - iframe [ref=e281]:
+        - generic [ref=f14e2]:
+          - heading "Система 1 vs Система 2" [level=1] [ref=f14e3]
+          - generic [ref=f14e4]: Масштабирование на этапе вывода (Inference-Time Scaling) и цепочки мыслей
+          - generic [ref=f14e5]:
+            - generic [ref=f14e6]:
+              - generic [ref=f14e7]:
+                - generic [ref=f14e8]: "Тестовая задача (Промт):"
+                - generic [ref=f14e9]: "\"У фермера было 15 овец. Все, кроме 8, убежали. Сколько овец осталось у фермера?\""
+              - generic [ref=f14e10]:
+                - generic [ref=f14e11]:
+                  - generic [ref=f14e12]: Вычислительный бюджет Системы 2 (Время на размышление)
+                  - generic [ref=f14e13]: Высокий (Полная цепочка)
+                - slider [ref=f14e14] [cursor=pointer]: "3"
+                - generic [ref=f14e15]:
+                  - generic [ref=f14e16]: Низкий (Оборвать рано)
+                  - generic [ref=f14e17]: Средний
+                  - generic [ref=f14e18]: Высокий (Aha-moment)
+              - button "Запустить инференс 🚀" [ref=f14e19] [cursor=pointer]
+            - generic [ref=f14e20]:
+              - generic [ref=f14e22]:
+                - text: Обычная LLM (Система 1)
+                - text: Авторегрессионная генерация
+              - generic [ref=f14e25]:
+                - text: Reasoning LLM (Система 2)
+                - text: Chain of Thought + RL
+    - img "Система 2" [ref=e283]
+    - generic [ref=e286]:
+      - generic [ref=e287]:
+        - generic [ref=e292]: Переход к Process Reward Models — оценка пути, а не только результата
+        - button "На весь экран" [ref=e293] [cursor=pointer]:
+          - img [ref=e294]
+          - text: На весь экран
+      - iframe [ref=e296]:
+        - generic [ref=f15e2]:
+          - 'heading "SFT vs RL: Процесс обучения" [level=1] [ref=f15e3]'
+          - generic [ref=f15e4]: Как Process Reward Models (PRM) направляют модель к истине
+          - generic [ref=f15e5]:
+            - generic [ref=f15e6]:
+              - generic [ref=f15e7]: 3x - 7 = 14
+              - button "Запустить SFT (Копирование)" [ref=f15e8] [cursor=pointer]
+              - button "Запустить RL (PRM Поиск)" [ref=f15e9] [cursor=pointer]
+            - generic [ref=f15e10]:
+              - generic [ref=f15e11]: Ожидание запуска...
+              - generic [ref=f15e12]: "Награда (Reward): 0"
+    - img "PRM" [ref=e298]
+    - img "Заключение" [ref=e300]
+  - contentinfo [ref=e302]:
+    - paragraph [ref=e303]: Семинар «Большие языковые модели» · Клуб Образование · 2026

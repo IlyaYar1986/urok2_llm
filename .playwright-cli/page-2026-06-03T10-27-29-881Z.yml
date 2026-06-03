@@ -1,0 +1,220 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "← Лендинг" [ref=e3] [cursor=pointer]:
+      - /url: ../index.html
+    - generic [ref=e5]: Агентные системы
+    - link "Tool Use" [ref=e7] [cursor=pointer]:
+      - /url: "#b1"
+    - link "Кодинг-агенты" [ref=e8] [cursor=pointer]:
+      - /url: "#b2"
+    - link "MCP" [ref=e9] [cursor=pointer]:
+      - /url: "#b3"
+    - link "RAG" [ref=e10] [cursor=pointer]:
+      - /url: "#b4"
+    - link "Мультимодальность" [ref=e11] [cursor=pointer]:
+      - /url: "#b5"
+    - link "2026" [ref=e12] [cursor=pointer]:
+      - /url: "#b6"
+  - banner [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]: Занятие 2 · от мозга в банке к деятелю
+      - heading "Агентные системы, мультимодальность и современный ИИ" [level=1] [ref=e16]:
+        - text: Агентные системы,
+        - emphasis [ref=e17]: мультимодальность
+        - text: и современный ИИ
+      - paragraph [ref=e18]: "Визуальная карта выступления: как языковая модель получает инструменты, память, органы чувств и превращается в агента."
+      - generic [ref=e19]:
+        - link "Смотреть визуализации →" [ref=e20] [cursor=pointer]:
+          - /url: "#b1"
+        - link "Текст выступления" [ref=e21] [cursor=pointer]:
+          - /url: ../Docs/Zanyatie2_Agentnye_sistemy.txt
+      - img "Цикл агента ReAct" [ref=e23]
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: "1"
+        - generic [ref=e28]:
+          - heading "От ответа к действию" [level=2] [ref=e29]
+          - paragraph [ref=e30]: Tool Use и ReAct превращают оракула, который только говорит, в систему, которая ставит шаги, вызывает инструменты и проверяет результат.
+      - generic [ref=e31]:
+        - article [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e38]: "1.1"
+            - generic [ref=e39]: Стеклянный потолок текстовой модели
+          - button "Стеклянный потолок текстовой модели" [ref=e40]:
+            - img "Стеклянный потолок текстовой модели" [ref=e41]
+        - article [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e48]: "1.2"
+            - generic [ref=e49]: Function Calling
+          - button "Function Calling" [ref=e50]:
+            - img "Function Calling" [ref=e51]
+        - article [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e58]: "1.3"
+            - generic [ref=e59]: "Цикл агента: ReAct"
+          - button "Цикл агента ReAct" [ref=e60]:
+            - img "Цикл агента ReAct" [ref=e61]
+        - article [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e68]: "1.4"
+            - generic [ref=e69]: Что такое агент
+          - button "Что такое агент" [ref=e70]:
+            - img "Что такое агент" [ref=e71]
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]: "2"
+        - generic [ref=e75]:
+          - heading "Агенты-программисты" [level=2] [ref=e76]
+          - paragraph [ref=e77]: "Код стал первым зрелым полигоном для агентов: его можно запускать, тестировать и итеративно исправлять по объективной обратной связи."
+      - generic [ref=e78]:
+        - article [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e85]: "2.1"
+            - generic [ref=e86]: Код как первый полигон
+          - button "Код как первый полигон" [ref=e87]:
+            - img "Код как первый полигон" [ref=e88]
+        - article [ref=e89]:
+          - generic [ref=e90]:
+            - generic [ref=e95]: "2.2"
+            - generic [ref=e96]: Как работает кодинг-агент
+          - button "Как работает кодинг-агент" [ref=e97]:
+            - img "Как работает кодинг-агент" [ref=e98]
+        - article [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e105]: "2.3"
+            - generic [ref=e106]: Лестница автономности
+          - button "Лестница автономности" [ref=e107]:
+            - img "Лестница автономности" [ref=e108]
+        - article [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e115]: "2.4"
+            - generic [ref=e116]: Тень автономности
+          - button "Тень автономности" [ref=e117]:
+            - img "Тень автономности" [ref=e118]
+    - generic [ref=e119]:
+      - generic [ref=e120]:
+        - generic [ref=e121]: "3"
+        - generic [ref=e122]:
+          - 'heading "MCP: универсальная розетка для ИИ" [level=2] [ref=e123]'
+          - paragraph [ref=e124]: Стандартизация подключения инструментов снимает проблему множества ручных интеграций и делает агентность массовой.
+      - generic [ref=e125]:
+        - article [ref=e126]:
+          - generic [ref=e127]:
+            - generic [ref=e132]: "3.1"
+            - generic [ref=e133]: Зоопарк интеграций
+          - button "Зоопарк интеграций" [ref=e134]:
+            - img "Зоопарк интеграций" [ref=e135]
+        - article [ref=e136]:
+          - generic [ref=e137]:
+            - generic [ref=e142]: "3.2"
+            - generic [ref=e143]: MCP как USB-C для ИИ
+          - button "MCP как USB-C для ИИ" [ref=e144]:
+            - img "MCP как USB-C для ИИ" [ref=e145]
+        - article [ref=e146]:
+          - generic [ref=e147]:
+            - generic [ref=e152]: "3.3"
+            - generic [ref=e153]: MCP-клиенты и серверы
+          - button "MCP-клиенты и серверы" [ref=e154]:
+            - img "MCP-клиенты и серверы" [ref=e155]
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - generic [ref=e158]: "4"
+        - generic [ref=e159]:
+          - 'heading "Память и знания: RAG" [level=2] [ref=e160]'
+          - paragraph [ref=e161]: "RAG даёт модели открытую книгу и долговременную память: нужные фрагменты находятся по смыслу и возвращаются в контекст."
+      - generic [ref=e162]:
+        - article [ref=e163]:
+          - generic [ref=e164]:
+            - generic [ref=e169]: "4.1"
+            - generic [ref=e170]: Замороженный мозг
+          - button "Замороженный мозг" [ref=e171]:
+            - img "Замороженный мозг" [ref=e172]
+        - article [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e179]: "4.2"
+            - generic [ref=e180]: RAG как открытая книга
+          - button "RAG как открытая книга" [ref=e181]:
+            - img "RAG как открытая книга" [ref=e182]
+        - article [ref=e183]:
+          - generic [ref=e184]:
+            - generic [ref=e189]: "4.3"
+            - generic [ref=e190]: Поиск по смыслу
+          - button "Поиск по смыслу" [ref=e191]:
+            - img "Поиск по смыслу" [ref=e192]
+        - article [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e199]: "4.4"
+            - generic [ref=e200]: Память агента и контекст
+          - button "Память агента и контекст" [ref=e201]:
+            - img "Память агента и контекст" [ref=e202]
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - generic [ref=e205]: "5"
+        - generic [ref=e206]:
+          - heading "Мультимодальность" [level=2] [ref=e207]
+          - paragraph [ref=e208]: "Модель получает органы чувств: изображения, звук и голос становятся частью общего потока, а Computer Use соединяет зрение с действиями."
+      - generic [ref=e209]:
+        - article [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e216]: "5.1"
+            - generic [ref=e217]: Мир не только текст
+          - button "Мир не только текст" [ref=e218]:
+            - img "Мир не только текст" [ref=e219]
+        - article [ref=e220]:
+          - generic [ref=e221]:
+            - generic [ref=e226]: "5.2"
+            - generic [ref=e227]: Одна карта смыслов
+          - button "Одна карта смыслов" [ref=e228]:
+            - img "Одна карта смыслов" [ref=e229]
+        - article [ref=e230]:
+          - generic [ref=e231]:
+            - generic [ref=e236]: "5.3"
+            - generic [ref=e237]: Зрение, слух и голос
+          - button "Зрение, слух и голос" [ref=e238]:
+            - img "Зрение, слух и голос" [ref=e239]
+        - article [ref=e240]:
+          - generic [ref=e241]:
+            - generic [ref=e246]: "5.4"
+            - generic [ref=e247]: Нативная мультимодальность
+          - button "Нативная мультимодальность" [ref=e248]:
+            - img "Нативная мультимодальность" [ref=e249]
+        - article [ref=e250]:
+          - generic [ref=e251]:
+            - generic [ref=e256]: "5.5"
+            - generic [ref=e257]: Не только понимать, но и творить
+          - button "Не только понимать, но и творить" [ref=e258]:
+            - img "Не только понимать, но и творить" [ref=e259]
+        - article [ref=e260]:
+          - generic [ref=e261]:
+            - generic [ref=e266]: "5.6"
+            - generic [ref=e267]: Computer Use
+          - button "Computer Use" [ref=e268]:
+            - img "Computer Use" [ref=e269]
+    - generic [ref=e270]:
+      - generic [ref=e271]:
+        - generic [ref=e272]: "6"
+        - generic [ref=e273]:
+          - heading "Где мы стоим сегодня" [level=2] [ref=e274]
+          - paragraph [ref=e275]: "Финальная рамка занятия: локальные модели возвращают ИИ на личные устройства, агентность приближает разговор об AGI, а автономность усиливает вопросы безопасности."
+      - generic [ref=e276]:
+        - article [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e283]: "6.1"
+            - generic [ref=e284]: ИИ возвращается домой
+          - button "ИИ возвращается домой" [ref=e285]:
+            - img "ИИ возвращается домой" [ref=e286]
+        - article [ref=e287]:
+          - generic [ref=e288]:
+            - generic [ref=e293]: "6.2"
+            - generic [ref=e294]: Что такое AGI
+          - button "Что такое AGI" [ref=e295]:
+            - img "Что такое AGI" [ref=e296]
+        - article [ref=e297]:
+          - generic [ref=e298]:
+            - generic [ref=e303]: "6.3"
+            - generic [ref=e304]: Большие вопросы
+          - button "Большие вопросы" [ref=e305]:
+            - img "Большие вопросы" [ref=e306]
+  - contentinfo [ref=e307]:
+    - paragraph [ref=e308]: Семинар «Агентные системы» · Клуб Образование · 2026
