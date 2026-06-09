@@ -25,5 +25,7 @@ png/ChatGPT Image 26 апр. 2026 г., 15_50_37.png
 *.swo
 
 .superpowers/
+.serena/
+.worktrees/
 
 Docs/*
