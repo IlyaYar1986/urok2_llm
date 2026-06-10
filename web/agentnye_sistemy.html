@@ -153,6 +153,23 @@ nav::-webkit-scrollbar{display:none}
 
 .f{opacity:0;transform:translateY(20px);transition:opacity .58s ease,transform .58s ease}
 .f.in{opacity:1;transform:none}
+.continuation{
+  max-width:1080px;margin:16px auto 0;padding:0 24px 74px;
+}
+.continuation-card{
+  position:relative;overflow:hidden;padding:38px;border-radius:24px;
+  background:linear-gradient(135deg,#312e81 0%,#4338ca 52%,#0e7490 100%);
+  color:#fff;box-shadow:0 24px 60px rgba(67,56,202,.28);
+}
+.continuation-card::after{
+  content:'';position:absolute;width:260px;height:260px;right:-90px;top:-110px;
+  border:1px solid rgba(255,255,255,.22);border-radius:50%;
+  box-shadow:0 0 0 35px rgba(255,255,255,.04),0 0 0 75px rgba(255,255,255,.025);
+}
+.continuation-card>*{position:relative;z-index:1}
+.continuation-card small{font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:#a5f3fc}
+.continuation-card h2{max-width:700px;font-size:clamp(1.65rem,3.5vw,2.6rem);line-height:1.08;margin:8px 0 12px}
+.continuation-card p{max-width:760px;color:#dbeafe;margin-bottom:22px}
 footer{padding:42px 24px;text-align:center;color:var(--muted);font-size:.84rem;border-top:1px solid var(--border);background:white}
 
 @media(max-width:820px){
@@ -189,6 +206,8 @@ footer{padding:42px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
   <a class="nav-link" href="#b4">RAG</a>
   <a class="nav-link" href="#b5">Мультимодальность</a>
   <a class="nav-link" href="#b6">2026</a>
+  <div class="nav-sep"></div>
+  <a class="nav-link" href="instrumenty_mcp_skills.html">Практика: MCP + Skills →</a>
 </nav>
 
 <header class="hero" id="top">
@@ -299,6 +318,15 @@ footer{padding:42px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
       <article class="card f"><div class="card-bar"><div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div><span class="card-kicker">6.3</span><span class="card-title">Большие вопросы</span></div><button class="shot" onclick="openLb('../png/zanyatie2_agentnye_sistemy/06_03_bolshie_voprosy.png','6.3 Большие вопросы')"><img src="../png/zanyatie2_agentnye_sistemy/06_03_bolshie_voprosy.png" alt="Большие вопросы"></button></article>
     </div>
   </section>
+
+  <aside class="continuation f" aria-label="Продолжение занятия">
+    <div class="continuation-card">
+      <small>Практическая часть</small>
+      <h2>Теперь соберём полезный образовательный стек</h2>
+      <p>Разберём структуру собственного MCP-сервера и Agent Skill, а затем выберем готовые инструменты, интеграции и сценарии для колледжа или кружка по ИИ.</p>
+      <a class="cta cta-secondary" href="instrumenty_mcp_skills.html">Открыть практику: инструменты, MCP и Skills →</a>
+    </div>
+  </aside>
 </main>
 
 <footer>
