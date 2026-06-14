@@ -146,7 +146,7 @@
     const SPHERE_RADIUS = 1.5;
     const SPHERE_SEGMENTS = 64;
 
-    // ── Placeholder sphere group (filled in Task 3) ──
+    // ── Sphere group ──
     const sphereGroup = new THREE.Group();
     scene.add(sphereGroup);
 
@@ -164,22 +164,231 @@
     planeVisual.renderOrder = 1;
     scene.add(planeVisual);
 
+    // ═══════════════════════════════════════════
+    // ── Three sphere meshes (one per mode) ──
+    // ═══════════════════════════════════════════
+    const sphereGeo = new THREE.SphereGeometry(SPHERE_RADIUS, SPHERE_SEGMENTS, SPHERE_SEGMENTS);
+
+    // Mode 0: Transparent
+    const sphereMatTransparent = new THREE.MeshPhysicalMaterial({
+      color: 0x4488ff,
+      roughness: 0.25,
+      metalness: 0.05,
+      transparent: true,
+      opacity: 0.33,
+      depthWrite: false,
+      side: THREE.FrontSide,
+    });
+    const sphereTransparent = new THREE.Mesh(sphereGeo, sphereMatTransparent);
+    sphereTransparent.visible = true;
+
+    // Mode 1: Clipped (opaque)
+    const sphereMatClipped = new THREE.MeshStandardMaterial({
+      color: 0x4488ff,
+      roughness: 0.28,
+      metalness: 0.08,
+      side: THREE.FrontSide,
+      clippingPlanes: [],
+      clipShadows: true,
+    });
+    const sphereClipped = new THREE.Mesh(sphereGeo, sphereMatClipped);
+    sphereClipped.visible = false;
+
+    // Mode 2: Wireframe
+    const sphereMatWire = new THREE.MeshBasicMaterial({
+      color: 0x6699ff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.65,
+    });
+    const sphereWire = new THREE.Mesh(sphereGeo, sphereMatWire);
+    sphereWire.visible = false;
+
+    sphereGroup.add(sphereTransparent);
+    sphereGroup.add(sphereClipped);
+    sphereGroup.add(sphereWire);
+
+    // ═══════════════════════════════════════════
+    // ── Intersection curve ──
+    // ═══════════════════════════════════════════
+    const curveGroup = new THREE.Group();
+    scene.add(curveGroup);
+
+    // Torus ring (for modes 0 transparent and 1 clipped)
+    const torusGeo = new THREE.TorusGeometry(SPHERE_RADIUS, 0.035, 32, 160);
+    const torusMat = new THREE.MeshBasicMaterial({ color: 0xff6644, depthTest: true, depthWrite: true });
+    const torusRing = new THREE.Mesh(torusGeo, torusMat);
+    torusRing.rotation.x = Math.PI / 2;
+    curveGroup.add(torusRing);
+
+    // Wireframe ellipse points (for mode 2)
+    const ellipsePoints = new Array(161);
+    for (let i = 0; i <= 160; i++) {
+      const angle = (i / 160) * Math.PI * 2;
+      ellipsePoints[i] = new THREE.Vector3(Math.cos(angle), 0, Math.sin(angle));
+    }
+    const ellipseGeo = new THREE.BufferGeometry().setFromPoints(ellipsePoints);
+    const ellipseLine = new THREE.Line(
+      ellipseGeo,
+      new THREE.LineBasicMaterial({ color: 0xff6644, linewidth: 2, depthTest: true })
+    );
+    curveGroup.add(ellipseLine);
+    ellipseLine.renderOrder = 2;
+
+    // ═══════════════════════════════════════════
+    // ── Clipping planes ──
+    // ═══════════════════════════════════════════
+    const clipPlaneAbove = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
+    const clipPlaneBelow = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
+    // ═══════════════════════════════════════════
+    // ── Update: position plane + curve by height ──
+    // ═══════════════════════════════════════════
+    function updatePlaneHeight(normalizedHeight) {
+      // normalizedHeight: -1..1 → -SPHERE_RADIUS..+SPHERE_RADIUS
+      const y = normalizedHeight * SPHERE_RADIUS;
+      planeVisual.position.y = y;
+
+      // Intersection radius (circle radius at this cut height)
+      const absY = Math.abs(y);
+      const intersectRadius = absY < SPHERE_RADIUS
+        ? Math.sqrt(SPHERE_RADIUS * SPHERE_RADIUS - y * y)
+        : 0;
+
+      // Update torus ring
+      if (intersectRadius > 0.008) {
+        torusRing.visible = currentMode !== 1;
+        torusRing.scale.setScalar(intersectRadius / SPHERE_RADIUS);
+        torusRing.position.y = y;
+      } else {
+        torusRing.visible = false;
+      }
+
+      // Update wireframe ellipse
+      if (intersectRadius > 0.008) {
+        ellipseLine.visible = currentMode === 2;
+        ellipseLine.scale.set(intersectRadius, 1, intersectRadius);
+        ellipseLine.position.y = y;
+      } else {
+        ellipseLine.visible = false;
+      }
+
+      // Update clipping planes (mode 1)
+      clipPlaneAbove.constant = y;
+      clipPlaneBelow.constant = -y;
+      sphereMatClipped.clippingPlanes = [clipPlaneAbove, clipPlaneBelow];
+    }
+
+    // ═══════════════════════════════════════════
+    // ── Mode switching ──
+    // ═══════════════════════════════════════════
+    let currentMode = 0;
+    const modeButtons = document.querySelectorAll('.mode-btn');
+
+    function setMode(mode) {
+      currentMode = mode;
+      modeButtons.forEach(b => b.classList.toggle('active', +b.dataset.mode === mode));
+
+      // Sphere visibility
+      sphereTransparent.visible = mode === 0;
+      sphereClipped.visible = mode === 1;
+      sphereWire.visible = mode === 2;
+
+      if (mode === 1) {
+        // Clipping mode
+        renderer.clippingPlanes = [clipPlaneAbove, clipPlaneBelow];
+        torusRing.visible = false;
+        ellipseLine.visible = false;
+        planeVisual.material.opacity = 0.55;
+        sphereMatTransparent.depthWrite = true;
+      } else {
+        renderer.clippingPlanes = [];
+        planeVisual.material.opacity = 0.38;
+        sphereMatTransparent.depthWrite = false;
+      }
+
+      // Refresh curve visibility for current height
+      updatePlaneHeight(parseFloat(heightSlider.value) / 100);
+    }
+
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => setMode(+btn.dataset.mode));
+    });
+
+    // ═══════════════════════════════════════════
+    // ── Slider ──
+    // ═══════════════════════════════════════════
+    const heightSlider = document.getElementById('height-slider');
+    heightSlider.addEventListener('input', () => {
+      updatePlaneHeight(parseFloat(heightSlider.value) / 100);
+    });
+
+    // ═══════════════════════════════════════════
+    // ── Play / Pause ──
+    // ═══════════════════════════════════════════
+    let playing = false;
+    let playDirection = 1;
+    const playBtn = document.getElementById('play-btn');
+
+    playBtn.addEventListener('click', () => {
+      playing = !playing;
+      playBtn.classList.toggle('playing', playing);
+      playBtn.textContent = playing ? '⏸' : '▶';
+    });
+
+    // ═══════════════════════════════════════════
+    // ── Keyboard controls ──
+    // ═══════════════════════════════════════════
+    window.addEventListener('keydown', (e) => {
+      switch (e.key.toLowerCase()) {
+        case '1': setMode(0); break;
+        case '2': setMode(1); break;
+        case '3': setMode(2); break;
+        case ' ': e.preventDefault(); playBtn.click(); break;
+        case 'arrowleft':
+          heightSlider.value = Math.max(-100, +heightSlider.value - 5);
+          updatePlaneHeight(parseFloat(heightSlider.value) / 100);
+          break;
+        case 'arrowright':
+          heightSlider.value = Math.min(100, +heightSlider.value + 5);
+          updatePlaneHeight(parseFloat(heightSlider.value) / 100);
+          break;
+      }
+    });
+
+    // ═══════════════════════════════════════════
     // ── Resize handler ──
+    // ═══════════════════════════════════════════
     window.addEventListener('resize', () => {
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
     });
 
+    // ── Initial state ──
+    updatePlaneHeight(0);
+    setMode(0);
+
+    // ═══════════════════════════════════════════
     // ── Animation loop ──
+    // ═══════════════════════════════════════════
     function animate() {
       requestAnimationFrame(animate);
+
+      if (playing) {
+        let val = parseFloat(heightSlider.value) / 100 + playDirection * 0.007;
+        if (val >= 1) { val = 1; playDirection = -1; }
+        if (val <= -1) { val = -1; playDirection = 1; }
+        heightSlider.value = Math.round(val * 100);
+        updatePlaneHeight(val);
+      }
+
       controls.update();
       renderer.render(scene, camera);
     }
     animate();
 
-    console.log('✅ Three.js scene initialized');
+    console.log('✅ Sphere-cut ready | Modes: 1/2/3 | Space: play | ← →: height');
   </script>
 </body>
 </html>
