@@ -164,6 +164,29 @@
     planeVisual.renderOrder = 1;
     scene.add(planeVisual);
 
+    // ── Cut-surface disc (visible only in clipped mode 1) ──
+    const cutDiscGeo = new THREE.CircleGeometry(SPHERE_RADIUS, 80);
+    const cutDiscMat = new THREE.MeshStandardMaterial({
+      color: 0x3355aa,
+      roughness: 0.55,
+      side: THREE.DoubleSide,
+      depthWrite: true,
+    });
+    const cutDisc = new THREE.Mesh(cutDiscGeo, cutDiscMat);
+    cutDisc.rotation.x = -Math.PI / 2;
+    cutDisc.visible = false;
+    cutDisc.renderOrder = 0;
+    scene.add(cutDisc);
+
+    // ── Cut edge glow ring (visible only in clipped mode 1) ──
+    const cutEdgeGeo = new THREE.TorusGeometry(SPHERE_RADIUS, 0.02, 16, 160);
+    const cutEdgeMat = new THREE.MeshBasicMaterial({ color: 0xff8844, depthTest: true, depthWrite: true });
+    const cutEdge = new THREE.Mesh(cutEdgeGeo, cutEdgeMat);
+    cutEdge.rotation.x = Math.PI / 2;
+    cutEdge.visible = false;
+    cutEdge.renderOrder = 2;
+    scene.add(cutEdge);
+
     // ═══════════════════════════════════════════
     // ── Three sphere meshes (one per mode) ──
     // ═══════════════════════════════════════════
@@ -235,6 +258,27 @@
     curveGroup.add(ellipseLine);
     ellipseLine.renderOrder = 2;
 
+    // ── Background particles ──
+    const particlesGeo = new THREE.BufferGeometry();
+    const particlesCount = 350;
+    const positionsArr = new Float32Array(particlesCount * 3);
+    for (let i = 0; i < particlesCount; i++) {
+      positionsArr[i * 3] = (Math.random() - 0.5) * 12;
+      positionsArr[i * 3 + 1] = (Math.random() - 0.5) * 9;
+      positionsArr[i * 3 + 2] = (Math.random() - 0.5) * 9;
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(positionsArr, 3));
+    const particlesMat = new THREE.PointsMaterial({
+      color: 0x8899cc,
+      size: 0.014,
+      transparent: true,
+      opacity: 0.5,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const particles = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particles);
+
     // ═══════════════════════════════════════════
     // ── Clipping planes ──
     // ═══════════════════════════════════════════
@@ -277,6 +321,12 @@
       clipPlaneAbove.constant = y;
       clipPlaneBelow.constant = -y;
       sphereMatClipped.clippingPlanes = [clipPlaneAbove, clipPlaneBelow];
+
+      // Update cut disc and edge ring (mode 1)
+      cutDisc.position.y = y;
+      cutDisc.scale.setScalar(Math.max(0, intersectRadius / SPHERE_RADIUS));
+      cutEdge.position.y = y;
+      cutEdge.scale.setScalar(Math.max(0.001, intersectRadius / SPHERE_RADIUS));
     }
 
     // ═══════════════════════════════════════════
@@ -299,10 +349,14 @@
         renderer.clippingPlanes = [clipPlaneAbove, clipPlaneBelow];
         torusRing.visible = false;
         ellipseLine.visible = false;
+        cutDisc.visible = true;
+        cutEdge.visible = true;
         planeVisual.material.opacity = 0.55;
         sphereMatTransparent.depthWrite = true;
       } else {
         renderer.clippingPlanes = [];
+        cutDisc.visible = false;
+        cutEdge.visible = false;
         planeVisual.material.opacity = 0.38;
         sphereMatTransparent.depthWrite = false;
       }
