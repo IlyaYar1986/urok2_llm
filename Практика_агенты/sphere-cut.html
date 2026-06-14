@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сечение сферы плоскостью</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a1a; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    #canvas-container { position: fixed; inset: 0; }
+    canvas { display: block; }
+
+    /* UI Panel */
+    #panel {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 10, 30, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 16px;
+      padding: 16px 24px; display: flex; gap: 20px; align-items: center;
+      z-index: 10; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      user-select: none; -webkit-user-select: none;
+    }
+
+    .mode-group { display: flex; gap: 4px; }
+    .mode-btn {
+      padding: 6px 14px; border: 1px solid rgba(255,255,255,0.18); background: transparent;
+      color: rgba(255,255,255,0.65); border-radius: 8px; cursor: pointer;
+      font-size: 0.73rem; font-weight: 500; transition: all 0.25s; white-space: nowrap;
+      font-family: inherit;
+    }
+    .mode-btn:hover { border-color: rgba(255,255,255,0.4); color: #fff; background: rgba(255,255,255,0.05); }
+    .mode-btn.active { background: #7c5cfc; border-color: #7c5cfc; color: #fff; }
+
+    .slider-group { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .slider-group label { color: rgba(255,255,255,0.55); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none; width: 130px; height: 4px;
+      background: rgba(255,255,255,0.15); border-radius: 2px; outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 15px; height: 15px; background: #7c5cfc;
+      border-radius: 50%; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 8px rgba(124,92,252,0.5);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 15px; height: 15px; background: #7c5cfc; border-radius: 50%;
+      cursor: pointer; border: 2px solid #fff;
+    }
+
+    .play-btn {
+      width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+      background: transparent; color: #fff; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.25s;
+      flex-shrink: 0;
+    }
+    .play-btn:hover { background: rgba(124,92,252,0.3); border-color: #7c5cfc; }
+    .play-btn.playing { background: #7c5cfc; border-color: #7c5cfc; }
+
+    /* Responsive: stack on narrow screens */
+    @media (max-width: 640px) {
+      #panel { flex-wrap: wrap; gap: 12px; padding: 12px 16px; border-radius: 12px; }
+      input[type="range"] { width: 90px; }
+      .mode-btn { font-size: 0.7rem; padding: 5px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="panel">
+    <div class="mode-group" id="mode-buttons">
+      <button class="mode-btn active" data-mode="0">Прозрачный</button>
+      <button class="mode-btn" data-mode="1">Отсечение</button>
+      <button class="mode-btn" data-mode="2">Каркасный</button>
+    </div>
+    <div class="slider-group">
+      <label>Высота сечения</label>
+      <input type="range" id="height-slider" min="-100" max="100" value="0" step="1">
+    </div>
+    <button class="play-btn" id="play-btn" title="Автоанимация">▶</button>
+  </div>
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    // ── Placeholder: scene will be set up in next step ──
+    console.log('🧊 Sphere-cut shell loaded');
+  </script>
+</body>
+</html>
