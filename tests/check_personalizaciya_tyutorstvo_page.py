@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti", "keysy", "rossiya"}
+        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti", "keysy", "rossiya", "primenenie"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -106,6 +106,11 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
         ):
             self.assertIn(marker, self.html)
         self.assertNotIn("220 000", self.html)
+
+    def test_primenenie_section_has_three_levels_and_copy_buttons(self):
+        for marker in ("Быстрый старт", "Продвинутый", "Системный", "data-copy", "Скопировать"):
+            self.assertIn(marker, self.html)
+        self.assertGreaterEqual(self.html.count('class="level-panel"'), 3)
 
 
 if __name__ == "__main__":

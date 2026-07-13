@@ -187,6 +187,16 @@ nav::-webkit-scrollbar{display:none}
 .pilot-table th{text-align:left;padding:10px 12px;background:var(--indigo-lt);color:var(--indigo-dk);font-weight:700}
 .pilot-table td{padding:10px 12px;border-top:1px solid var(--border);color:var(--text);vertical-align:top}
 
+.level-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.level-tab{padding:9px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;font-size:.85rem;font-weight:700;color:var(--muted);cursor:pointer}
+.level-tab.active{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.level-note{color:var(--muted);margin-bottom:16px}
+.prompt-box{background:#0f172a;border-radius:14px;overflow:hidden}
+.prompt-head{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#1e293b;color:#e2e8f0;font-size:.82rem;font-weight:700}
+.copy-btn{padding:5px 12px;border-radius:8px;border:1px solid #475569;background:transparent;color:#e2e8f0;font-size:.76rem;font-weight:700;cursor:pointer;transition:background .2s}
+.copy-btn:hover{background:#334155}
+.prompt-box pre{margin:0;padding:18px 16px;color:#e2e8f0;font-size:.82rem;line-height:1.6;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -550,6 +560,83 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </details>
 </section>
 
+<section class="sec" id="primenenie">
+  <div class="sec-head fade">
+    <div class="num-badge n8">8</div>
+    <h2 class="sec-title">Как применить в вашей практике: три уровня</h2>
+    <p class="sec-desc">От промпта, который можно использовать сегодня, до полноценного ИИ-тьютора курса. Промпты готовы к копированию — подставьте свой предмет и уровень группы.</p>
+  </div>
+
+  <div class="level-tabs fade" role="tablist" aria-label="Уровни внедрения">
+    <button type="button" class="level-tab active" data-level="1" role="tab" aria-selected="true">1 · Быстрый старт</button>
+    <button type="button" class="level-tab" data-level="2" role="tab" aria-selected="false">2 · Продвинутый</button>
+    <button type="button" class="level-tab" data-level="3" role="tab" aria-selected="false">3 · Системный</button>
+  </div>
+
+  <div class="level-panel" data-level-panel="1">
+    <p class="level-note">Можно начать сегодня. Создайте базового ИИ-помощника для студентов в GigaChat или ChatGPT.</p>
+    <div class="prompt-box">
+      <div class="prompt-head">
+        <span>Промпт: базовый ИИ-тьютор</span>
+        <button type="button" class="copy-btn" data-copy="prompt-1">Скопировать</button>
+      </div>
+      <pre id="prompt-1">Ты — тьютор по [ваш предмет]. Твоя задача — помогать студентам
+[уровень: колледж/вуз] понимать материал, но НЕ давать готовые ответы.
+
+Когда студент задаёт вопрос:
+1. Сначала узнай, что он уже понимает
+2. Задавай наводящие вопросы
+3. Объясняй через простые аналогии
+4. Проверяй понимание
+5. Если студент застрял — разбей задачу на более простые шаги
+
+Стиль: дружелюбный, терпеливый, мотивирующий.
+
+Начинай диалог так: "Привет! Я помогу разобраться с темой.
+Расскажи, что уже понял, и где возникли сложности?"</pre>
+    </div>
+  </div>
+
+  <div class="level-panel" data-level-panel="2" hidden>
+    <p class="level-note">2–4 недели на внедрение. Диагностируйте пробелы и разделите студентов на треки.</p>
+    <div class="prompt-box">
+      <div class="prompt-head">
+        <span>Промпт: диагностические вопросы</span>
+        <button type="button" class="copy-btn" data-copy="prompt-2">Скопировать</button>
+      </div>
+      <pre id="prompt-2">Создай 10 диагностических вопросов по теме [название],
+которые покажут пробелы в знаниях студентов.
+
+Требования:
+- Вопросы должны быть разной сложности
+- Каждый вопрос тестирует конкретный аспект понимания
+- Включи объяснение, какой пробел выявляет каждый вопрос</pre>
+    </div>
+  </div>
+
+  <div class="level-panel" data-level-panel="3" hidden>
+    <p class="level-note">Долгосрочная стратегия. Обучите ИИ стать полноценным экспертом по вашему курсу.</p>
+    <div class="prompt-box">
+      <div class="prompt-head">
+        <span>Промпт: адаптивные учебные материалы</span>
+        <button type="button" class="copy-btn" data-copy="prompt-3">Скопировать</button>
+      </div>
+      <pre id="prompt-3">Ты — методист курса [название]. Вот базовый материал лекции [текст].
+
+Создай адаптивную версию:
+1. Вводный тест на 5 вопросов для определения уровня
+2. Три версии материала: базовая, стандартная, углубленная
+3. Практические задания для каждого уровня
+4. Критерии, когда переводить студента на следующий уровень</pre>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:28px">
+    <img src="../png/personalizaciya_tyutorstvo/09_tri_urovnya_vnedreniya.png" alt="Три уровня внедрения ИИ-тьютора: быстрый старт, продвинутый, системный" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Три уровня внедрения ИИ-тьютора</figcaption>
+  </figure>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
@@ -655,6 +742,33 @@ function renderDialogStep() {
   }
 }
 dialogNextBtn.addEventListener("click", renderDialogStep);
+
+document.querySelectorAll(".level-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".level-tab").forEach((t) => { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+    tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
+    const target = tab.dataset.level;
+    document.querySelectorAll("[data-level-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.levelPanel !== target;
+    });
+  });
+});
+
+document.querySelectorAll("[data-copy]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const code = document.getElementById(button.dataset.copy);
+    if (!code) return;
+    const original = button.textContent;
+    try {
+      await navigator.clipboard.writeText(code.innerText);
+      button.textContent = "Скопировано";
+    } catch {
+      button.textContent = "Выделите текст";
+    }
+    window.setTimeout(() => { button.textContent = original; }, 1600);
+  });
+});
 </script>
 </body>
 </html>
