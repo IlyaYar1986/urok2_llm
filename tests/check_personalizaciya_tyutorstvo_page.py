@@ -33,7 +33,11 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti", "keysy", "rossiya", "primenenie", "cheklist"}
+        required = {
+            "hero", "problema", "personalizaciya", "pochemu-seychas",
+            "ii-tyutor", "vozmozhnosti", "keysy", "rossiya", "primenenie",
+            "cheklist", "kviz", "zaklyuchenie",
+        }
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -115,6 +119,19 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
     def test_cheklist_section_has_six_items(self):
         self.assertEqual(self.html.count('data-checklist-item="'), 6)
         self.assertIn("checklist-progress", self.html)
+
+    def test_kviz_section_has_five_questions(self):
+        self.assertEqual(self.html.count('class="quiz-question"'), 5)
+        self.assertIn("quiz-score", self.html)
+
+    def test_zaklyuchenie_has_five_theses_and_no_broken_practice_links(self):
+        for marker in (
+            "Массовое образование",
+            "не роскошь, а необходимость",
+            "не заменяется",
+        ):
+            self.assertIn(marker, self.html)
+        self.assertNotIn('href="practika', self.html)
 
 
 if __name__ == "__main__":

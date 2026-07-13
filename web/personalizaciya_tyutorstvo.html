@@ -203,6 +203,22 @@ nav::-webkit-scrollbar{display:none}
 .checklist-items input{width:18px;height:18px;accent-color:var(--indigo);cursor:pointer}
 .checklist-done{margin-top:18px;padding:12px 16px;background:var(--green-lt);color:var(--green);border-radius:10px;font-weight:700}
 
+.quiz{display:flex;flex-direction:column;gap:18px}
+.quiz-question{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.quiz-text{font-weight:700;margin-bottom:12px}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.quiz-options label{display:flex;align-items:center;gap:8px;font-size:.92rem;cursor:pointer}
+.quiz-options input{accent-color:var(--indigo)}
+.quiz-check{padding:8px 16px;border-radius:9px;border:none;background:var(--indigo);color:#fff;font-weight:700;font-size:.82rem;cursor:pointer}
+.quiz-check:hover{background:var(--indigo-dk)}
+.quiz-feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:.9rem}
+.quiz-feedback.correct{background:var(--green-lt);color:var(--green)}
+.quiz-feedback.incorrect{background:#fef2f2;color:#dc2626}
+.quiz-score-box{text-align:center;font-weight:800;color:var(--indigo-dk)}
+.conclusion-list{list-style:none;counter-reset:concl;display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.conclusion-list li{counter-increment:concl;padding-left:38px;position:relative;font-size:1rem}
+.conclusion-list li::before{content:counter(concl);position:absolute;left:0;top:-2px;width:26px;height:26px;border-radius:50%;background:var(--indigo);color:#fff;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -664,6 +680,93 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 </section>
 
+<section class="sec" id="kviz">
+  <div class="sec-head fade">
+    <div class="num-badge n1">10</div>
+    <h2 class="sec-title">Проверьте себя</h2>
+    <p class="sec-desc">Пять вопросов по материалу лекции — ответьте и посмотрите разбор.</p>
+  </div>
+
+  <div class="quiz fade">
+    <div class="quiz-question" data-quiz="0">
+      <p class="quiz-text">1. Что из перечисленного — это НАСТОЯЩАЯ персонализация, а не просто дифференциация или гибкость?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q0" value="wrong"> Разрешить сдать работу в любом формате</label>
+        <label><input type="radio" name="q0" value="right"> Система постоянно подбирает содержание, темп и формат под конкретного студента</label>
+        <label><input type="radio" name="q0" value="wrong"> Дать отличникам задания посложнее</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="0">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="0" hidden></p>
+    </div>
+
+    <div class="quiz-question" data-quiz="1">
+      <p class="quiz-text">2. Современные метаанализы (2020–2026) эффекта индивидуального тьюторства показывают, что средний студент с тьютором обгоняет примерно:</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q1" value="wrong"> 98% группы, как и предполагал Блум в 1984</label>
+        <label><input type="radio" name="q1" value="right"> 64–79% группы, в зависимости от исследования</label>
+        <label><input type="radio" name="q1" value="wrong"> Эффекта не обнаружено вовсе</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="1">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="1" hidden></p>
+    </div>
+
+    <div class="quiz-question" data-quiz="2">
+      <p class="quiz-text">3. В чём ключевая идея сократовского метода Khanmigo?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q2" value="wrong"> Дать студенту готовый правильный ответ как можно быстрее</label>
+        <label><input type="radio" name="q2" value="right"> Вести студента к ответу через наводящие вопросы, а не выдавать решение</label>
+        <label><input type="radio" name="q2" value="wrong"> Оценивать студента без обратной связи</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="2">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="2" hidden></p>
+    </div>
+
+    <div class="quiz-question" data-quiz="3">
+      <p class="quiz-text">4. Какая формулировка про ИИ-тьюторов и данные студентов верна?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q3" value="wrong"> Любой чат-бот безопасен для учебных данных по умолчанию</label>
+        <label><input type="radio" name="q3" value="right"> Для работы со студентами стоит использовать корпоративные версии с политикой конфиденциальности</label>
+        <label><input type="radio" name="q3" value="wrong"> Персональные данные можно свободно передавать в любой публичный сервис</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="3">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="3" hidden></p>
+    </div>
+
+    <div class="quiz-question" data-quiz="4">
+      <p class="quiz-text">5. Что показывает кейс Carnegie Learning MATHia про статус ESSA Tier 1?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q4" value="wrong"> Tier 1 присвоен именно программе MATHia отдельно от всего остального</label>
+        <label><input type="radio" name="q4" value="right"> Tier 1 присвоен всему комплексному курсу Math Solution; сама MATHia отдельно — Tier 2</label>
+        <label><input type="radio" name="q4" value="wrong"> ESSA Tier — это внутренний рейтинг самой компании Carnegie Learning</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="4">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="4" hidden></p>
+    </div>
+
+    <div class="quiz-score-box">
+      <p id="quiz-score">Отвечено: 0 / 5</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zaklyuchenie">
+  <div class="sec-head fade">
+    <h2 class="sec-title">Заключение: персонализация — это новая норма</h2>
+  </div>
+  <ol class="conclusion-list fade">
+    <li><strong>Массовое образование</strong> — система XIX века, которая больше не отвечает вызовам времени</li>
+    <li>Персонализация — <strong>не роскошь, а необходимость</strong> для эффективного обучения</li>
+    <li>ИИ-тьюторы — технология, которая впервые делает персонализацию масштабируемой</li>
+    <li>Возможности уже здесь — Duolingo, Khan Academy, российские колледжи показывают результаты</li>
+    <li>Преподаватель <strong>не заменяется</strong> — он освобождается для по-настоящему важных задач</li>
+  </ol>
+  <figure class="img-card fade" data-lightbox style="margin:28px 0">
+    <img src="../png/personalizaciya_tyutorstvo/10_dorozhnaya_karta_pedagoga.png" alt="Дорожная карта педагога: пять шагов от осознания проблемы массового образования до партнёрства с ИИ" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Дорожная карта педагога</figcaption>
+  </figure>
+  <p class="fade" style="color:var(--muted);max-width:700px">После этой лекции вас ждут практические занятия: исследование ИИ-платформ и настройка собственного тьютора в GigaChat, а затем — разработка личного плана внедрения персонализации в вашем курсе.</p>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
@@ -835,6 +938,34 @@ checklistInputs.forEach((input) => {
   });
 });
 renderChecklistProgress();
+
+let quizAnswered = 0;
+const quizScoreEl = document.getElementById("quiz-score");
+document.querySelectorAll(".quiz-check").forEach((button) => {
+  button.addEventListener("click", () => {
+    const index = button.dataset.quizCheck;
+    const question = document.querySelector(`.quiz-question[data-quiz="${index}"]`);
+    const selected = question.querySelector(`input[name="q${index}"]:checked`);
+    const feedback = document.querySelector(`[data-quiz-feedback="${index}"]`);
+    if (!selected) {
+      feedback.textContent = "Выберите вариант ответа.";
+      feedback.className = "quiz-feedback incorrect";
+      feedback.hidden = false;
+      return;
+    }
+    const alreadyAnswered = button.disabled;
+    const isCorrect = selected.value === "right";
+    feedback.textContent = isCorrect ? "Верно!" : "Не совсем — посмотрите выделенный правильный вариант выше.";
+    feedback.className = `quiz-feedback ${isCorrect ? "correct" : "incorrect"}`;
+    feedback.hidden = false;
+    question.querySelectorAll("input").forEach((input) => { input.disabled = true; });
+    button.disabled = true;
+    if (!alreadyAnswered) {
+      quizAnswered += 1;
+      quizScoreEl.textContent = `Отвечено: ${quizAnswered} / 5`;
+    }
+  });
+});
 </script>
 </body>
 </html>
