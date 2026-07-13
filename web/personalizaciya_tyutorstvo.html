@@ -121,6 +121,18 @@ nav::-webkit-scrollbar{display:none}
 .cb-label{font-size:.78rem;font-weight:600;opacity:.9}
 @media (prefers-reduced-motion:reduce){.cb-segment{transform:scaleY(1);animation:none}}
 
+.analogy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:700px){.analogy-grid{grid-template-columns:1fr}}
+.dialog-widget{display:flex;flex-direction:column;gap:14px}
+.dialog-log{display:flex;flex-direction:column;gap:10px;min-height:60px}
+.dialog-bubble{max-width:80%;padding:10px 16px;border-radius:14px;font-size:.95rem;line-height:1.5;opacity:0;transform:translateY(8px);animation:dialog-in .35s ease forwards}
+@keyframes dialog-in{to{opacity:1;transform:none}}
+.dialog-bubble.student{align-self:flex-end;background:var(--indigo);color:#fff;border-bottom-right-radius:4px}
+.dialog-bubble.khanmigo{align-self:flex-start;background:var(--indigo-lt);color:var(--indigo-dk);border-bottom-left-radius:4px}
+.dialog-next{align-self:flex-start;padding:9px 18px;border-radius:10px;border:none;background:var(--indigo);color:#fff;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .2s}
+.dialog-next:hover{background:var(--indigo-dk)}
+.dialog-next:disabled{background:var(--border);color:var(--muted);cursor:default}
+
 .not-list{list-style:none;display:flex;flex-direction:column;gap:10px}
 .not-list li{padding-left:26px;position:relative;color:var(--text)}
 .not-list li::before{content:"✕";position:absolute;left:0;color:#dc2626;font-weight:800}
@@ -301,6 +313,39 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </figure>
 </section>
 
+<section class="sec" id="ii-tyutor">
+  <div class="sec-head fade">
+    <div class="num-badge n4">4</div>
+    <h2 class="sec-title">ИИ-тьютор: личный наставник для каждого студента</h2>
+    <p class="sec-desc">ИИ-тьютор — не просто чат с ИИ. Это система, которая знает студента, адаптируется в реальном времени, обучает через вопросы вместо готовых ответов, отслеживает прогресс и следует педагогическим принципам.</p>
+  </div>
+
+  <div class="analogy-grid fade">
+    <div class="card">
+      <p style="font-weight:700;margin-bottom:8px">Google vs Репетитор</p>
+      <p style="color:var(--muted)">Google выдаст информацию. Репетитор спросит, что вы знаете, объяснит на понятных примерах, проверит понимание, даст практику.</p>
+    </div>
+    <div class="card">
+      <p style="font-weight:700;margin-bottom:8px">Телевизор vs Онлайн-кинотеатр</p>
+      <p style="color:var(--muted)">Обычный телевизор покажет программы по расписанию. Онлайн-кинотеатр анализирует интересы и рекомендует лично то, что будет интересно именно вам.</p>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin:28px 0">
+    <img src="../png/personalizaciya_tyutorstvo/05_analogii_google_i_tv.png" alt="Аналогии: Google против репетитора, телевизор против онлайн-кинотеатра" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Аналогии: Google против репетитора, телевизор против онлайн-кинотеатра</figcaption>
+  </figure>
+
+  <div class="card fade">
+    <p style="font-weight:700;margin-bottom:4px">Попробуйте сами: сократовский диалог Khanmigo</p>
+    <p style="color:var(--muted);margin-bottom:16px">ИИ-тьютор Khan Academy не выдаёт готовый ответ — он ведёт студента к пониманию вопросами. Нажимайте «Далее», чтобы пройти диалог целиком.</p>
+    <div class="dialog-widget">
+      <div class="dialog-log" id="dialog-log" aria-live="polite"></div>
+      <button type="button" class="dialog-next" id="dialog-next">Далее →</button>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
@@ -375,6 +420,37 @@ document.querySelectorAll(".bloom-tab").forEach((tab) => {
     });
   });
 });
+
+const dialogLines = [
+  {who: "student", text: "Как решить 2x + 5 = 13?"},
+  {who: "khanmigo", text: "Отлично! Что нужно сделать, чтобы x остался один слева?"},
+  {who: "student", text: "Убрать 5?"},
+  {who: "khanmigo", text: "Верно! Как «убрать»? Помни про баланс весов."},
+  {who: "student", text: "Вычесть 5 с обеих сторон?"},
+  {who: "khanmigo", text: "Точно! Попробуй."},
+];
+const dialogLog = document.getElementById("dialog-log");
+const dialogNextBtn = document.getElementById("dialog-next");
+let dialogStep = 0;
+function renderDialogStep() {
+  if (dialogStep >= dialogLines.length) {
+    dialogNextBtn.textContent = "Диалог завершён";
+    dialogNextBtn.disabled = true;
+    return;
+  }
+  const line = dialogLines[dialogStep];
+  const bubble = document.createElement("div");
+  bubble.className = `dialog-bubble ${line.who}`;
+  bubble.textContent = line.text;
+  bubble.setAttribute("data-dialog-line", String(dialogStep));
+  dialogLog.appendChild(bubble);
+  dialogStep += 1;
+  if (dialogStep >= dialogLines.length) {
+    dialogNextBtn.textContent = "Диалог завершён";
+    dialogNextBtn.disabled = true;
+  }
+}
+dialogNextBtn.addEventListener("click", renderDialogStep);
 </script>
 </body>
 </html>
