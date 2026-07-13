@@ -121,6 +121,18 @@ nav::-webkit-scrollbar{display:none}
 .cb-label{font-size:.78rem;font-weight:600;opacity:.9}
 @media (prefers-reduced-motion:reduce){.cb-segment{transform:scaleY(1);animation:none}}
 
+.not-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.not-list li{padding-left:26px;position:relative;color:var(--text)}
+.not-list li::before{content:"✕";position:absolute;left:0;color:#dc2626;font-weight:800}
+.not-list li span{color:var(--muted);font-size:.92rem}
+.principles{display:flex;flex-direction:column;gap:10px}
+.principle{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px}
+.principle summary{font-weight:700;cursor:pointer;list-style:none}
+.principle summary::-webkit-details-marker{display:none}
+.principle summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--indigo);transition:transform .2s}
+.principle[open] summary::before{transform:rotate(90deg)}
+.principle p{margin-top:10px;color:var(--muted);line-height:1.7}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -196,6 +208,51 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </figure>
 
   <p class="fade" style="margin-top:24px;color:var(--muted)">Мы знаем, что каждому нужен индивидуальный подход, но физически не можем его обеспечить — вернее, не могли до сих пор.</p>
+</section>
+
+<section class="sec" id="personalizaciya">
+  <div class="sec-head fade">
+    <div class="num-badge n2">2</div>
+    <h2 class="sec-title">Что такое настоящая персонализация</h2>
+    <p class="sec-desc">Слово звучит отовсюду, но чаще всего под ним понимают совсем не то. Разберёмся, что персонализация — это НЕ, и что это система, работающая постоянно, а не разовое задание.</p>
+  </div>
+
+  <div class="card fade" style="margin-bottom:28px">
+    <p style="font-weight:700;margin-bottom:10px">Персонализация — это НЕ:</p>
+    <ul class="not-list">
+      <li>Дать студенту выбрать тему проекта <span>— это свобода выбора</span></li>
+      <li>Разрешить сдать работу в разном формате <span>— это гибкость требований</span></li>
+      <li>Дать отличникам сложные задания, а отстающим — упрощённые <span>— это дифференциация, лишь один из элементов</span></li>
+    </ul>
+  </div>
+
+  <div class="principles fade">
+    <details class="principle" open>
+      <summary>1. Содержание под его уровень</summary>
+      <p>Не «лёгкое» или «сложное», а точно откалиброванное — чуть выше того, что студент уже умеет. Психологи называют это зоной ближайшего развития: задача трудная настолько, чтобы требовать усилий, но не вызывать отчаяния.</p>
+    </details>
+    <details class="principle">
+      <summary>2. Удобный темп</summary>
+      <p>Один студент усваивает тему за 20 минут, другому нужен час и три разных объяснения. В классическом уроке оба вынуждены двигаться в одном ритме — при персонализации каждый идёт в своём.</p>
+    </details>
+    <details class="principle">
+      <summary>3. Подходящий формат подачи</summary>
+      <p>Одному проще понять через схему, другому — через жизненный пример, третьему — через практическую задачу. Не потому что у них «разные типы мышления» (это не подтверждено исследованиями), а потому что разный контекст и опыт.</p>
+    </details>
+    <details class="principle">
+      <summary>4. Обратную связь в нужный момент</summary>
+      <p>Обратная связь эффективна, если дана в течение нескольких минут после ошибки. Когда студент получает исправленную работу через неделю — момент упущен, и ошибки просто повторяются снова.</p>
+    </details>
+    <details class="principle">
+      <summary>5. Поддержку именно там, где «спотыкается»</summary>
+      <p>Не общие рекомендации «подтяни математику», а конкретная дополнительная практика на ту операцию, которую студент делает неверно.</p>
+    </details>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:32px">
+    <img src="../png/personalizaciya_tyutorstvo/03_pyat_printsipov_personalizatsii.png" alt="Пять признаков настоящей персонализации: содержание, темп, формат, обратная связь, точечная поддержка" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Пять признаков настоящей персонализации: содержание, темп, формат, обратная связь, точечная поддержка</figcaption>
+  </figure>
 </section>
 
 </main>

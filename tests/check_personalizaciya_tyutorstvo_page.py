@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema"}
+        required = {"hero", "problema", "personalizaciya"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -49,6 +49,17 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
     def test_problema_section_has_distribution_stats(self):
         for marker in ("30%", "40%", "слишком просто", "слишком сложно", "оптимальная"):
             self.assertIn(marker, self.html)
+
+    def test_personalizaciya_section_has_five_principles(self):
+        for marker in (
+            "Содержание под его уровень",
+            "Удобный темп",
+            "Подходящий формат подачи",
+            "Обратную связь в нужный момент",
+            "Поддержку именно там",
+        ):
+            self.assertIn(marker, self.html)
+        self.assertGreaterEqual(self.parser.details, 5)
 
 
 if __name__ == "__main__":
