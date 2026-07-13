@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor"}
+        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -68,6 +68,15 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_ii_tyutor_section_has_socratic_dialogue(self):
         for marker in ("Khanmigo", "2x + 5 = 13", "Убрать 5", "dialog-next"):
+            self.assertIn(marker, self.html)
+
+    def test_vozmozhnosti_section_covers_capabilities_and_limits(self):
+        for marker in (
+            "Диагностика в реальном времени",
+            "Эмоциональная поддержка",
+            "152-ФЗ",
+            "академическ",
+        ):
             self.assertIn(marker, self.html)
 
 

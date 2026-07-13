@@ -153,6 +153,19 @@ nav::-webkit-scrollbar{display:none}
 .bloom-caption{color:var(--text);line-height:1.7}
 .bloom-sources{margin-top:10px;padding-left:20px;color:var(--muted);line-height:1.8}
 
+.capability-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:700px){.capability-grid{grid-template-columns:1fr}}
+.cap-head{font-weight:800;padding:8px 14px;border-radius:10px;margin-bottom:14px;display:inline-block}
+.cap-yes .cap-head{background:var(--green-lt);color:var(--green)}
+.cap-no .cap-head{background:var(--amber-lt);color:#b45309}
+.capability-grid ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.capability-grid li{color:var(--text);line-height:1.6;font-size:.94rem}
+.capability-grid li strong{display:block;margin-bottom:2px}
+.safety-callout{background:var(--indigo-lt);border:1px solid #c7d2fe;border-radius:16px;padding:24px}
+.safety-callout h3{color:var(--indigo-dk);margin-bottom:10px;font-size:1.05rem}
+.safety-callout p{color:var(--text);margin-bottom:8px;line-height:1.7}
+.safety-callout p:last-child{margin-bottom:0}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -343,6 +356,48 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
       <div class="dialog-log" id="dialog-log" aria-live="polite"></div>
       <button type="button" class="dialog-next" id="dialog-next">Далее →</button>
     </div>
+  </div>
+</section>
+
+<section class="sec" id="vozmozhnosti">
+  <div class="sec-head fade">
+    <div class="num-badge n5">5</div>
+    <h2 class="sec-title">Возможности и ограничения ИИ-тьюторов</h2>
+    <p class="sec-desc">ИИ — не волшебная палочка. У него есть сильные стороны, которые работают уже сегодня, и границы, которые остаются за человеком.</p>
+  </div>
+
+  <div class="capability-grid fade">
+    <div class="card cap-yes">
+      <p class="cap-head">Умеет уже сейчас ✅</p>
+      <ul>
+        <li><strong>Диагностика в реальном времени</strong> — видит не только правильность ответа, но и время раздумья, систематические ошибки, пробелы в базовых знаниях</li>
+        <li><strong>Адаптивное объяснение</strong> — подаёт тему через схему, пример, задачу или аналогию, ориентируясь на реакцию студента, а не на «тип личности»</li>
+        <li><strong>Бесконечное терпение</strong> — студент может переспрашивать 10, 20, 50 раз без осуждения</li>
+        <li><strong>Доступность 24/7</strong> — помощь в 11 вечера, а не с пустой тетрадью наутро</li>
+        <li><strong>Мгновенная обратная связь</strong> — указывает на ошибку и даёт шанс исправить сразу, а не через неделю</li>
+      </ul>
+    </div>
+    <div class="card cap-no">
+      <p class="cap-head">Пока не умеет ⚠️</p>
+      <ul>
+        <li><strong>Эмоциональная поддержка</strong> — не чувствует, когда нужна не помощь с задачей, а вера в студента</li>
+        <li><strong>Оценка творческих работ</strong> — ограничен в оценке по-настоящему нестандартных решений</li>
+        <li><strong>Контекст жизненной ситуации</strong> — не знает про семейные проблемы или ночную работу</li>
+        <li><strong>Формирование ценностей</strong> — воспитательная функция остаётся за человеком</li>
+        <li><strong>Групповая динамика</strong> — не модерирует дискуссии, не создаёт командный дух</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin:28px 0">
+    <img src="../png/personalizaciya_tyutorstvo/06_vrach_s_mrt_usilenie_ne_zamena.png" alt="Метафора: врач с МРТ не заменяет врача, а делает диагностику точнее — так же ИИ усиливает преподавателя" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Метафора: врач с МРТ не заменяет врача, а делает диагностику точнее — так же ИИ усиливает преподавателя</figcaption>
+  </figure>
+
+  <div class="safety-callout fade">
+    <h3>Данные и академическая честность</h3>
+    <p>Когда студенты передают работы в ChatGPT или GigaChat, данные могут использоваться для дообучения моделей, если не настроено иное — для работы со студентами используйте корпоративные версии с политиками конфиденциальности. Это особенно важно там, где затрагиваются персональные данные (152-ФЗ).</p>
+    <p>Задайте себе правило: ИИ помогает понять, но не делает вместо студента. Практический способ проверить — попросить студента объяснить тему своими словами или устно защитить решение после работы с ИИ-тьютором.</p>
   </div>
 </section>
 
