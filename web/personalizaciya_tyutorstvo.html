@@ -822,6 +822,9 @@ document.querySelectorAll(".img-card[data-lightbox]").forEach((card) => {
   });
 });
 function closeLightbox() {
+  if (lightbox.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
   lightbox.classList.remove("open");
   lightbox.setAttribute("aria-hidden", "true");
   lightboxImg.src = "";

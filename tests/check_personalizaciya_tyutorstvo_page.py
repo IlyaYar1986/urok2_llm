@@ -133,6 +133,14 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
             self.assertIn(marker, self.html)
         self.assertNotIn('href="practika', self.html)
 
+    def test_all_hero_nav_targets_exist(self):
+        for anchor in ("problema", "ii-tyutor", "keysy", "primenenie", "kviz"):
+            self.assertIn(f'id="{anchor}"', self.html)
+
+    def test_no_stray_placeholder_markers(self):
+        for marker in ("TODO", "TBD", "lorem ipsum", "заглушка"):
+            self.assertNotIn(marker.lower(), self.html.lower())
+
 
 if __name__ == "__main__":
     unittest.main()
