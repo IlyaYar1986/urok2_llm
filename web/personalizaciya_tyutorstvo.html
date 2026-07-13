@@ -166,6 +166,17 @@ nav::-webkit-scrollbar{display:none}
 .safety-callout p{color:var(--text);margin-bottom:8px;line-height:1.7}
 .safety-callout p:last-child{margin-bottom:0}
 
+.case-cards{display:flex;flex-direction:column;gap:12px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px}
+.case-card summary{font-weight:700;cursor:pointer;list-style:none;font-size:1rem}
+.case-card summary::-webkit-details-marker{display:none}
+.case-card summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--indigo);transition:transform .2s}
+.case-card[open] summary::before{transform:rotate(90deg)}
+.case-body{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.case-body p{color:var(--text);line-height:1.7;font-size:.94rem}
+.case-caveat{background:var(--amber-lt);border-left:3px solid var(--amber);padding:10px 14px;border-radius:6px;color:#92400e!important}
+.case-insight{color:var(--muted)!important}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -399,6 +410,79 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <p>Когда студенты передают работы в ChatGPT или GigaChat, данные могут использоваться для дообучения моделей, если не настроено иное — для работы со студентами используйте корпоративные версии с политиками конфиденциальности. Это особенно важно там, где затрагиваются персональные данные (152-ФЗ).</p>
     <p>Задайте себе правило: ИИ помогает понять, но не делает вместо студента. Практический способ проверить — попросить студента объяснить тему своими словами или устно защитить решение после работы с ИИ-тьютором.</p>
   </div>
+</section>
+
+<section class="sec" id="keysy">
+  <div class="sec-head fade">
+    <div class="num-badge n6">6</div>
+    <h2 class="sec-title">Мировые кейсы: персонализация на практике</h2>
+    <p class="sec-desc">Шесть платформ, которые уже проверили ИИ-персонализацию на реальных студентах — с проверенными цифрами и честными оговорками там, где данные исходят от самих компаний.</p>
+  </div>
+
+  <div class="case-cards fade">
+    <details class="case-card">
+      <summary>Squirrel AI (Китай) — ИИ против традиционного учителя</summary>
+      <div class="case-body">
+        <p>Китайская платформа адаптивного обучения. По данным самой компании, на 2026 год ей пользуются свыше <strong>40 миллионов</strong> человек через 3000+ учебных центров (независимого аудита цифры нет).</p>
+        <p><strong>Заявления компании:</strong> +25% к результатам по математике за семестр; в уезде Цинтай освоение материала выросло с 56% до 89% за два месяца; в декабре 2025 заявлен рекорд Гиннесса за эксперимент «ИИ против традиционного обучения» на 1662 учениках из 5 школ.</p>
+        <p class="case-caveat">Важная оговорка: это заявление компании, а не независимо подтверждённые данные — анализ рекорда проводило нанятое и оплаченное Squirrel AI агентство, страницы записи на официальном сайте Guinness World Records не найдено.</p>
+        <p class="case-insight"><strong>Инсайт:</strong> наибольший прирост компания фиксирует у слабых учеников — ИИ-персонализация выравнивает неравенство, а не только усиливает сильных.</p>
+      </div>
+    </details>
+
+    <details class="case-card">
+      <summary>Carnegie Learning MATHia (США) — когнитивная наука + ИИ</summary>
+      <div class="case-body">
+        <p>Адаптивное ядро восходит к системе Cognitive Tutor Университета Карнеги-Меллон, переименованной в MATHia около 2010–2011 года.</p>
+        <p>Независимое исследование RAND (Pane, Griffin, McCaffrey, Karam, 2014) охватило свыше 18 000 студентов в 147 школах. У старшеклассников за два года — статистически значимый прирост +0,21 SD («почти двукратное» ускорение прогресса, по формулировке Carnegie Learning). Для средней школы значимого эффекта не было.</p>
+        <p class="case-caveat">Статус ESSA Tier 1 присвоен всему комплексному курсу Math Solution, а не отдельно MATHia — сама платформа как отдельный инструмент имеет более скромный статус <strong>Tier 2</strong> («Умеренные доказательства»).</p>
+        <p class="case-insight"><strong>Инсайт:</strong> ИИ исправляет не только незнание, но и конкретную неверную ментальную модель — это качественно другой уровень помощи, чем учебник.</p>
+      </div>
+    </details>
+
+    <details class="case-card">
+      <summary>CENTURY Tech (Великобритания) — нейронаука в классе</summary>
+      <div class="case-body">
+        <p>Британская платформа, объединяющая ИИ с нейропедагогикой: учитывает когнитивную нагрузку и кривую забывания.</p>
+        <p>В июле 2025 CENTURY опубликовала собственный отчёт по 15 школам треста Discovery: 4 из 5 активных пользователей достигли ожидаемого уровня по математике; активные пользователи втрое чаще выходили на высокий уровень по трём предметам; средний совокупный балл был выше на 4,6 пункта.</p>
+        <p class="case-caveat">Это исследование самой компании, не независимый эксперимент. Программа EdTech Demonstrator, с которой иногда связывают CENTURY, присваивалась школам, а не компаниям, и была официально свёрнута Минобразования Великобритании в 2022 году.</p>
+        <p class="case-insight"><strong>Инсайт:</strong> персонализация освобождает учителя от рутины — он видит, кому именно нужна помощь прямо сейчас, а не через две недели после контрольной.</p>
+      </div>
+    </details>
+
+    <details class="case-card">
+      <summary>Jill Watson (Georgia Tech, США) — ИИ-ассистент, которого не отличили от человека</summary>
+      <div class="case-body">
+        <p>В 2016 году профессор Эшок Гоэл создал виртуального ассистента на базе IBM Watson для курса по ИИ в Georgia Tech — студенты весь семестр не догадывались, что общаются с ботом.</p>
+        <p>2025 год: новая версия на базе ChatGPT + RAG протестирована на 600+ студентах при поддержке Национального научного фонда США и фонда Гейтсов. Точность ответов Jill Watson — <strong>78,7%</strong>, у стандартного ассистента OpenAI — 30,7%. Оценку A получили 66% студентов с доступом к Jill против 62% без неё; оценок C — втрое меньше.</p>
+        <p class="case-insight"><strong>Инсайт:</strong> ИИ в образовании — не мода последних лет, а десятилетняя история реальной работы в аудитории; ассистент, «знающий» конкретный курс, точнее универсального чат-бота.</p>
+      </div>
+    </details>
+
+    <details class="case-card">
+      <summary>Duolingo — ИИ знает, что вы забудете</summary>
+      <div class="case-body">
+        <p>По данным компании, на 2025–2026 год у платформы свыше 500 миллионов зарегистрированных пользователей и порядка 135–160 миллионов активных в месяц.</p>
+        <p>Исследование Vesselinov &amp; Grego (2012, заказано и оплачено Duolingo, не рецензировалось): 34 часа занятий соответствуют переходу с первого на второй семестр университетского испанского. Более позднее независимое рецензируемое исследование (Smith, Jiang &amp; Peters, 2024) подтвердило похожий эффект на новой выборке за ~27 часов.</p>
+        <p class="case-insight"><strong>Инсайт:</strong> система видит паттерны забывания, невидимые человеку, и напоминает слово ровно в момент, когда вы вот-вот его забудете.</p>
+      </div>
+    </details>
+
+    <details class="case-card">
+      <summary>Khan Academy (Khanmigo) — сократовский метод</summary>
+      <div class="case-body">
+        <p>Khanmigo используют более 2 миллионов человек — за 2024–2025 учебный год число регистраций выросло на 731% (официальный годовой отчёт Khan Academy).</p>
+        <p>По внутреннему тестированию компании (октябрь 2025 — апрель 2026, ~15 млн диалогов), последовательные улучшения ИИ-тьютора дали прирост правильности решения следующей задачи на 6,1%.</p>
+        <p class="case-caveat">Растиражированная в интернете цифра «улучшение результатов по математике на 23%» не подтверждается ни Khan Academy, ни независимыми рецензируемыми исследованиями — похоже, распространилась через SEO-статьи со ссылкой на несуществующее исследование.</p>
+        <p class="case-insight"><strong>Инсайт:</strong> Khanmigo не даёт готовые ответы — он ведёт студента к пониманию через наводящие вопросы, шаг за шагом.</p>
+      </div>
+    </details>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:32px">
+    <img src="../png/personalizaciya_tyutorstvo/07_kollazh_mirovyh_keysov.png" alt="Коллаж шести мировых кейсов ИИ-персонализации: Squirrel AI, Carnegie Learning MATHia, CENTURY Tech, Jill Watson, Duolingo, Khanmigo" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Коллаж шести мировых кейсов ИИ-персонализации</figcaption>
+  </figure>
 </section>
 
 </main>

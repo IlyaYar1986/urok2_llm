@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti"}
+        required = {"hero", "problema", "personalizaciya", "pochemu-seychas", "ii-tyutor", "vozmozhnosti", "keysy"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -78,6 +78,22 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
             "академическ",
         ):
             self.assertIn(marker, self.html)
+
+    def test_keysy_section_has_six_corrected_cases(self):
+        for marker in (
+            "Squirrel AI",
+            "Carnegie Learning MATHia",
+            "CENTURY Tech",
+            "Jill Watson",
+            "Duolingo",
+            "Khanmigo",
+            "40 миллионов",
+            "заявление компании",
+            "Tier 2",
+            "не подтверждается ни Khan Academy",
+        ):
+            self.assertIn(marker, self.html)
+        self.assertNotIn("более 4 миллионов студентов", self.html)
 
 
 if __name__ == "__main__":
