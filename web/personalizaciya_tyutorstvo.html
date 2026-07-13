@@ -133,6 +133,14 @@ nav::-webkit-scrollbar{display:none}
 .principle[open] summary::before{transform:rotate(90deg)}
 .principle p{margin-top:10px;color:var(--muted);line-height:1.7}
 
+.bloom-toggle{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.bloom-tab{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;font-size:.85rem;font-weight:700;color:var(--muted);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.bloom-tab.active{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.bloom-bar{height:18px;border-radius:100px;background:var(--indigo-lt);overflow:hidden;margin-bottom:12px}
+.bloom-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--cyan));border-radius:100px;transition:width .5s ease}
+.bloom-caption{color:var(--text);line-height:1.7}
+.bloom-sources{margin-top:10px;padding-left:20px;color:var(--muted);line-height:1.8}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -255,6 +263,44 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </figure>
 </section>
 
+<section class="sec" id="pochemu-seychas">
+  <div class="sec-head fade">
+    <div class="num-badge n3">3</div>
+    <h2 class="sec-title">Почему это было невозможно раньше</h2>
+    <p class="sec-desc">Идея персонализации не нова — ей больше ста лет. Лев Толстой в Яснополянской школе и Мария Монтессори строили системы индивидуального обучения. Обе работали. Обе не стали массовыми: один преподаватель физически не может качественно вести 25–30 студентов индивидуально, а на настоящую индивидуализацию группы нужно 3–5 преподавателей на класс.</p>
+  </div>
+
+  <div class="card fade" style="margin-bottom:24px">
+    <p style="font-weight:700;margin-bottom:6px">Эффект тьюторства: гипотеза Блума и то, что подтвердилось на практике</p>
+    <p style="color:var(--muted);margin-bottom:18px">В 1984 году Бенджамин Блум, обобщив диссертации своих аспирантов, сообщил: студент с личным тьютором обгоняет 98% студентов без него («проблема двух сигм»). Переключите вид ниже, чтобы увидеть, что показали десятки независимых исследований 2011–2026 годов.</p>
+
+    <div class="bloom-toggle" role="tablist" aria-label="Выбор источника эффекта тьюторства">
+      <button type="button" class="bloom-tab active" data-bloom="hypothesis" role="tab" aria-selected="true">Гипотеза Блума, 1984</button>
+      <button type="button" class="bloom-tab" data-bloom="modern" role="tab" aria-selected="false">Современные метаанализы</button>
+    </div>
+
+    <div class="bloom-view" data-bloom-view="hypothesis">
+      <div class="bloom-bar"><div class="bloom-fill" style="width:98%"></div></div>
+      <p class="bloom-caption">2σ → средний студент с тьютором обгоняет <strong>98%</strong> студентов без него. Источник: Bloom, 1984, «The 2 Sigma Problem» — обобщение диссертаций на выборках 40–70 школьников.</p>
+    </div>
+    <div class="bloom-view" data-bloom-view="modern" hidden>
+      <div class="bloom-bar"><div class="bloom-fill" style="width:79%"></div></div>
+      <p class="bloom-caption">0,29–0,79 стандартного отклонения → обгоняет <strong>64–79%</strong> группы, в зависимости от исследования:</p>
+      <ul class="bloom-sources">
+        <li><strong>Nickow, Oreopoulos &amp; Quan</strong> (2020/2024) — 96 независимых исследований школьного тьюторства: 0,29–0,37 SD (≈64–65%)</li>
+        <li><strong>VanLehn</strong> (2011) — очное человеческое тьюторство: d≈0,79 (≈79%)</li>
+        <li><strong>Kraft, Schueler &amp; Falken</strong> (2024/2026) — с поправкой на реальное масштабирование: 0,16–0,22 SD</li>
+      </ul>
+      <p class="bloom-caption" style="margin-top:10px">Даже скромная величина — один из самых высоких эффектов, зафиксированных в педагогике (типичный эффект школьных программ не превышает 0,1 SD). Главный вывод Блума в силе: индивидуальный подход работает — просто не в два раза сильнее, а устойчиво и воспроизводимо сильнее.</p>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox>
+    <img src="../png/personalizaciya_tyutorstvo/04_effekt_bluma_dve_sigmy.png" alt="Сравнение гипотезы Блума 1984 года (2 сигмы, 98%) с современными метаанализами (0,29–0,79 SD, 64–79%)" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Сравнение гипотезы Блума 1984 года (2 сигмы, 98%) с современными метаанализами (0,29–0,79 SD, 64–79%)</figcaption>
+  </figure>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
@@ -317,6 +363,18 @@ function closeLightbox() {
 document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
 lightbox.addEventListener("click", (event) => { if (event.target === lightbox) closeLightbox(); });
 document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeLightbox(); });
+
+document.querySelectorAll(".bloom-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".bloom-tab").forEach((t) => { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+    tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
+    const target = tab.dataset.bloom;
+    document.querySelectorAll("[data-bloom-view]").forEach((view) => {
+      view.hidden = view.dataset.bloomView !== target;
+    });
+  });
+});
 </script>
 </body>
 </html>

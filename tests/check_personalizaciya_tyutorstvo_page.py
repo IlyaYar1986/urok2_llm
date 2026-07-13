@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero", "problema", "personalizaciya"}
+        required = {"hero", "problema", "personalizaciya", "pochemu-seychas"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -60,6 +60,11 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
         ):
             self.assertIn(marker, self.html)
         self.assertGreaterEqual(self.parser.details, 5)
+
+    def test_bloom_section_has_corrected_effect_sizes(self):
+        for marker in ("Bloom", "1984", "98%", "VanLehn", "Nickow", "Kraft"):
+            self.assertIn(marker, self.html)
+        self.assertNotIn("0,3–0,8 стандартных отклонений", self.html)
 
 
 if __name__ == "__main__":
