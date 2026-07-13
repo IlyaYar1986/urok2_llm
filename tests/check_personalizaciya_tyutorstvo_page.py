@@ -74,6 +74,14 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
         for marker in ("Khanmigo", "2x + 5 = 13", "Убрать 5", "dialog-next"):
             self.assertIn(marker, self.html)
 
+    def test_ii_tyutor_section_has_traditional_vs_ai_comparison(self):
+        for marker in (
+            "Традиционно",
+            "С ИИ-тьютором",
+            "Через несколько дней возвращается к теме",
+        ):
+            self.assertIn(marker, self.html)
+
     def test_vozmozhnosti_section_covers_capabilities_and_limits(self):
         for marker in (
             "Диагностика в реальном времени",
