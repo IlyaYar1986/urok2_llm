@@ -33,7 +33,7 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
 
     def test_page_exists_with_required_sections(self):
         self.assertTrue(PAGE.is_file())
-        required = {"hero"}
+        required = {"hero", "problema"}
         self.assertTrue(required.issubset(self.parser.ids))
         duplicates = [
             element_id
@@ -45,6 +45,10 @@ class PersonalizaciyaTyutorstvoPageTest(unittest.TestCase):
     def test_no_link_to_index(self):
         self.assertNotIn('href="../index.html"', self.html)
         self.assertNotIn("href=\"index.html\"", self.html)
+
+    def test_problema_section_has_distribution_stats(self):
+        for marker in ("30%", "40%", "слишком просто", "слишком сложно", "оптимальная"):
+            self.assertIn(marker, self.html)
 
 
 if __name__ == "__main__":

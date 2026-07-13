@@ -109,6 +109,18 @@ nav::-webkit-scrollbar{display:none}
   .sec{padding:56px 18px}
 }
 
+.classroom-bar{display:flex;gap:4px;border-radius:14px;overflow:hidden;height:120px;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+.cb-segment{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:800;transform:scaleY(0);transform-origin:bottom;animation:cb-grow .6s ease forwards}
+.cb-segment:nth-child(2){animation-delay:.12s}
+.cb-segment:nth-child(3){animation-delay:.24s}
+@keyframes cb-grow{to{transform:scaleY(1)}}
+.cb-easy{background:linear-gradient(160deg,#38bdf8,#0ea5e9)}
+.cb-ok{background:linear-gradient(160deg,#4ade80,#16a34a)}
+.cb-hard{background:linear-gradient(160deg,#fb923c,#ea580c)}
+.cb-pct{font-size:1.5rem}
+.cb-label{font-size:.78rem;font-weight:600;opacity:.9}
+@media (prefers-reduced-motion:reduce){.cb-segment{transform:scaleY(1);animation:none}}
+
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -151,6 +163,41 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 </header>
 
 <main>
+
+<section class="sec" id="problema">
+  <div class="sec-head fade">
+    <div class="num-badge n1">1</div>
+    <h2 class="sec-title">Проблема массового образования</h2>
+    <p class="sec-desc">В группе 25–30 человек с разным уровнем подготовки, темпом обучения и стилем восприятия. Занятие готовится на «среднего» студента — и это математически не может подойти всем.</p>
+  </div>
+
+  <div class="card fade" style="margin-bottom:28px">
+    <p style="font-size:1.05rem">Сколько студентов в вашей самой большой группе? Скорее всего, «20+», «30+», а у кого-то — «50+». Вопрос в том, как при таком количестве найти индивидуальный подход к каждому.</p>
+  </div>
+
+  <div class="classroom-bar fade" role="img" aria-label="Распределение группы: 30% материал слишком простой, 40% в оптимальной зоне, 30% материал слишком сложный">
+    <div class="cb-segment cb-easy" style="flex:30">
+      <span class="cb-pct">30%</span>
+      <span class="cb-label">слишком просто</span>
+    </div>
+    <div class="cb-segment cb-ok" style="flex:40">
+      <span class="cb-pct">40%</span>
+      <span class="cb-label">оптимальная зона</span>
+    </div>
+    <div class="cb-segment cb-hard" style="flex:30">
+      <span class="cb-pct">30%</span>
+      <span class="cb-label">слишком сложно</span>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:32px">
+    <img src="../png/personalizaciya_tyutorstvo/02_problema_massovogo_klassa.png" alt="Один учитель перед классом из тридцати разных студентов: 30% скучно, 40% оптимально, 30% сложно" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Один учитель перед классом из тридцати разных студентов: 30% скучно, 40% оптимально, 30% сложно</figcaption>
+  </figure>
+
+  <p class="fade" style="margin-top:24px;color:var(--muted)">Мы знаем, что каждому нужен индивидуальный подход, но физически не можем его обеспечить — вернее, не могли до сих пор.</p>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
