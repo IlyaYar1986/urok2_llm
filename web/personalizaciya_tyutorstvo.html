@@ -196,6 +196,12 @@ nav::-webkit-scrollbar{display:none}
 .copy-btn{padding:5px 12px;border-radius:8px;border:1px solid #475569;background:transparent;color:#e2e8f0;font-size:.76rem;font-weight:700;cursor:pointer;transition:background .2s}
 .copy-btn:hover{background:#334155}
 .prompt-box pre{margin:0;padding:18px 16px;color:#e2e8f0;font-size:.82rem;line-height:1.6;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.checklist-progress-bar{height:10px;border-radius:100px;background:var(--indigo-lt);overflow:hidden;margin-bottom:20px}
+.checklist-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--indigo),var(--cyan));border-radius:100px;transition:width .3s ease}
+.checklist-items{list-style:none;display:flex;flex-direction:column;gap:12px}
+.checklist-items label{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:.95rem}
+.checklist-items input{width:18px;height:18px;accent-color:var(--indigo);cursor:pointer}
+.checklist-done{margin-top:18px;padding:12px 16px;background:var(--green-lt);color:var(--green);border-radius:10px;font-weight:700}
 
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
@@ -637,6 +643,27 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </figure>
 </section>
 
+<section class="sec" id="cheklist">
+  <div class="sec-head fade">
+    <div class="num-badge n9">9</div>
+    <h2 class="sec-title">Чек-лист: готовы ли вы начать</h2>
+    <p class="sec-desc">Отметьте пункты по мере готовности — прогресс сохраняется в этом браузере.</p>
+  </div>
+
+  <div class="card fade">
+    <div class="checklist-progress-bar"><div class="checklist-progress-fill" id="checklist-progress"></div></div>
+    <ul class="checklist-items">
+      <li><label><input type="checkbox" data-checklist-item="0"> Выбрали ИИ-платформу (GigaChat, ChatGPT, Claude)</label></li>
+      <li><label><input type="checkbox" data-checklist-item="1"> Определили 2–3 задачи для автоматизации</label></li>
+      <li><label><input type="checkbox" data-checklist-item="2"> Создали базовый промпт для ИИ-тьютора</label></li>
+      <li><label><input type="checkbox" data-checklist-item="3"> Протестировали на себе</label></li>
+      <li><label><input type="checkbox" data-checklist-item="4"> Готовы объяснить студентам, как использовать</label></li>
+      <li><label><input type="checkbox" data-checklist-item="5"> Запланировали точку оценки результатов (через 2 недели)</label></li>
+    </ul>
+    <p class="checklist-done" id="checklist-done" hidden>Все пункты отмечены — вы готовы! Начинайте прямо сегодня.</p>
+  </div>
+</section>
+
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
@@ -769,6 +796,45 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
     window.setTimeout(() => { button.textContent = original; }, 1600);
   });
 });
+
+const CHECKLIST_KEY = "personalizaciya-checklist";
+const checklistInputs = [...document.querySelectorAll("[data-checklist-item]")];
+const checklistProgress = document.getElementById("checklist-progress");
+const checklistDone = document.getElementById("checklist-done");
+
+function loadChecklistState() {
+  try {
+    return JSON.parse(localStorage.getItem(CHECKLIST_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+function saveChecklistState(state) {
+  try {
+    localStorage.setItem(CHECKLIST_KEY, JSON.stringify(state));
+  } catch {
+    /* localStorage unavailable (private mode) — progress just won't persist */
+  }
+}
+function renderChecklistProgress() {
+  const checked = checklistInputs.filter((input) => input.checked).length;
+  const pct = Math.round((checked / checklistInputs.length) * 100);
+  checklistProgress.style.width = `${pct}%`;
+  checklistDone.hidden = checked !== checklistInputs.length;
+}
+
+const savedChecklist = loadChecklistState();
+checklistInputs.forEach((input) => {
+  const key = input.dataset.checklistItem;
+  input.checked = Boolean(savedChecklist[key]);
+  input.addEventListener("change", () => {
+    const state = loadChecklistState();
+    state[key] = input.checked;
+    saveChecklistState(state);
+    renderChecklistProgress();
+  });
+});
+renderChecklistProgress();
 </script>
 </body>
 </html>
