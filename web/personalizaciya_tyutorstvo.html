@@ -176,6 +176,16 @@ nav::-webkit-scrollbar{display:none}
 .case-body p{color:var(--text);line-height:1.7;font-size:.94rem}
 .case-caveat{background:var(--amber-lt);border-left:3px solid var(--amber);padding:10px 14px;border-radius:6px;color:#92400e!important}
 .case-insight{color:var(--muted)!important}
+.ru-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px}
+.ru-name{font-weight:700;margin-bottom:8px}
+.ru-grid p:not(.ru-name){color:var(--muted);font-size:.92rem;line-height:1.6}
+.pilot-table-wrap{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px}
+.pilot-table-wrap summary{font-weight:700;cursor:pointer;list-style:none}
+.pilot-table-wrap summary::-webkit-details-marker{display:none}
+.table-scroll{overflow-x:auto;margin-top:16px}
+.pilot-table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:520px}
+.pilot-table th{text-align:left;padding:10px 12px;background:var(--indigo-lt);color:var(--indigo-dk);font-weight:700}
+.pilot-table td{padding:10px 12px;border-top:1px solid var(--border);color:var(--text);vertical-align:top}
 
 footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85rem}
 </style>
@@ -483,6 +493,61 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <img src="../png/personalizaciya_tyutorstvo/07_kollazh_mirovyh_keysov.png" alt="Коллаж шести мировых кейсов ИИ-персонализации: Squirrel AI, Carnegie Learning MATHia, CENTURY Tech, Jill Watson, Duolingo, Khanmigo" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Коллаж шести мировых кейсов ИИ-персонализации</figcaption>
   </figure>
+</section>
+
+<section class="sec" id="rossiya">
+  <div class="sec-head fade">
+    <div class="num-badge n7">7</div>
+    <h2 class="sec-title">Российские ИИ-платформы: что уже работает рядом</h2>
+    <p class="sec-desc">Не нужно создавать всё с нуля — можно встроить существующие инструменты в свою практику и рекомендовать их студентам.</p>
+  </div>
+
+  <div class="ru-grid fade">
+    <div class="card">
+      <p class="ru-name">🇷🇺 Учи.ру</p>
+      <p>Входит в перечень ЭОР Минпросвещения (обновлён в августе 2025, 1425 ресурсов). В 2023–2024 учебном году — 14,5 млн учеников и 749 тыс. учителей; по оценке компании, в 2024 году число учеников превысило 18 млн.</p>
+    </div>
+    <div class="card">
+      <p class="ru-name">🤖 Яндекс Учебник · Репетитор AI</p>
+      <p>ИИ-помощник по информатике — с ноября 2023 года; с октября 2025 добавилась математика под именем «Репетитор AI» (семейство моделей Alice AI). Около 120 тысяч выпускников пользовались тренажёрами — это <strong>85% всех сдававших ЕГЭ по информатике</strong>. Личный кабинет учителя анонсирован на конец 2025 года.</p>
+    </div>
+    <div class="card">
+      <p class="ru-name">📚 ВШЭ + Яндекс</p>
+      <p>Пилот по ИИ в дипломных работах стартовал в 2024 году в ВШЭ, с 2025 года — в 11 вузах (ВШЭ, ИТМО, КФУ, НГТУ, ННГУ, СибГМУ, СКФУ, ТГУ, ТюмГУ, Университет Правительства Москвы, УрФУ), более 500 студентов работают с YandexGPT 5.</p>
+    </div>
+    <div class="card">
+      <p class="ru-name">🎓 AI360</p>
+      <p>Бакалавриат Яндекса и Сбера с ИТМО, ВШЭ, МФТИ и Университетом Иннополис. Первый набор (2024/2025) — 100 человек; с 2025/2026 — пятый вуз-партнёр СПбГУ, набор вырос до <strong>156 человек</strong> (+56%).</p>
+    </div>
+    <div class="card">
+      <p class="ru-name">🖥️ ВКИ НГУ</p>
+      <p>В марте 2025 Высший колледж информатики НГУ первым за Уралом развернул собственную LLM (Qwen 2.5 Coder + DeepSeek) на своих серверах — данные студентов не уходят во внешнее облако.</p>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin:28px 0">
+    <img src="../png/personalizaciya_tyutorstvo/08_rossiyskiy_edtech_landshaft.png" alt="Российские ИИ-платформы в образовании: Учи.ру, Яндекс Учебник, ВШЭ+Яндекс, AI360, ВКИ НГУ" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Российские ИИ-платформы в образовании</figcaption>
+  </figure>
+
+  <details class="pilot-table-wrap fade">
+    <summary>Пилотные проекты ИИ в России — развернуть таблицу</summary>
+    <div class="table-scroll">
+      <table class="pilot-table">
+        <thead>
+          <tr><th>Инициатива</th><th>Уровень</th><th>Статус и охват</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>НИТУ «МИСиС» + фонд «Вклад в будущее»</td><td>Школы</td><td>С 2021, 10 школ; продолжает работать как AI-Academy</td></tr>
+          <tr><td>ВШЭ + Яндекс — дипломные работы</td><td>Вузы</td><td>С 2024 (ВШЭ), с 2025 — 11 вузов, 500+ студентов</td></tr>
+          <tr><td>AI360</td><td>Вузы</td><td>100 → 156 человек, 5 вузов-партнёров</td></tr>
+          <tr><td>Федеральный проект «Искусственный интеллект»</td><td>Школы, вузы, доп. образование</td><td>Продлён до 2030; 97,8 тыс. участников конкурсов и хакатонов</td></tr>
+          <tr><td>Великий Новгород — «Стади Ниндзя»</td><td>Школы</td><td>Анонсирован пилот в индивидуальном формате; масштабный запуск не подтверждён</td></tr>
+          <tr><td>Уральские вузы</td><td>Вузы</td><td>Отдельные внедрения; сводных данных нет</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </section>
 
 </main>
