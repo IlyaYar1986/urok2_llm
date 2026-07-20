@@ -82,6 +82,10 @@ class CifrovoySledPageTest(unittest.TestCase):
         for marker in ("Прокрастинатор", "Тихоня-отличник", "Понедельничный"):
             self.assertIn(marker, gallery)
 
+    def test_cookie_history_callout_is_present(self):
+        for marker in ("cookie", "Лу Монтулли", "Гензел", "хлебных крошек", "Легенда"):
+            self.assertIn(marker, self.html)
+
     def test_services_have_active_links_and_no_unavailable_ones(self):
         for url in (
             "https://giga.chat/",
