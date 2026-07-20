@@ -142,6 +142,13 @@ nav.top::-webkit-scrollbar{display:none}
 @media (max-width:760px){.tool-duo{grid-template-columns:1fr}}
 .tool-card p.t-name{font-weight:800;margin-bottom:8px;font-size:1.02rem}
 .tool-card p:not(.t-name){color:var(--muted);font-size:.93rem;line-height:1.65}
+.svc-link{color:var(--indigo);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.tool-site{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 14px;border-radius:9px;
+  background:var(--indigo-lt);border:1px solid #c7d2fe;color:var(--indigo-dk);font-size:.82rem;
+  font-weight:700;text-decoration:none;transition:background .2s;
+}
+.tool-site:hover{background:#e0e7ff}
 .tool-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .tool-chips span{padding:4px 12px;border-radius:100px;background:var(--indigo-lt);color:var(--indigo-dk);font-size:.76rem;font-weight:700}
 .prompt-box{background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:16px}
@@ -288,7 +295,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <div class="sec-head fade">
     <div class="num-badge n3">3</div>
     <h2 class="sec-title">Мастерская данных: три шага генеральной уборки</h2>
-    <p class="sec-desc">Не нужно быть программистом: все инструменты уже встроены в Excel и Яндекс Таблицы и осваиваются за 5 минут. Анонимизация → стандартизация → структурирование — и любая таблица готова к передаче ИИ.</p>
+    <p class="sec-desc">Не нужно быть программистом: все инструменты уже встроены в Excel и <a class="svc-link" href="https://docs.yandex.ru/" target="_blank" rel="noopener">Яндекс Таблицы</a> и осваиваются за 5 минут. Анонимизация → стандартизация → структурирование — и любая таблица готова к передаче ИИ.</p>
   </div>
 
   <div class="viz fade">
@@ -344,11 +351,13 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
       <p class="t-name">🎨 Present Simple — ИИ-дизайнер</p>
       <p>Вставляете данные из Excel в слайд, выбираете тип диаграммы, пишете задание на русском — получаете профессионально оформленный слайд за 30 секунд. Вручную такой делали бы 20–30 минут.</p>
       <div class="tool-chips"><span>готовый слайд</span><span>для педсовета</span><span>красивый дизайн</span></div>
+      <a class="tool-site" href="https://presentsimple.ai/" target="_blank" rel="noopener">presentsimple.ai ↗</a>
     </div>
     <div class="card tool-card">
       <p class="t-name">💬 Claude — ИИ-аналитик</p>
       <p>Прикрепляете чистый файл скрепкой, пишете запрос — получаете диаграмму прямо в чате и текстовые выводы: кто лидирует, кому нужно внимание, есть ли корреляция.</p>
       <div class="tool-chips"><span>быстрые выводы</span><span>проверка гипотез</span><span>текстовая интерпретация</span></div>
+      <a class="tool-site" href="https://claude.ai/" target="_blank" rel="noopener">claude.ai ↗</a>
     </div>
   </div>
 
@@ -383,7 +392,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 
   <div class="alt-callout fade">
     <p><strong>Честная оговорка про доступ из России</strong>
-    Официальной регистрации и оплаты Claude из РФ нет. Хорошая новость: те же промпты отлично работают в GigaChat, YandexGPT и DeepSeek — все они строят диаграммы по загруженному файлу и дают текстовые выводы. Present Simple — российский сервис, работает без ограничений. И помните главное правило из лекции 4.1: во внешний сервис — только обезличенные данные.</p>
+    Официальной регистрации и оплаты Claude из РФ нет. Хорошая новость: те же промпты отлично работают в <a class="svc-link" href="https://giga.chat/" target="_blank" rel="noopener">GigaChat</a>, <a class="svc-link" href="https://alice.yandex.ru/" target="_blank" rel="noopener">Алисе с YandexGPT</a> и <a class="svc-link" href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> — все они строят диаграммы по загруженному файлу и дают текстовые выводы. <a class="svc-link" href="https://presentsimple.ai/" target="_blank" rel="noopener">Present Simple</a> — российский сервис, работает без ограничений. И помните главное правило из лекции 4.1: во внешний сервис — только обезличенные данные.</p>
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
@@ -443,7 +452,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
       <li><label><input type="checkbox" data-checklist-item="2"> Потренировался: добавил столбец «ID Студента» и удалил ФИО</label></li>
       <li><label><input type="checkbox" data-checklist-item="3"> Попробовал «Найти и заменить» (Ctrl+H) на своих обозначениях</label></li>
       <li><label><input type="checkbox" data-checklist-item="4"> Убрал объединённые ячейки и упростил заголовки</label></li>
-      <li><label><input type="checkbox" data-checklist-item="5"> Зарегистрировался в Present Simple или выбрал ИИ-чат для анализа</label></li>
+      <li><label><input type="checkbox" data-checklist-item="5"> Зарегистрировался в <a class="svc-link" href="https://presentsimple.ai/" target="_blank" rel="noopener">Present Simple</a> или выбрал ИИ-чат для анализа (<a class="svc-link" href="https://giga.chat/" target="_blank" rel="noopener">GigaChat</a>, <a class="svc-link" href="https://alice.yandex.ru/" target="_blank" rel="noopener">Алиса</a>, <a class="svc-link" href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a>)</label></li>
     </ul>
     <p class="checklist-done" id="checklist-done" hidden>Все пункты отмечены — на практике будете быстрее всех!</p>
   </div>
@@ -527,7 +536,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <ol class="conclusion-list fade">
     <li>Наши привычные таблицы — <strong>«грязные данные»</strong> для машины: она видит хаос там, где мы видим порядок</li>
     <li>Три шага уборки: <strong>анонимизация, стандартизация, структурирование</strong> — и файл готов для любого ИИ</li>
-    <li>Слайд для презентации — <strong>Present Simple</strong>; быстрые выводы и проверка гипотез — <strong>Claude</strong> или его аналоги</li>
+    <li>Слайд для презентации — <strong><a class="svc-link" href="https://presentsimple.ai/" target="_blank" rel="noopener">Present Simple</a></strong>; быстрые выводы и проверка гипотез — <strong><a class="svc-link" href="https://claude.ai/" target="_blank" rel="noopener">Claude</a></strong> или его доступные аналоги</li>
     <li>Ваша новая роль — <strong>архитектор данных</strong>: вы ставите цель, ИИ делает рутину</li>
     <li>Освобождённое время — на главное: <strong>интерпретацию и педагогические решения</strong></li>
   </ol>

@@ -148,10 +148,19 @@ nav.top::-webkit-scrollbar{display:none}
 .tool-group{margin-bottom:20px}
 .tool-group h3{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:10px}
 .tool-items{display:flex;flex-wrap:wrap;gap:8px}
+.tool-wrap{display:inline-flex;align-items:stretch}
 .tool{
-  padding:8px 14px;border-radius:10px;border:1px solid var(--border);background:var(--card);
+  padding:8px 14px;border-radius:10px 0 0 10px;border:1px solid var(--border);background:var(--card);
   font-size:.86rem;font-weight:600;color:var(--text);cursor:pointer;transition:all .18s;
 }
+.tool.no-link{border-radius:10px}
+.tool-link{
+  display:flex;align-items:center;padding:0 10px;border:1px solid var(--border);border-left:none;
+  border-radius:0 10px 10px 0;background:var(--card);color:var(--indigo);text-decoration:none;
+  font-size:.8rem;font-weight:700;transition:background .18s;
+}
+.tool-link:hover{background:var(--indigo-lt)}
+.svc-link{color:var(--indigo);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .tool[data-state="use"]{background:var(--green-lt);border-color:#86efac;color:var(--green)}
 .tool[data-state="add"]{background:var(--amber-lt);border-color:#fcd34d;color:#b45309}
 .tool[data-state="hard"]{background:#f1f5f9;color:var(--muted)}
@@ -426,7 +435,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 
   <div class="retired fade">
     <p><strong>Проверьте свои привычки — эти сервисы закрылись или недоступны в РФ:</strong>
-    Google Jamboard закрыт в конце 2024 года; Miro, Notion и Trello прекратили обслуживать российских пользователей. Quizizz теперь называется Wayground. Звонки в WhatsApp ограничены с 2025 года — для учебных групп используйте Telegram, VK или Сферум (на платформе MAX).</p>
+    Google Jamboard закрыт в конце 2024 года; Miro, Notion и Trello прекратили обслуживать российских пользователей; у Kahoot и Mentimeter недоступна оплата из РФ. Quizizz теперь называется <a class="svc-link" href="https://wayground.com/" target="_blank" rel="noopener">Wayground</a>. Звонки в WhatsApp ограничены с 2025 года — для учебных групп используйте <a class="svc-link" href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a>, <a class="svc-link" href="https://vk.com/" target="_blank" rel="noopener">VK</a> или <a class="svc-link" href="https://sferum.ru/" target="_blank" rel="noopener">Сферум</a> (на платформе MAX).</p>
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
@@ -466,12 +475,12 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <div class="sec-head fade">
     <div class="num-badge n7">7</div>
     <h2 class="sec-title">LLM — ваш аналитик данных</h2>
-    <p class="sec-desc">Встроенная аналитика платформ показывает графики. Но главный инструмент 2026 года — языковая модель: загрузите обезличенную выгрузку журнала и попросите найти паттерны. Именно этим мы займёмся на практике.</p>
+    <p class="sec-desc">Встроенная аналитика платформ показывает графики. Но главный инструмент 2026 года — языковая модель: загрузите обезличенную выгрузку журнала и попросите найти паттерны. Промпт ниже готов к копированию.</p>
   </div>
 
   <div class="rule-card fade">
     <h3>Железное правило: сначала обезличить</h3>
-    <p>Перед загрузкой данных в GigaChat, YandexGPT, ChatGPT или DeepSeek замените ФИО на «Студент 1…N», удалите телефоны, почты и любые идентификаторы. Персональные данные студентов защищает 152-ФЗ, а с мая 2025 года за утечки действуют кратно увеличенные — вплоть до оборотных — штрафы. Обезличить выгрузку — минута работы; расхлёбывать утечку — годы.</p>
+    <p>Перед загрузкой данных в <a class="svc-link" href="https://giga.chat/" target="_blank" rel="noopener">GigaChat</a>, <a class="svc-link" href="https://alice.yandex.ru/" target="_blank" rel="noopener">Алису с YandexGPT</a> или <a class="svc-link" href="https://chat.deepseek.com/" target="_blank" rel="noopener">DeepSeek</a> замените ФИО на «Студент 1…N», удалите телефоны, почты и любые идентификаторы. Персональные данные студентов защищает 152-ФЗ, а с мая 2025 года за утечки действуют кратно увеличенные — вплоть до оборотных — штрафы. Обезличить выгрузку — минута работы; расхлёбывать утечку — годы.</p>
   </div>
 
   <div class="prompt-box fade">
@@ -494,7 +503,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 Если данных недостаточно для вывода — так и скажи.</pre>
   </div>
 
-  <p class="fade" style="margin-top:20px;color:var(--muted);max-width:760px">На практических занятиях раздела мы соберём такой конвейер целиком: от выгрузки данных до автоматического отчёта — в том числе с коллектором статистики на MCP.</p>
+  <p class="fade" style="margin-top:20px;color:var(--muted);max-width:760px">Попробуйте промпт на обезличенной выгрузке своей группы: начните с одного вопроса — например, «кто в группе риска?» — и постепенно дойдёте до полного отчёта за семестр.</p>
 </section>
 
 <!-- ══════════ БЛОК 8 ══════════ -->
@@ -808,15 +817,58 @@ document.querySelectorAll("[data-copy]").forEach((button) => {
   });
 });
 
-/* Блок 5: чек-лист инструментов с тремя состояниями */
+/* Блок 5: чек-лист инструментов с тремя состояниями.
+   В списке — только сервисы, доступные из России; у каждого онлайн-сервиса есть ссылка. */
 const TOOLS = {
-  trad: ["Журнал успеваемости", "Ведомости посещаемости", "Письменные работы", "Личные наблюдения"],
-  journal: ["МЭШ", "Дневник.ру", "ЭлЖур", "Сетевой город"],
-  platform: ["Moodle", "Google Classroom", "Яндекс Учебник", "Stepik", "ЯКласс"],
-  quiz: ["Яндекс Формы", "Google Forms", "Online Test Pad", "MyQuiz", "Wayground (экс-Quizizz)", "Kahoot", "Mentimeter"],
-  comm: ["Telegram", "VK", "Сферум (MAX)", "Яндекс Диск", "Яндекс Телемост", "Контур.Толк"],
-  board: ["Padlet", "SBoard", "Unidraw", "Pruffme", "Kaiten", "Weeek", "Яндекс Трекер"],
-  analytics: ["Отчёты платформы", "Дашборды успеваемости", "Статистика Stepik/ЯКласс", "Статистика Classroom"],
+  trad: [
+    {name: "Журнал успеваемости"},
+    {name: "Ведомости посещаемости"},
+    {name: "Письменные работы"},
+    {name: "Личные наблюдения"},
+  ],
+  journal: [
+    {name: "МЭШ", url: "https://school.mos.ru/"},
+    {name: "Дневник.ру", url: "https://dnevnik.ru/"},
+    {name: "ЭлЖур", url: "https://eljur.ru/"},
+    {name: "Сетевой город (ИРТех)", url: "https://www.ir-tech.ru/"},
+  ],
+  platform: [
+    {name: "Moodle", url: "https://moodle.org/"},
+    {name: "Google Classroom", url: "https://classroom.google.com/"},
+    {name: "Яндекс Учебник", url: "https://education.yandex.ru/"},
+    {name: "Stepik", url: "https://stepik.org/"},
+    {name: "ЯКласс", url: "https://www.yaklass.ru/"},
+  ],
+  quiz: [
+    {name: "Яндекс Формы", url: "https://forms.yandex.ru/"},
+    {name: "Google Формы", url: "https://docs.google.com/forms/"},
+    {name: "Online Test Pad", url: "https://onlinetestpad.com/"},
+    {name: "MyQuiz", url: "https://myquiz.ru/"},
+    {name: "Wayground (экс-Quizizz)", url: "https://wayground.com/"},
+  ],
+  comm: [
+    {name: "Telegram", url: "https://telegram.org/"},
+    {name: "VK", url: "https://vk.com/"},
+    {name: "Сферум (MAX)", url: "https://sferum.ru/"},
+    {name: "Яндекс Диск", url: "https://disk.yandex.ru/"},
+    {name: "Яндекс Телемост", url: "https://telemost.yandex.ru/"},
+    {name: "Контур.Толк", url: "https://kontur.ru/talk"},
+  ],
+  board: [
+    {name: "Padlet", url: "https://padlet.com/"},
+    {name: "SBoard", url: "https://sboard.online/"},
+    {name: "Unidraw", url: "https://unidraw.io/"},
+    {name: "Pruffme", url: "https://pruffme.com/"},
+    {name: "Kaiten", url: "https://kaiten.ru/"},
+    {name: "Weeek", url: "https://weeek.net/"},
+    {name: "Яндекс Трекер", url: "https://tracker.yandex.ru/"},
+  ],
+  analytics: [
+    {name: "Отчёты платформы"},
+    {name: "Дашборды успеваемости"},
+    {name: "Статистика Stepik/ЯКласс"},
+    {name: "Статистика Classroom"},
+  ],
 };
 const TOOL_STATES = [null, "use", "add", "hard"];
 const TOOL_LABELS = {use: "✅", add: "⭐", hard: "❓"};
@@ -830,13 +882,16 @@ function saveTools(state) {
 }
 const toolState = loadTools();
 
-Object.entries(TOOLS).forEach(([group, names]) => {
+Object.entries(TOOLS).forEach(([group, tools]) => {
   const container = document.querySelector(`.tool-items[data-group="${group}"]`);
-  names.forEach((name) => {
+  tools.forEach((tool) => {
+    const name = tool.name;
     const key = `${group}:${name}`;
+    const wrap = document.createElement("span");
+    wrap.className = "tool-wrap";
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "tool";
+    button.className = tool.url ? "tool" : "tool no-link";
     button.dataset.key = key;
     renderTool(button, toolState[key] || null, name);
     button.addEventListener("click", () => {
@@ -847,7 +902,18 @@ Object.entries(TOOLS).forEach(([group, names]) => {
       renderTool(button, next, name);
       renderToolsSummary();
     });
-    container.appendChild(button);
+    wrap.appendChild(button);
+    if (tool.url) {
+      const link = document.createElement("a");
+      link.className = "tool-link";
+      link.href = tool.url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = "↗";
+      link.setAttribute("aria-label", `Открыть сайт: ${name}`);
+      wrap.appendChild(link);
+    }
+    container.appendChild(wrap);
   });
 });
 function renderTool(button, state, name) {

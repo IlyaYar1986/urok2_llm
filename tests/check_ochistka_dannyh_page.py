@@ -75,6 +75,15 @@ class OchistkaDannyhPageTest(unittest.TestCase):
         ):
             self.assertIn(marker, self.html)
 
+    def test_services_have_active_links(self):
+        for url in (
+            "https://presentsimple.ai/",
+            "https://claude.ai/",
+            "https://giga.chat/",
+            "https://chat.deepseek.com/",
+        ):
+            self.assertIn(url, self.html)
+
     def test_visualizations_are_embedded_and_exist(self):
         expected = {
             "gryaznye_dannye.html",

@@ -82,6 +82,16 @@ class CifrovoySledPageTest(unittest.TestCase):
         for marker in ("Прокрастинатор", "Тихоня-отличник", "Понедельничный"):
             self.assertIn(marker, gallery)
 
+    def test_services_have_active_links_and_no_unavailable_ones(self):
+        for url in (
+            "https://giga.chat/",
+            "https://chat.deepseek.com/",
+            "https://forms.yandex.ru/",
+            "https://stepik.org/",
+        ):
+            self.assertIn(url, self.html)
+        self.assertNotIn("ChatGPT", self.html)
+
     def test_visualizations_are_embedded_and_exist(self):
         expected = {
             "sled_simulyator.html",
