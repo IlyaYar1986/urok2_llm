@@ -77,6 +77,29 @@ class OglavleniePageTest(unittest.TestCase):
         for href in self.page_links:
             self.assertNotIn(href, RETIRED)
 
+    def test_lesson_pages_link_back_to_toc(self):
+        root_pages = {ROOT / "index.html"}
+        web_pages = {
+            ROOT / "web" / name
+            for name in (
+                "seminar_25_45.html",
+                "agentnye_sistemy.html",
+                "instrumenty_mcp_skills.html",
+                "personalizaciya_tyutorstvo.html",
+                "cifrovoy_sled.html",
+                "ochistka_dannyh.html",
+                "ответы-участников.html",
+            )
+        }
+        for page in root_pages:
+            html = page.read_text(encoding="utf-8")
+            self.assertIn('href="oglavlenie.html"', html, page.name)
+            self.assertIn("Оглавление", html, page.name)
+        for page in web_pages:
+            html = page.read_text(encoding="utf-8")
+            self.assertIn('href="../oglavlenie.html"', html, page.name)
+            self.assertIn("Оглавление", html, page.name)
+
 
 if __name__ == "__main__":
     unittest.main()
