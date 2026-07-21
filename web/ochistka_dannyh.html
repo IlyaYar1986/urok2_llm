@@ -160,6 +160,23 @@ nav.top::-webkit-scrollbar{display:none}
 .alt-callout p{color:#78350f;line-height:1.7;font-size:.93rem}
 .alt-callout p strong{display:block;margin-bottom:4px}
 
+/* S4: скачиваемый пример файла */
+.download-card{background:var(--green-lt);border:1px solid #86efac;border-radius:16px;padding:24px 26px;margin:24px 0}
+.download-card .dc-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.download-card .dc-ico{font-size:1.8rem;flex-shrink:0;line-height:1}
+.download-card h3{color:#065f46;font-size:1.02rem;margin-bottom:4px}
+.download-card p{color:#166534;font-size:.92rem;line-height:1.65}
+.download-btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:10px;
+  background:var(--green);color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;
+  box-shadow:0 4px 14px rgba(22,163,74,.25);transition:transform .15s,box-shadow .2s;flex-shrink:0;
+  margin-left:auto;
+}
+.download-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(22,163,74,.32)}
+.dc-steps{list-style:none;counter-reset:dcstep;display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.dc-steps li{counter-increment:dcstep;padding-left:30px;position:relative;color:#166534;font-size:.9rem;line-height:1.5}
+.dc-steps li::before{content:counter(dcstep);position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+
 /* S5 role cards */
 .role-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media (max-width:700px){.role-grid{grid-template-columns:1fr}}
@@ -361,6 +378,22 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
       <div class="tool-chips"><span>быстрые выводы</span><span>проверка гипотез</span><span>текстовая интерпретация</span></div>
       <a class="tool-site" href="https://claude.ai/" target="_blank" rel="noopener">claude.ai ↗</a>
     </div>
+  </div>
+
+  <div class="download-card fade">
+    <div class="dc-head">
+      <div class="dc-ico">📥</div>
+      <div>
+        <h3>Скачайте пример — потренируйтесь прямо сейчас</h3>
+        <p>Уже очищенный файл: 8 студентов, три оценки и посещаемость за четыре занятия. ID вместо ФИО, единый формат «+ / Н / У», без объединённых ячеек — ровно то, что должно получиться после трёх шагов уборки из блока 3.</p>
+      </div>
+      <a class="download-btn" href="../files/uspevaemost_gruppy_primer.xlsx" download>⬇ Скачать .xlsx</a>
+    </div>
+    <ol class="dc-steps">
+      <li>Скачайте файл и откройте <a class="svc-link" href="https://presentsimple.ai/" target="_blank" rel="noopener">Present Simple</a> или <a class="svc-link" href="https://claude.ai/" target="_blank" rel="noopener">Claude</a></li>
+      <li>Загрузите файл или вставьте данные из него в сервис</li>
+      <li>Скопируйте промпт ниже, вставьте и получите диаграмму за 30 секунд — точно как в демо «Два ИИ-помощника» выше</li>
+    </ol>
   </div>
 
   <div class="prompt-box fade">

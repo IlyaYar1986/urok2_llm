@@ -2,10 +2,16 @@ import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
+try:
+    import openpyxl
+except ImportError:
+    openpyxl = None
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "web" / "ochistka_dannyh.html"
 PREV_PAGE = ROOT / "web" / "cifrovoy_sled.html"
+SAMPLE_XLSX = ROOT / "files" / "uspevaemost_gruppy_primer.xlsx"
 VIZ_PAGES = [
     ROOT / "web" / "gryaznye_dannye.html",
     ROOT / "web" / "trenazher_ochistki.html",
@@ -83,6 +89,21 @@ class OchistkaDannyhPageTest(unittest.TestCase):
             "https://chat.deepseek.com/",
         ):
             self.assertIn(url, self.html)
+
+    def test_sample_xlsx_is_downloadable_and_valid(self):
+        self.assertIn("../files/uspevaemost_gruppy_primer.xlsx", self.html)
+        self.assertTrue(SAMPLE_XLSX.is_file())
+        if openpyxl is None:
+            self.skipTest("openpyxl not installed")
+        workbook = openpyxl.load_workbook(SAMPLE_XLSX)
+        sheet = workbook.active
+        header = [cell.value for cell in next(sheet.iter_rows(min_row=1, max_row=1))]
+        self.assertIn("ID Студента", header)
+        rows = list(sheet.iter_rows(min_row=2, values_only=True))
+        self.assertGreaterEqual(len(rows), 5)
+        for row in rows:
+            self.assertTrue(str(row[0]).startswith("Студент"))
+            self.assertNotIn(None, row)
 
     def test_visualizations_are_embedded_and_exist(self):
         expected = {
