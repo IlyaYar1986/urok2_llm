@@ -57,6 +57,7 @@ class OglavleniePageTest(unittest.TestCase):
             "web/personalizaciya_tyutorstvo.html",
             "web/cifrovoy_sled.html",
             "web/ochistka_dannyh.html",
+            "web/bezopasnost_dannyh.html",
         }
         self.assertTrue(expected.issubset(set(self.page_links)))
 
@@ -70,6 +71,9 @@ class OglavleniePageTest(unittest.TestCase):
             "web/gryaznye_dannye.html",
             "web/trenazher_ochistki.html",
             "web/ii_vizualizator.html",
+            "web/shtraf_kalkulyator.html",
+            "web/sravnenie_servisov.html",
+            "web/algoritm_incidenta.html",
         }
         self.assertTrue(expected.issubset(set(self.page_links)))
 
@@ -88,6 +92,7 @@ class OglavleniePageTest(unittest.TestCase):
                 "personalizaciya_tyutorstvo.html",
                 "cifrovoy_sled.html",
                 "ochistka_dannyh.html",
+                "bezopasnost_dannyh.html",
                 "ответы-участников.html",
             )
         }
