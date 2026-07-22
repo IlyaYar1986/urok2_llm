@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Цифровая безопасность педагога</title>
+<title>Качество данных и цифровая безопасность</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -80,14 +80,14 @@ nav.top::-webkit-scrollbar{display:none}
 .n7{background:linear-gradient(135deg,#dc2626,#f87171)}
 .n8{background:linear-gradient(135deg,#0891b2,#22d3ee)}
 .n9{background:linear-gradient(135deg,#4338ca,#6366f1)}
+.n10{background:linear-gradient(135deg,#ea580c,#fb923c)}
+.n11{background:linear-gradient(135deg,#6366f1,#818cf8)}
 .sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
 .sec-desc{font-size:1rem;color:var(--muted);max-width:760px;line-height:1.75}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 2px 10px rgba(15,23,42,.04)}
 
 /* IMAGE CARD + PLACEHOLDER */
 .img-card{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(15,23,42,.12);cursor:zoom-in}
-.img-card.poster{max-width:460px;margin-left:auto;margin-right:auto}
-.poster-hint{text-align:center;color:var(--muted);font-size:.84rem;margin-top:10px}
 .img-card img{display:block;width:100%;height:auto}
 .img-card .img-missing-caption{display:none}
 .img-card.img-missing{border:2px dashed var(--border);background:var(--indigo-lt);min-height:220px;display:flex;align-items:center;justify-content:center;box-shadow:none;cursor:default}
@@ -160,10 +160,28 @@ table.fine-table caption{text-align:left;font-weight:700;padding:12px 16px;backg
 table.fine-table th{text-align:left;padding:10px 14px;background:var(--indigo-lt);color:var(--indigo-dk);font-weight:700}
 table.fine-table td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text)}
 
-/* S4: FIVE QUESTIONS */
+/* FIVE-STYLE CARD GRIDS (переиспользуется в блоках качества данных, вопросов сервису, гигиены) */
 .five-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .five-card p.fq-name{font-weight:800;margin-bottom:8px;font-size:.96rem}
 .five-card p:not(.fq-name){color:var(--muted);font-size:.88rem;line-height:1.6}
+
+/* S2: DATA QUALITY */
+.filename-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin-bottom:20px}
+@media (max-width:700px){.filename-compare{grid-template-columns:1fr}}
+.filename-compare .fc-arrow{font-size:1.6rem;color:var(--indigo);text-align:center}
+.filename-compare .fc-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px}
+.filename-compare .fc-box.bad code{color:var(--red);text-decoration:line-through;opacity:.75}
+.filename-compare .fc-box.good code{color:var(--green)}
+.filename-compare .fc-box p{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:8px}
+.filename-compare .fc-box code{display:block;font-family:'SFMono-Regular',Consolas,monospace;font-size:.84rem;line-height:1.9}
+
+/* S5: DIGITAL HYGIENE */
+.hygiene-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:700px){.hygiene-grid{grid-template-columns:1fr}}
+.hygiene-card p.hg-name{font-weight:800;margin-bottom:8px;font-size:1rem}
+.hygiene-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.hygiene-card li{padding-left:22px;position:relative;color:var(--muted);font-size:.9rem;line-height:1.55}
+.hygiene-card li::before{content:"—";position:absolute;left:0;color:var(--indigo)}
 
 /* S6: PROMPT + STEPS */
 .prompt-box{background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:18px}
@@ -224,15 +242,17 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 <nav class="top" aria-label="Навигация по странице">
   <a class="nav-link" href="../oglavlenie.html">← Оглавление</a>
   <span class="nav-sep"></span>
-  <span class="nav-logo">Цифровая безопасность</span>
+  <span class="nav-logo">Качество и безопасность</span>
   <span class="nav-sep"></span>
   <a class="nav-link" href="#s1">От этики к закону</a>
-  <a class="nav-link" href="#s2">Ответственность</a>
-  <a class="nav-link" href="#s3">Кейс и штрафы</a>
-  <a class="nav-link" href="#s4">5 вопросов</a>
-  <a class="nav-link" href="#s5">Сравнение сервисов</a>
-  <a class="nav-link" href="#s6">Промпт-проверка</a>
-  <a class="nav-link" href="#s7">При инциденте</a>
+  <a class="nav-link" href="#s2">Качество данных</a>
+  <a class="nav-link" href="#s3">Ответственность</a>
+  <a class="nav-link" href="#s4">Кейс и штрафы</a>
+  <a class="nav-link" href="#s5">Цифровая гигиена</a>
+  <a class="nav-link" href="#s6">5 вопросов</a>
+  <a class="nav-link" href="#s7">Сравнение сервисов</a>
+  <a class="nav-link" href="#s8">Промпт-проверка</a>
+  <a class="nav-link" href="#s9">При инциденте</a>
   <a class="nav-link" href="#checklist">Чек-лист</a>
   <a class="nav-link" href="#quiz">Квиз</a>
 </nav>
@@ -243,18 +263,18 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <span class="hero-badge">45 минут</span>
     <span class="hero-badge">Для преподавателей</span>
   </div>
-  <h1 class="hero-title">Цифровая <em>безопасность</em> педагога</h1>
-  <p class="hero-sub">Сколько стоит нарушение 152-ФЗ и как за 10 минут проверить любой ИИ-сервис, прежде чем доверить ему данные студентов.</p>
-  <figure class="img-card poster hero-img" data-lightbox>
-    <img src="../png/bezopasnost_dannyh/01_hero_shchit_dannyh.png" alt="Плакат А4: путь от риска к спокойствию за пять шагов — от загрузки данных до работы по закону" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Дорожная карта лекции — плакат A4 (сгенерируйте по промпту 01 из плана)</figcaption>
+  <h1 class="hero-title">Качество данных и <em>цифровая безопасность</em></h1>
+  <p class="hero-sub">Как системно поддерживать порядок в данных, сколько стоит нарушение 152-ФЗ и как защитить себя и студентов — от паролей и фишинга до утечки — за 10 минут в день.</p>
+  <figure class="img-card hero-img" data-lightbox>
+    <img src="../png/bezopasnost_dannyh/01_hero_kachestvo_i_bezopasnost.png" alt="Инфографика: путь от разрозненных и уязвимых данных к качественным и защищённым — качество, безопасность, закон, готовность к инциденту" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Качество данных и цифровая безопасность — обзор лекции (сгенерируйте по промпту 01 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Кликните, чтобы увеличить и скачать — постер в формате A4, готов к печати</p>
   <nav class="hero-nav" aria-label="Разделы страницы">
-    <a href="#s3">Сколько стоит утечка</a>
-    <a href="#s5">GigaChat против ChatGPT</a>
-    <a href="#s6">Промпт для проверки сервиса</a>
-    <a href="#s7">Алгоритм при инциденте</a>
+    <a href="#s2">Управление качеством данных</a>
+    <a href="#s4">Сколько стоит утечка</a>
+    <a href="#s5">Цифровая гигиена</a>
+    <a href="#s7">GigaChat против ChatGPT</a>
+    <a href="#s9">Алгоритм при инциденте</a>
     <a href="#quiz">Проверить себя</a>
   </nav>
 </header>
@@ -266,7 +286,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <div class="sec-head fade">
     <div class="num-badge n1">1</div>
     <h2 class="sec-title">От этики к закону</h2>
-    <p class="sec-desc">Мы уже дважды говорили о том, что считается конфиденциальными данными и почему их нельзя загружать в ИИ. Сегодня — две конкретные темы: сколько это стоит в рублях и как за 10 минут проверить сервис, прежде чем доверить ему хоть один файл.</p>
+    <p class="sec-desc">Мы уже дважды говорили о том, что считается конфиденциальными данными и почему их нельзя загружать в ИИ. Сегодня завершаем раздел 4 — и решаем сразу две задачи: наводим системный порядок в данных и разбираемся с цифровой безопасностью не только на уровне закона, а на уровне ежедневных привычек — паролей, проверки сервисов и действий при инциденте.</p>
   </div>
 
   <div class="poll-duo fade">
@@ -282,10 +302,76 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <div class="poll-answer fade" id="poll-answer">Ответьте честно — как на лекции, в чат.</div>
 </section>
 
-<!-- ══════════ БЛОК 2 ══════════ -->
+<!-- ══════════ БЛОК 2 (НОВЫЙ): УПРАВЛЕНИЕ КАЧЕСТВОМ ДАННЫХ ══════════ -->
 <section class="sec" id="s2">
   <div class="sec-head fade">
     <div class="num-badge n2">2</div>
+    <h2 class="sec-title">Управление качеством данных</h2>
+    <p class="sec-desc">В лекции 4.2 мы один раз почистили «грязную» таблицу. Но название раздела не зря звучит как «управление» — это не разовая уборка, а система: пять признаков, по которым стоит регулярно проверять любой рабочий файл.</p>
+  </div>
+
+  <div class="five-grid fade" style="margin-bottom:24px">
+    <div class="card five-card">
+      <p class="fq-name">Точность 🎯</p>
+      <p>Оценки и даты введены без опечаток и соответствуют реальности — «5» не превратилась в «S», а дата пересдачи не в будущем веке.</p>
+    </div>
+    <div class="card five-card">
+      <p class="fq-name">Полнота 🧩</p>
+      <p>Нет пустых ячеек там, где данные обязательны: у каждого студента заполнены все текущие оценки и отметки посещаемости.</p>
+    </div>
+    <div class="card five-card">
+      <p class="fq-name">Согласованность 🔗</p>
+      <p>Одно и то же обозначено одинаково во всех файлах: «Н» для пропуска — везде «Н», а не «н», «неявка» и «0» вперемешку.</p>
+    </div>
+    <div class="card five-card">
+      <p class="fq-name">Актуальность ⏰</p>
+      <p>Файл обновлён недавно и понятно, когда — а не «черновик_финал_v3», который никто не открывал два месяца.</p>
+    </div>
+    <div class="card five-card">
+      <p class="fq-name">Уникальность 🧬</p>
+      <p>Один студент — одна строка. Нет случайно продублированных записей после копирования между листами.</p>
+    </div>
+  </div>
+
+  <div class="card fade" style="margin-bottom:24px">
+    <p style="font-weight:700;margin-bottom:14px">Узнаёте свою папку с файлами?</p>
+    <div class="filename-compare">
+      <div class="fc-box bad">
+        <p>Было</p>
+        <code>итог2_финал.xlsx</code>
+        <code>итог2_финал_ИСПРАВЛЕНО.xlsx</code>
+        <code>копия копии (2).xlsx</code>
+      </div>
+      <div class="fc-arrow">→</div>
+      <div class="fc-box good">
+        <p>Стало</p>
+        <code>uspevaemost_2026-10-15.xlsx</code>
+        <p style="margin-top:8px;font-size:.82rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:600">дата в названии + единый шаблон = всегда понятно, какой файл актуальный</p>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem">Один узнаваемый шаблон имени файла экономит больше времени, чем кажется — особенно когда файл открывает коллега или вы сами через полгода.</p>
+  </div>
+
+  <div class="card fade">
+    <p style="font-weight:700;margin-bottom:10px">Практика на каждый день</p>
+    <ol class="step-list">
+      <li>Заведите единый шаблон таблицы для всех групп и предметов</li>
+      <li>Проверяйте файл на пять признаков выше перед началом и в середине четверти</li>
+      <li>Делайте резервную копию перед крупными правками — не поверх оригинала</li>
+      <li>Кратко документируйте, что означает каждый нестандартный столбец</li>
+    </ol>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/02_upravlenie_kachestvom_dannyh.png" alt="Инфографика управления качеством данных: пять признаков — точность, полнота, согласованность, актуальность, уникальность — и переход от хаоса файлов к системе" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Управление качеством данных (сгенерируйте по промпту 02 из плана)</figcaption>
+  </figure>
+</section>
+
+<!-- ══════════ БЛОК 3 ══════════ -->
+<section class="sec" id="s3">
+  <div class="sec-head fade">
+    <div class="num-badge n3">3</div>
     <h2 class="sec-title">152-ФЗ: кто отвечает и сколько это стоит</h2>
     <p class="sec-desc">Когда происходит утечка данных, отвечать могут и преподаватель лично, и образовательная организация. Три категории ответственности по КоАП РФ — и штрафы, которые с 30 мая 2025 года выросли в разы.</p>
   </div>
@@ -336,17 +422,16 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     </table>
   </div>
 
-  <figure class="img-card poster fade" data-lightbox>
-    <img src="../png/bezopasnost_dannyh/02_otvetstvennost_i_shtrafy.png" alt="Плакат-штрафомер А4: три категории ответственности по 152-ФЗ со шкалами сумм и советом, как понять свою категорию" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Штрафомер 152-ФЗ — плакат A4 (промпт 02 из плана)</figcaption>
+  <figure class="img-card fade" data-lightbox>
+    <img src="../png/bezopasnost_dannyh/03_otvetstvennost_i_shtrafy.png" alt="Инфографика: три категории ответственности по 152-ФЗ — физическое лицо, должностное лицо, организация — с диапазонами штрафов" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Кто отвечает — и сколько это стоит (промпт 03 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
-<!-- ══════════ БЛОК 3 ══════════ -->
-<section class="sec" id="s3">
+<!-- ══════════ БЛОК 4 ══════════ -->
+<section class="sec" id="s4">
   <div class="sec-head fade">
-    <div class="num-badge n3">3</div>
+    <div class="num-badge n4">4</div>
     <h2 class="sec-title">Реальный кейс: утечка в Минпросвещении</h2>
     <p class="sec-desc">В июле 2023 года из-за всероссийского конкурса «Большая перемена» утекли данные 3,4 миллиона участников: ФИО, телефоны, email, даты рождения, места работы и учёбы. Роскомнадзор обнаружил базу свободно доступной в Telegram-каналах.</p>
   </div>
@@ -373,17 +458,65 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <iframe src="shtraf_kalkulyator.html" height="600" title="Калькулятор штрафа 152-ФЗ" loading="lazy"></iframe>
   </div>
 
-  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/03_keys_minprosvescheniya.png" alt="Плакат А4 с таймлайном кейса Минпросвещения и сравнением штрафа: 60 тысяч рублей в 2023 году против 10-15 миллионов в 2025" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Один кейс — два закона: плакат A4 (промпт 03 из плана)</figcaption>
+  <figure class="img-card fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/04_keys_minprosvescheniya.png" alt="Инфографика с таймлайном кейса Минпросвещения и сравнением штрафа: 60 тысяч рублей в 2023 году против 10-15 миллионов в 2025" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Один и тот же случай — разная цена (промпт 04 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
-<!-- ══════════ БЛОК 4 ══════════ -->
-<section class="sec" id="s4">
+<!-- ══════════ БЛОК 5 (НОВЫЙ): ЦИФРОВАЯ ГИГИЕНА ══════════ -->
+<section class="sec" id="s5">
   <div class="sec-head fade">
-    <div class="num-badge n4">4</div>
+    <div class="num-badge n5">5</div>
+    <h2 class="sec-title">Цифровая безопасность шире одного закона</h2>
+    <p class="sec-desc">152-ФЗ регулирует персональные данные, но большинство реальных инцидентов начинается не с закона, а с обычной цифровой неряшливости: слабого пароля, клика по фишинговой ссылке или отсутствия резервной копии. Четыре привычки, которые снижают риск ещё до того, как дело доходит до утечки.</p>
+  </div>
+
+  <div class="hygiene-grid fade">
+    <div class="card hygiene-card">
+      <p class="hg-name">Пароли и доступ 🔑</p>
+      <ul>
+        <li>Уникальный пароль для каждого сервиса — не переиспользуйте один и тот же</li>
+        <li>Менеджер паролей вместо запоминания или файла «пароли.txt»</li>
+        <li>Двухфакторная аутентификация (2FA) везде, где она есть</li>
+      </ul>
+    </div>
+    <div class="card hygiene-card">
+      <p class="hg-name">Фишинг и социальная инженерия ⚠️</p>
+      <ul>
+        <li>Проверяйте адрес отправителя, а не только имя в письме</li>
+        <li>Не переходите по ссылкам из неожиданных писем — открывайте сайт вручную</li>
+        <li>Не вводите пароль на странице, куда попали по ссылке из письма</li>
+      </ul>
+    </div>
+    <div class="card hygiene-card">
+      <p class="hg-name">Устройства 💻</p>
+      <ul>
+        <li>Блокируйте экран компьютера, уходя из кабинета</li>
+        <li>Обновляйте систему и браузер — обновления часто закрывают уязвимости</li>
+        <li>Не работайте с данными студентов через случайный публичный Wi-Fi</li>
+      </ul>
+    </div>
+    <div class="card hygiene-card">
+      <p class="hg-name">Резервные копии 💾</p>
+      <ul>
+        <li>Регулярно копируйте важные файлы отдельно от рабочего компьютера</li>
+        <li>Не храните единственную копию журнала в одном месте</li>
+        <li>Проверяйте, что копия действительно открывается, а не только создаётся</li>
+      </ul>
+    </div>
+  </div>
+
+  <figure class="img-card fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/05_cifrovaya_gigiena.png" alt="Инфографика цифровой гигиены: пароли и двухфакторная аутентификация, распознавание фишинга, безопасность устройств, резервное копирование" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Цифровая безопасность шире одного закона (промпт 05 из плана)</figcaption>
+  </figure>
+</section>
+
+<!-- ══════════ БЛОК 6 ══════════ -->
+<section class="sec" id="s6">
+  <div class="sec-head fade">
+    <div class="num-badge n6">6</div>
     <h2 class="sec-title">Пять вопросов к любому ИИ-сервису</h2>
     <p class="sec-desc">Каждый раз, когда вы загружаете данные в ИИ-сервис, вы фактически передаёте их третьей стороне. Эти пять вопросов покажут, стоит ли этой стороне доверять.</p>
   </div>
@@ -411,17 +544,12 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     </div>
   </div>
 
-  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/04_pyat_voprosov_servisu.png" alt="Печатный рабочий лист А4 с чек-боксами: пять вопросов, которые нужно задать любому ИИ-сервису перед загрузкой данных" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Рабочий лист «5 вопросов сервису» — плакат A4 (промпт 04 из плана)</figcaption>
-  </figure>
-  <p class="poster-hint fade">🖨️ Распечатайте и отмечайте галочками перед каждым новым сервисом</p>
 </section>
 
-<!-- ══════════ БЛОК 5 ══════════ -->
-<section class="sec" id="s5">
+<!-- ══════════ БЛОК 7 ══════════ -->
+<section class="sec" id="s7">
   <div class="sec-head fade">
-    <div class="num-badge n5">5</div>
+    <div class="num-badge n7">7</div>
     <h2 class="sec-title">Практический разбор: GigaChat, ChatGPT, Claude</h2>
     <p class="sec-desc">Разберём три популярных сервиса и научимся находить в их политике конфиденциальности главное — без чтения 50 страниц юридического текста: <a class="svc-link" href="https://developers.sber.ru/docs/ru/policies/gigachat-agreement/individuals" target="_blank" rel="noopener">GigaChat</a>, <a class="svc-link" href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">ChatGPT</a> и <a class="svc-link" href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Claude</a>.</p>
   </div>
@@ -457,17 +585,16 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     ChatGPT и Claude разобраны не как рекомендация, а как учебный кейс: увидеть, как выглядит несовместимый с 152-ФЗ сервис, и научиться быстро это определять. Для работы с данными студентов используйте <a class="svc-link" href="https://developers.sber.ru/portal/products/gigachat" target="_blank" rel="noopener">GigaChat</a> или <a class="svc-link" href="https://ya.ru/ai" target="_blank" rel="noopener">YandexGPT</a> — оба соответствуют закону и часто бесплатны для образования.</p>
   </div>
 
-  <figure class="img-card poster fade" data-lightbox style="margin-top:12px">
-    <img src="../png/bezopasnost_dannyh/05_sravnenie_treh_servisov.png" alt="Плакат-скоркарта А4: GigaChat, ChatGPT и Claude по пяти критериям с цветными индикаторами можно/нельзя" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Скоркарта ИИ-сервисов — плакат A4 (промпт 05 из плана)</figcaption>
+  <figure class="img-card fade" data-lightbox style="margin-top:12px">
+    <img src="../png/bezopasnost_dannyh/06_sravnenie_treh_servisov.png" alt="Инфографика-скоркарта: GigaChat, ChatGPT и Claude по пяти критериям с цветными индикаторами можно/нельзя" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">GigaChat, ChatGPT, Claude — что можно педагогу (промпт 06 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
-<!-- ══════════ БЛОК 6 ══════════ -->
-<section class="sec" id="s6">
+<!-- ══════════ БЛОК 8 ══════════ -->
+<section class="sec" id="s8">
   <div class="sec-head fade">
-    <div class="num-badge n6">6</div>
+    <div class="num-badge n8">8</div>
     <h2 class="sec-title">Промпт: пусть ИИ сам расскажет о своей политике</h2>
     <p class="sec-desc">Не хотите читать 50 страниц юридического текста? Используйте сам ИИ — только обязательно проверьте ссылки в ответе.</p>
   </div>
@@ -508,12 +635,12 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 </section>
 
-<!-- ══════════ БЛОК 7 ══════════ -->
-<section class="sec" id="s7">
+<!-- ══════════ БЛОК 9 ══════════ -->
+<section class="sec" id="s9">
   <div class="sec-head fade">
-    <div class="num-badge n7">7</div>
+    <div class="num-badge n9">9</div>
     <h2 class="sec-title">Алгоритм действий при инциденте</h2>
-    <p class="sec-desc">Если произошла утечка данных или вы поняли, что случайно загрузили конфиденциальную информацию — важны первые часы, а не идеальность действий.</p>
+    <p class="sec-desc">Утечка данных, взлом аккаунта из-за фишинга или вы поняли, что случайно загрузили конфиденциальную информацию — важны первые часы, а не идеальность действий.</p>
   </div>
 
   <div class="viz fade">
@@ -528,17 +655,16 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <iframe src="algoritm_incidenta.html" height="600" title="Алгоритм действий при инциденте" loading="lazy"></iframe>
   </div>
 
-  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/06_algoritm_incidenta.png" alt="Экстренная карточка А4: что делать при утечке данных — первые 15 минут, первый час, первые сутки и чего не делать никогда" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Экстренная карточка «Если данные утекли» — плакат A4 (промпт 06 из плана)</figcaption>
+  <figure class="img-card fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/07_algoritm_incidenta.png" alt="Инфографика: что делать при утечке данных — первые 15 минут, первый час, первые сутки и чего не делать никогда" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Что делать при инциденте (промпт 07 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Плакат A4 — держите под рукой на случай инцидента</p>
 </section>
 
 <!-- ══════════ ЧЕК-ЛИСТ ══════════ -->
 <section class="sec" id="checklist">
   <div class="sec-head fade">
-    <div class="num-badge n8">8</div>
+    <div class="num-badge n10">10</div>
     <h2 class="sec-title">Чек-лист проверки нового ИИ-сервиса</h2>
     <p class="sec-desc">Пройдитесь по списку перед использованием любого нового сервиса — отмеченные пункты сохраняются в этом браузере.</p>
   </div>
@@ -592,9 +718,9 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 <!-- ══════════ КВИЗ ══════════ -->
 <section class="sec" id="quiz">
   <div class="sec-head fade">
-    <div class="num-badge n9">9</div>
+    <div class="num-badge n11">11</div>
     <h2 class="sec-title">Проверьте себя</h2>
-    <p class="sec-desc">Пять вопросов по материалу лекции — ответьте и посмотрите разбор.</p>
+    <p class="sec-desc">Семь вопросов по материалу лекции — ответьте и посмотрите разбор.</p>
   </div>
 
   <div class="quiz fade">
@@ -653,8 +779,30 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
       <p class="quiz-feedback" data-quiz-feedback="4" hidden></p>
     </div>
 
+    <div class="quiz-question" data-quiz="5">
+      <p class="quiz-text">6. Что из перечисленного — пример управления качеством данных как системы, а не разовой уборки?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q5" value="wrong"> Один раз почистить файл перед сдачей отчёта и больше не проверять</label>
+        <label><input type="radio" name="q5" value="right"> Единый шаблон таблицы и регулярный аудит на пять признаков качества каждую четверть</label>
+        <label><input type="radio" name="q5" value="wrong"> Хранить пять версий файла с разными названиями на всякий случай</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="5">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="5" hidden></p>
+    </div>
+
+    <div class="quiz-question" data-quiz="6">
+      <p class="quiz-text">7. Почему двухфакторная аутентификация (2FA) — важная привычка цифровой безопасности?</p>
+      <div class="quiz-options">
+        <label><input type="radio" name="q6" value="wrong"> Она ускоряет вход в сервис</label>
+        <label><input type="radio" name="q6" value="right"> Даже если пароль украдут, зайти в аккаунт без второго фактора не получится</label>
+        <label><input type="radio" name="q6" value="wrong"> Это требование, актуальное только для банковских приложений</label>
+      </div>
+      <button type="button" class="quiz-check" data-quiz-check="6">Проверить</button>
+      <p class="quiz-feedback" data-quiz-feedback="6" hidden></p>
+    </div>
+
     <div class="quiz-score-box">
-      <p id="quiz-score">Отвечено: 0 / 5</p>
+      <p id="quiz-score">Отвечено: 0 / 7</p>
     </div>
   </div>
 </section>
@@ -662,19 +810,20 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 <!-- ══════════ ЗАКЛЮЧЕНИЕ ══════════ -->
 <section class="sec" id="final">
   <div class="sec-head fade">
-    <h2 class="sec-title">Заключение: три ключевых вывода</h2>
+    <h2 class="sec-title">Заключение: пять ключевых выводов</h2>
   </div>
   <ol class="conclusion-list fade">
+    <li><strong>Качество данных — это система, а не разовая уборка</strong>: единый шаблон, регулярный аудит и резервные копии экономят часы работы и нервы</li>
     <li><strong>Закон стал жёстче</strong> — штрафы выросли в 250 раз, отвечают все: организация, должностные лица, рядовые сотрудники. «Не знал» не освобождает от ответственности</li>
-    <li><strong>Проверка сервиса — это 10 минут</strong>, которые могут сэкономить 600 000 рублей: всегда читайте политику конфиденциальности (или используйте промпт из блока 6) и проверяйте, где хранятся данные</li>
+    <li><strong>Цифровая безопасность не заканчивается на 152-ФЗ</strong> — уникальные пароли, двухфакторная аутентификация и умение распознать фишинг защищают там, где начинается закон</li>
+    <li><strong>Проверка сервиса — это 10 минут</strong>, которые могут сэкономить 600 000 рублей: всегда читайте политику конфиденциальности (или используйте промпт из блока 8) и проверяйте, где хранятся данные</li>
     <li><strong>В России есть легальные и качественные инструменты</strong> — GigaChat, YandexGPT и другие соответствуют 152-ФЗ и часто бесплатны для образования</li>
   </ol>
 
-  <figure class="img-card poster fade" data-lightbox style="margin:28px 0">
-    <img src="../png/bezopasnost_dannyh/07_final_shchit_i_zakon.png" alt="Итоговый плакат А4 с тремя выводами лекции: закон стал жёстче, проверка = 10 минут, в России есть легальные инструменты" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Берегите данные — и свою карьеру: плакат A4 (промпт 07 из плана)</figcaption>
+  <figure class="img-card fade" data-lightbox style="margin:28px 0">
+    <img src="../png/bezopasnost_dannyh/08_final_tri_vyvoda.png" alt="Итоговая инфографика с ключевыми выводами лекции: качество данных, закон, цифровая гигиена, проверка сервиса, легальные инструменты" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Берегите данные — и свою карьеру (промпт 08 из плана)</figcaption>
   </figure>
-  <p class="poster-hint fade">🖨️ Плакат A4 — повесьте в учительской как напоминание</p>
 
   <p class="fade" style="color:var(--muted);max-width:760px">Проверка политики конфиденциальности — это не паранойя, а профессиональная гигиена преподавателя. Те 10 минут, которые вы потратите на чтение перед использованием сервиса, могут уберечь вас от 600 000 рублей штрафа и увольнения. Берегите данные — и свою карьеру! 🛡️</p>
 
@@ -874,7 +1023,7 @@ document.querySelectorAll(".quiz-check").forEach((button) => {
     button.disabled = true;
     if (!alreadyAnswered) {
       quizAnswered += 1;
-      quizScoreEl.textContent = `Отвечено: ${quizAnswered} / 5`;
+      quizScoreEl.textContent = `Отвечено: ${quizAnswered} / 7`;
     }
   });
 });

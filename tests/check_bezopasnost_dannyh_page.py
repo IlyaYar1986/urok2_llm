@@ -51,6 +51,8 @@ class BezopasnostDannyhPageTest(unittest.TestCase):
             "s5",
             "s6",
             "s7",
+            "s8",
+            "s9",
             "checklist",
             "quiz",
             "final",
@@ -73,6 +75,21 @@ class BezopasnostDannyhPageTest(unittest.TestCase):
             "250 раз",
             "Алгоритм действий при инциденте",
             "YandexGPT",
+        ):
+            self.assertIn(marker, self.html)
+
+    def test_title_promise_is_covered_beyond_the_law(self):
+        # Заголовок лекции — "Управление качеством данных и цифровая
+        # безопасность", а не только 152-ФЗ. Проверяем, что оба раздела
+        # реально присутствуют, а не только упомянуты в названии.
+        for marker in (
+            "Управление качеством данных",
+            "Точность",
+            "Согласованность",
+            "Цифровая безопасность шире одного закона",
+            "Двухфакторная",
+            "Фишинг",
+            "Резервные копии",
         ):
             self.assertIn(marker, self.html)
 
@@ -108,7 +125,7 @@ class BezopasnostDannyhPageTest(unittest.TestCase):
         png_srcs = [
             src for src in self.parser.img_srcs if src.endswith(".png")
         ]
-        self.assertGreaterEqual(len(png_srcs), 6)
+        self.assertGreaterEqual(len(png_srcs), 8)
         for src in png_srcs:
             self.assertTrue(
                 src.startswith("../png/bezopasnost_dannyh/"),
