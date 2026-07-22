@@ -86,6 +86,8 @@ nav.top::-webkit-scrollbar{display:none}
 
 /* IMAGE CARD + PLACEHOLDER */
 .img-card{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(15,23,42,.12);cursor:zoom-in}
+.img-card.poster{max-width:460px;margin-left:auto;margin-right:auto}
+.poster-hint{text-align:center;color:var(--muted);font-size:.84rem;margin-top:10px}
 .img-card img{display:block;width:100%;height:auto}
 .img-card .img-missing-caption{display:none}
 .img-card.img-missing{border:2px dashed var(--border);background:var(--indigo-lt);min-height:220px;display:flex;align-items:center;justify-content:center;box-shadow:none;cursor:default}
@@ -243,10 +245,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
   <h1 class="hero-title">Цифровая <em>безопасность</em> педагога</h1>
   <p class="hero-sub">Сколько стоит нарушение 152-ФЗ и как за 10 минут проверить любой ИИ-сервис, прежде чем доверить ему данные студентов.</p>
-  <figure class="img-card hero-img" data-lightbox>
-    <img src="../png/bezopasnost_dannyh/01_hero_shchit_dannyh.png" alt="Робот держит светящийся щит, защищающий преподавателя и документы от падающих знаков рубля и предупреждений" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Знание закона — тоже защита (сгенерируйте по промпту 01 из плана)</figcaption>
+  <figure class="img-card poster hero-img" data-lightbox>
+    <img src="../png/bezopasnost_dannyh/01_hero_shchit_dannyh.png" alt="Плакат А4: путь от риска к спокойствию за пять шагов — от загрузки данных до работы по закону" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Дорожная карта лекции — плакат A4 (сгенерируйте по промпту 01 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Кликните, чтобы увеличить и скачать — постер в формате A4, готов к печати</p>
   <nav class="hero-nav" aria-label="Разделы страницы">
     <a href="#s3">Сколько стоит утечка</a>
     <a href="#s5">GigaChat против ChatGPT</a>
@@ -333,10 +336,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     </table>
   </div>
 
-  <figure class="img-card fade" data-lightbox>
-    <img src="../png/bezopasnost_dannyh/02_otvetstvennost_i_shtrafy.png" alt="Три категории ответственности по 152-ФЗ: физическое лицо, должностное лицо, организация" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Кто отвечает — и сколько это стоит (промпт 02 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox>
+    <img src="../png/bezopasnost_dannyh/02_otvetstvennost_i_shtrafy.png" alt="Плакат-штрафомер А4: три категории ответственности по 152-ФЗ со шкалами сумм и советом, как понять свою категорию" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Штрафомер 152-ФЗ — плакат A4 (промпт 02 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
 <!-- ══════════ БЛОК 3 ══════════ -->
@@ -369,10 +373,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <iframe src="shtraf_kalkulyator.html" height="600" title="Калькулятор штрафа 152-ФЗ" loading="lazy"></iframe>
   </div>
 
-  <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/03_keys_minprosvescheniya.png" alt="Сравнение штрафа за утечку 3,4 миллиона записей: 60 тысяч рублей в 2023 году против 10-15 миллионов в 2025" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Один и тот же случай — разная цена (промпт 03 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/03_keys_minprosvescheniya.png" alt="Плакат А4 с таймлайном кейса Минпросвещения и сравнением штрафа: 60 тысяч рублей в 2023 году против 10-15 миллионов в 2025" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Один кейс — два закона: плакат A4 (промпт 03 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
 <!-- ══════════ БЛОК 4 ══════════ -->
@@ -406,10 +411,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     </div>
   </div>
 
-  <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/04_pyat_voprosov_servisu.png" alt="Пять вопросов любому ИИ-сервису: где хранятся данные, обучают ли модель, срок хранения, удаление, доступ третьих лиц" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Пять вопросов любому ИИ-сервису (промпт 04 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/04_pyat_voprosov_servisu.png" alt="Печатный рабочий лист А4 с чек-боксами: пять вопросов, которые нужно задать любому ИИ-сервису перед загрузкой данных" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Рабочий лист «5 вопросов сервису» — плакат A4 (промпт 04 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Распечатайте и отмечайте галочками перед каждым новым сервисом</p>
 </section>
 
 <!-- ══════════ БЛОК 5 ══════════ -->
@@ -451,10 +457,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     ChatGPT и Claude разобраны не как рекомендация, а как учебный кейс: увидеть, как выглядит несовместимый с 152-ФЗ сервис, и научиться быстро это определять. Для работы с данными студентов используйте <a class="svc-link" href="https://developers.sber.ru/portal/products/gigachat" target="_blank" rel="noopener">GigaChat</a> или <a class="svc-link" href="https://ya.ru/ai" target="_blank" rel="noopener">YandexGPT</a> — оба соответствуют закону и часто бесплатны для образования.</p>
   </div>
 
-  <figure class="img-card fade" data-lightbox style="margin-top:12px">
-    <img src="../png/bezopasnost_dannyh/05_sravnenie_treh_servisov.png" alt="Сравнение GigaChat, ChatGPT и Claude: серверы в РФ у GigaChat, за рубежом у ChatGPT и Claude" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">GigaChat, ChatGPT, Claude — что можно педагогу (промпт 05 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox style="margin-top:12px">
+    <img src="../png/bezopasnost_dannyh/05_sravnenie_treh_servisov.png" alt="Плакат-скоркарта А4: GigaChat, ChatGPT и Claude по пяти критериям с цветными индикаторами можно/нельзя" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Скоркарта ИИ-сервисов — плакат A4 (промпт 05 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Плакат A4 — сохраните и распечатайте как памятку</p>
 </section>
 
 <!-- ══════════ БЛОК 6 ══════════ -->
@@ -521,10 +528,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <iframe src="algoritm_incidenta.html" height="600" title="Алгоритм действий при инциденте" loading="lazy"></iframe>
   </div>
 
-  <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/bezopasnost_dannyh/06_algoritm_incidenta.png" alt="Таймлайн действий при инциденте: первые 15 минут, первый час, первые сутки, чего не делать" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Что делать при инциденте (промпт 06 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox style="margin-top:28px">
+    <img src="../png/bezopasnost_dannyh/06_algoritm_incidenta.png" alt="Экстренная карточка А4: что делать при утечке данных — первые 15 минут, первый час, первые сутки и чего не делать никогда" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Экстренная карточка «Если данные утекли» — плакат A4 (промпт 06 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Плакат A4 — держите под рукой на случай инцидента</p>
 </section>
 
 <!-- ══════════ ЧЕК-ЛИСТ ══════════ -->
@@ -662,10 +670,11 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
     <li><strong>В России есть легальные и качественные инструменты</strong> — GigaChat, YandexGPT и другие соответствуют 152-ФЗ и часто бесплатны для образования</li>
   </ol>
 
-  <figure class="img-card fade" data-lightbox style="margin:28px 0">
-    <img src="../png/bezopasnost_dannyh/07_final_shchit_i_zakon.png" alt="Преподаватель и робот с тремя выводами лекции: закон стал жёстче, проверка = 10 минут, в России есть легальные инструменты" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
-    <figcaption class="img-missing-caption">Берегите данные — и свою карьеру (промпт 07 из плана)</figcaption>
+  <figure class="img-card poster fade" data-lightbox style="margin:28px 0">
+    <img src="../png/bezopasnost_dannyh/07_final_shchit_i_zakon.png" alt="Итоговый плакат А4 с тремя выводами лекции: закон стал жёстче, проверка = 10 минут, в России есть легальные инструменты" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <figcaption class="img-missing-caption">Берегите данные — и свою карьеру: плакат A4 (промпт 07 из плана)</figcaption>
   </figure>
+  <p class="poster-hint fade">🖨️ Плакат A4 — повесьте в учительской как напоминание</p>
 
   <p class="fade" style="color:var(--muted);max-width:760px">Проверка политики конфиденциальности — это не паранойя, а профессиональная гигиена преподавателя. Те 10 минут, которые вы потратите на чтение перед использованием сервиса, могут уберечь вас от 600 000 рублей штрафа и увольнения. Берегите данные — и свою карьеру! 🛡️</p>
 
