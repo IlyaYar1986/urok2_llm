@@ -147,6 +147,12 @@ nav::-webkit-scrollbar{display:none}
   border:none;color:rgba(255,255,255,.82);font-size:1.15rem;cursor:pointer;
 }
 #lb-close:hover{background:rgba(255,255,255,.2)}
+#lb-download-btn{
+  height:34px;padding:0 14px;border-radius:8px;background:rgba(255,255,255,.1);
+  border:none;color:rgba(255,255,255,.85);font-size:.76rem;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:6px;text-decoration:none;flex-shrink:0
+}
+#lb-download-btn:hover{background:rgba(255,255,255,.2)}
 #lb-wrap{flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:grab;user-select:none}
 #lb-wrap.grabbing{cursor:grabbing}
 #lb-img{transform-origin:center center;max-width:none;max-height:none;pointer-events:none;display:block;will-change:transform}
@@ -190,6 +196,7 @@ footer{padding:42px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
     <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
     <span id="lb-title"></span>
     <span id="lb-hint">Прокрутка — масштаб · перетащи для перемещения · ESC — закрыть</span>
+    <a id="lb-download-btn" download aria-label="Скачать изображение">⬇ Скачать</a>
     <button id="lb-close" onclick="closeLb()">✕</button>
   </div>
   <div id="lb-wrap"><img id="lb-img" src="" alt=""></div>
@@ -332,6 +339,7 @@ footer{padding:42px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
 
 <footer>
   <p>Семинар «Агентные системы» · Клуб Образование · 2026</p>
+  <p style="margin-top:6px"><a href="https://iivobrazovanii.club/" target="_blank" rel="noopener" style="color:#6366f1;font-weight:700;text-decoration:none">iivobrazovanii.club</a></p>
 </footer>
 
 <script>
@@ -339,12 +347,19 @@ const lbEl = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 const lbWrap = document.getElementById('lb-wrap');
 const lbTitle = document.getElementById('lb-title');
+const lbDownloadBtn = document.getElementById('lb-download-btn');
+function brandedFilename(url){
+  const name = url.split('/').pop().split('?')[0];
+  return `iivobrazovanii-club_${name}`;
+}
 let lb = {scale:1,tx:0,ty:0,drag:false,moved:false,sx:0,sy:0,stx:0,sty:0};
 
 function applyLb(){lbImg.style.transform = `translate(${lb.tx}px,${lb.ty}px) scale(${lb.scale})`}
 function openLb(src,title){
   lbImg.src = src;
   lbTitle.textContent = title || '';
+  lbDownloadBtn.href = src;
+  lbDownloadBtn.download = brandedFilename(src);
   lb = {scale:1,tx:0,ty:0,drag:false,moved:false,sx:0,sy:0,stx:0,sty:0};
   applyLb();
   lbEl.classList.add('open');

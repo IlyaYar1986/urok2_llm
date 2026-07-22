@@ -109,6 +109,8 @@ nav.top::-webkit-scrollbar{display:none}
 .overlay img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .overlay-close{position:absolute;top:18px;right:22px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2}
 .overlay-close:hover{background:rgba(255,255,255,.22)}
+.overlay-download{position:absolute;top:18px;right:72px;height:40px;padding:0 16px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;z-index:2}
+.overlay-download:hover{background:rgba(255,255,255,.22)}
 
 /* FULLSCREEN IFRAME OVERLAY */
 #fs-overlay{position:fixed;inset:0;background:rgba(2,6,23,.94);z-index:2100;display:none;flex-direction:column}
@@ -697,6 +699,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 </main>
 
 <div class="overlay" id="lightbox" aria-hidden="true">
+  <a class="overlay-download" id="lightbox-download" download aria-label="Скачать изображение">⬇ Скачать</a>
   <button class="overlay-close" id="lightbox-close" aria-label="Закрыть">✕</button>
   <img id="lightbox-img" alt="">
 </div>
@@ -711,6 +714,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
 
 <footer>
   <p>Лекция 4.1 «Методы сбора и анализа цифрового следа» · Клуб Образование · 2026</p>
+  <p style="margin-top:6px"><a href="https://iivobrazovanii.club/" target="_blank" rel="noopener" style="color:#6366f1;font-weight:700;text-decoration:none">iivobrazovanii.club</a></p>
 </footer>
 
 <script>
@@ -747,12 +751,19 @@ if ("IntersectionObserver" in window) {
 /* Лайтбокс */
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
+const lightboxDownload = document.getElementById("lightbox-download");
+function brandedFilename(url) {
+  const name = url.split("/").pop().split("?")[0];
+  return `iivobrazovanii-club_${name}`;
+}
 document.querySelectorAll(".img-card[data-lightbox]").forEach((card) => {
   card.addEventListener("click", () => {
     if (card.classList.contains("img-missing")) return;
     const img = card.querySelector("img");
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
+    lightboxDownload.href = img.src;
+    lightboxDownload.download = brandedFilename(img.src);
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
   });
