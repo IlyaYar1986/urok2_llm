@@ -113,7 +113,7 @@ class CifrovoySledPageTest(unittest.TestCase):
 
     def test_infographics_point_to_cifrovoy_sled_folder(self):
         png_srcs = [
-            src for src in self.parser.img_srcs if src.endswith(".png")
+            src for src in self.parser.img_srcs if src.endswith(".webp")
         ]
         self.assertGreaterEqual(len(png_srcs), 8)
         for src in png_srcs:

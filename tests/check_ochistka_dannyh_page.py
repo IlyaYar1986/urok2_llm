@@ -120,7 +120,7 @@ class OchistkaDannyhPageTest(unittest.TestCase):
 
     def test_infographics_point_to_ochistka_dannyh_folder(self):
         png_srcs = [
-            src for src in self.parser.img_srcs if src.endswith(".png")
+            src for src in self.parser.img_srcs if src.endswith(".webp")
         ]
         self.assertGreaterEqual(len(png_srcs), 6)
         for src in png_srcs:

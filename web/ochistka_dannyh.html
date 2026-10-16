@@ -249,7 +249,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   <h1 class="hero-title">Данные, которые <em>говорят</em></h1>
   <p class="hero-sub">Как за несколько минут превратить хаотичную рабочую таблицу в чистый набор данных — и попросить ИИ нарисовать по нему наглядные выводы.</p>
   <figure class="img-card hero-img" data-lightbox>
-    <img src="../png/ochistka_dannyh/01_hero_dannye_govoryat.png" alt="Робот пропускает мятую таблицу через светящийся портал, и она превращается в чистый дашборд с графиками" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img src="../png/ochistka_dannyh/01_hero_dannye_govoryat.webp" alt="Робот пропускает мятую таблицу через светящийся портал, и она превращается в чистый дашборд с графиками" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Из хаоса таблиц — в ясные выводы (сгенерируйте по промпту 01 из плана)</figcaption>
   </figure>
   <nav class="hero-nav" aria-label="Разделы страницы">
@@ -306,7 +306,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/ochistka_dannyh/02_chetyre_greha.png" alt="Четыре греха грязных данных: объединённые ячейки, разные обозначения, числа с текстом, персональные данные" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img decoding="async" src="../png/ochistka_dannyh/02_chetyre_greha.webp" alt="Четыре греха грязных данных: объединённые ячейки, разные обозначения, числа с текстом, персональные данные" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Четыре «греха» грязных данных (промпт 02 из плана)</figcaption>
   </figure>
 </section>
@@ -332,12 +332,12 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/ochistka_dannyh/03_tri_shaga_ochistki.png" alt="Три шага очистки: анонимизация, стандартизация через Найти и заменить, структурирование" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img decoding="async" src="../png/ochistka_dannyh/03_tri_shaga_ochistki.webp" alt="Три шага очистки: анонимизация, стандартизация через Найти и заменить, структурирование" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Три шага генеральной уборки (промпт 03 из плана)</figcaption>
   </figure>
 
   <figure class="img-card fade" data-lightbox style="margin-top:16px">
-    <img src="../png/ochistka_dannyh/04_do_posle.png" alt="До и после уборки: грязная таблица с ошибками и чистая плоская таблица с галочками" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img decoding="async" src="../png/ochistka_dannyh/04_do_posle.webp" alt="До и после уборки: грязная таблица с ошибками и чистая плоская таблица с галочками" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">До и после уборки (промпт 04 из плана)</figcaption>
   </figure>
 
@@ -433,7 +433,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/ochistka_dannyh/05_dva_instrumenta.png" alt="Два ИИ-помощника: Present Simple — дизайнер слайдов, Claude — аналитик с текстовыми выводами" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img decoding="async" src="../png/ochistka_dannyh/05_dva_instrumenta.webp" alt="Два ИИ-помощника: Present Simple — дизайнер слайдов, Claude — аналитик с текстовыми выводами" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Два ИИ-помощника — одна цель (промпт 05 из плана)</figcaption>
   </figure>
 </section>
@@ -468,7 +468,7 @@ footer{text-align:center;padding:32px 20px 48px;color:var(--muted);font-size:.85
   </div>
 
   <figure class="img-card fade" data-lightbox style="margin-top:28px">
-    <img src="../png/ochistka_dannyh/06_arhitektor_dannyh.png" alt="Преподаватель-архитектор с чертежом, робот-строитель собирает дашборд из блоков" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
+    <img decoding="async" src="../png/ochistka_dannyh/06_arhitektor_dannyh.webp" alt="Преподаватель-архитектор с чертежом, робот-строитель собирает дашборд из блоков" loading="lazy" onerror="this.closest('.img-card').classList.add('img-missing')">
     <figcaption class="img-missing-caption">Вы — архитектор данных (промпт 06 из плана)</figcaption>
   </figure>
 </section>
@@ -652,8 +652,8 @@ document.querySelectorAll(".img-card[data-lightbox]").forEach((card) => {
     const img = card.querySelector("img");
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
-    lightboxDownload.href = img.src;
-    lightboxDownload.download = brandedFilename(img.src);
+    lightboxDownload.href = img.src.replace(/\.webp$/i, ".png");
+    lightboxDownload.download = brandedFilename(img.src.replace(/\.webp$/i, ".png"));
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
   });
