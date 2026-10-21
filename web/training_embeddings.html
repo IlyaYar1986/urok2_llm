@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучение эмбеддингов (Градиентный спуск)</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .header {
+            background: #1e293b;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { margin: 0; font-size: 1.4rem; }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 4px; }
+        .stat-value { font-family: monospace; font-size: 1.2rem; font-weight: bold; color: #38bdf8; }
+        .stat-value.loss { color: #f87171; transition: color 0.3s; }
+
+        .controls {
+            padding: 15px 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-step { background: #3b82f6; color: white; }
+        .btn-step:hover { background: #2563eb; }
+        .btn-play { background: #10b981; color: white; }
+        .btn-play:hover { background: #059669; }
+        .btn-reset { background: #e2e8f0; color: #475569; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .graph-container {
+            position: relative;
+            height: 450px;
+            background: #ffffff;
+            background-image: 
+                linear-gradient(#f1f5f9 1px, transparent 1px),
+                linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+            background-size: 50px 50px;
+            overflow: hidden;
+        }
+
+        .word-node {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: left 0.1s linear, top 0.1s linear;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin-bottom: 4px;
+        }
+
+        .cluster-1 .dot { background: #ef4444; } /* Животные */
+        .cluster-2 .dot { background: #8b5cf6; } /* Монархия */
+        .cluster-3 .dot { background: #f59e0b; } /* Мебель */
+
+        .label {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            white-space: nowrap;
+        }
+
+        .explanation {
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            font-size: 1.05rem;
+            color: #334155;
+            line-height: 1.5;
+            border-left: 5px solid #38bdf8;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Процесс обучения (Training)</h1>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">Эпоха</div>
+                <div class="stat-value" id="val-epoch">0 / 100</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Ошибка (Loss)</div>
+                <div class="stat-value loss" id="val-loss">2.845</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn-step" id="btn-step" onclick="step()">+1 Эпоха (Шаг)</button>
+        <button class="btn-play" id="btn-play" onclick="togglePlay()">▶ Авто-обучение</button>
+        <button class="btn-reset" onclick="init()">↺ Сброс (Новые веса)</button>
+    </div>
+
+    <div class="graph-container" id="graph">
+        <!-- Узлы слов генерируются через JS -->
+    </div>
+
+    <div class="explanation" id="explanation">
+        <strong>Эпоха 0:</strong> Векторы инициализированы случайными числами. Полный хаос. Модель ничего не знает о мире и ошибается в каждом предсказании.
+    </div>
+</div>
+
+<script>
+    const maxEpochs = 100;
+    let currentEpoch = 0;
+    let isPlaying = false;
+    let playInterval = null;
+
+    // Данные слов и их целевые (финальные) координаты кластеров
+    const wordsData = [
+        // Животные (Низ, Лево)
+        { id: 'w1', text: 'Кошка', cluster: 1, target: {x: 20, y: 80} },
+        { id: 'w2', text: 'Собака', cluster: 1, target: {x: 25, y: 75} },
+        { id: 'w3', text: 'Тигр', cluster: 1, target: {x: 15, y: 85} },
+        
+        // Монархия (Верх, Право)
+        { id: 'w4', text: 'Король', cluster: 2, target: {x: 80, y: 20} },
+        { id: 'w5', text: 'Королева', cluster: 2, target: {x: 85, y: 25} },
+        { id: 'w6', text: 'Принц', cluster: 2, target: {x: 75, y: 15} },
+
+        // Мебель (Низ, Право)
+        { id: 'w7', text: 'Стол', cluster: 3, target: {x: 80, y: 80} },
+        { id: 'w8', text: 'Стул', cluster: 3, target: {x: 85, y: 75} },
+        { id: 'w9', text: 'Диван', cluster: 3, target: {x: 75, y: 85} }
+    ];
+
+    let nodes = [];
+
+    const graph = document.getElementById('graph');
+    const valEpoch = document.getElementById('val-epoch');
+    const valLoss = document.getElementById('val-loss');
+    const explanation = document.getElementById('explanation');
+    const btnStep = document.getElementById('btn-step');
+    const btnPlay = document.getElementById('btn-play');
+
+    function getRandomPos() {
+        return Math.floor(Math.random() * 80) + 10; // 10% to 90%
+    }
+
+    function init() {
+        // Остановка, если запущено
+        stopPlay();
+        currentEpoch = 0;
+        nodes = [];
+        graph.innerHTML = '';
+
+        // Инициализация случайных стартовых позиций
+        wordsData.forEach(item => {
+            const startX = getRandomPos();
+            const startY = getRandomPos();
+            
+            const el = document.createElement('div');
+            el.className = `word-node cluster-${item.cluster}`;
+            el.innerHTML = `<div class="dot"></div><div class="label">${item.text}</div>`;
+            
+            // Немного размазываем финальные цели (добавляем шум), чтобы они не слипались в одну точку
+            const targetX = item.target.x + (Math.random() * 6 - 3);
+            const targetY = item.target.y + (Math.random() * 6 - 3);
+
+            nodes.push({
+                el: el,
+                startX: startX,
+                startY: startY,
+                targetX: targetX,
+                targetY: targetY
+            });
+
+            graph.appendChild(el);
+            updateNodePos(el, startX, startY);
+        });
+
+        updateUI();
+    }
+
+    function updateNodePos(el, x, y) {
+        el.style.left = `${x}%`;
+        el.style.top = `${y}%`;
+    }
+
+    // Функция Ease-out (чтобы в начале двигалось быстрее, в конце медленнее)
+    function easeOutQuad(t) {
+        return t * (2 - t);
+    }
+
+    function step() {
+        if (currentEpoch >= maxEpochs) {
+            stopPlay();
+            return;
+        }
+
+        currentEpoch++;
+        const progress = currentEpoch / maxEpochs;
+        const easedProgress = easeOutQuad(progress);
+
+        nodes.forEach(node => {
+            const currentX = node.startX + (node.targetX - node.startX) * easedProgress;
+            const currentY = node.startY + (node.targetY - node.startY) * easedProgress;
+            updateNodePos(node.el, currentX, currentY);
+        });
+
+        updateUI();
+    }
+
+    function updateUI() {
+        // Обновление счетчиков
+        valEpoch.textContent = `${currentEpoch} / ${maxEpochs}`;
+        
+        // Симуляция падения Loss (ошибки)
+        const baseLoss = 2.8;
+        const targetLoss = 0.12;
+        const progress = currentEpoch / maxEpochs;
+        // Добавляем небольшой шум для реалистичности графика Loss
+        const noise = (Math.random() * 0.05) * (1 - progress);
+        let currentLoss = baseLoss * (1 - easeOutQuad(progress)) + targetLoss * easeOutQuad(progress) + noise;
+        
+        if (currentEpoch === maxEpochs) currentLoss = targetLoss; // точный финал
+        
+        valLoss.textContent = currentLoss.toFixed(3);
+        
+        // Меняем цвет Loss
+        if (currentEpoch > 80) valLoss.style.color = '#10b981'; // Зеленый
+        else if (currentEpoch > 30) valLoss.style.color = '#f59e0b'; // Оранжевый
+        else valLoss.style.color = '#f87171'; // Красный
+
+        // Обновление текста
+        if (currentEpoch === 0) {
+            explanation.innerHTML = "<strong>Эпоха 0:</strong> Векторы инициализированы случайными числами. Полный хаос. Модель ничего не знает о мире и ошибается в каждом предсказании.";
+        } else if (currentEpoch < 40) {
+            explanation.innerHTML = "<strong>Обучение...</strong> Модель читает тексты, делает неверные предсказания и получает штраф (ошибку). При каждой ошибке она алгоритмом обратного распространения немного сдвигает координаты слов в нужном направлении.";
+        } else if (currentEpoch < 90) {
+            explanation.innerHTML = "<strong>Формирование структуры:</strong> Модель замечает закономерности. Слова, которые часто встречаются рядом (например, король и королева), математически притягиваются друг к другу, образуя смысловые кластеры.";
+        } else {
+            explanation.innerHTML = "<strong>Обучение завершено!</strong> Градиентный спуск свел ошибку (Loss) к минимуму. Нейросеть успешно сформировала идеальную геометрическую структуру смыслов в латентном пространстве.";
+        }
+
+        btnStep.disabled = currentEpoch >= maxEpochs;
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            stopPlay();
+        } else {
+            if (currentEpoch >= maxEpochs) init(); // Рестарт если закончили
+            isPlaying = true;
+            btnPlay.innerHTML = "⏸ Пауза";
+            btnPlay.style.background = "#f59e0b";
+            playInterval = setInterval(step, 80); // 80мс на шаг
+        }
+    }
+
+    function stopPlay() {
+        isPlaying = false;
+        clearInterval(playInterval);
+        btnPlay.innerHTML = "▶ Авто-обучение";
+        btnPlay.style.background = "#10b981";
+    }
+
+    // Старт при загрузке
+    init();
+</script>
+
+</body>
+</html>

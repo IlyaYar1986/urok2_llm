@@ -5,7 +5,6 @@ structura.md
 # ── Неиспользуемые / заменённые визуализации ──
 web/omonimy.html
 web/word_embeddings.html
-web/training_embeddings.html
 web/механизм Attension.html
 web/процесс SFT и LoRA.html
 web/процесс RLHF.html

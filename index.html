@@ -198,7 +198,46 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
 }
 .nav-link-cta:hover{background:#e0e7ff;box-shadow:0 2px 8px rgba(99,102,241,.2)}
 
-@media(max-width:720px){.row2{grid-template-columns:1fr}}
+/* ── TEXT CARDS (объяснения) ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:clamp(20px,3vw,34px);box-shadow:0 4px 24px rgba(0,0,0,0.06);text-align:left}
+.card h3{font-size:clamp(1.12rem,1.9vw,1.45rem);font-weight:800;letter-spacing:-.3px;margin-bottom:12px;color:var(--text)}
+.card p{font-size:clamp(.96rem,1.25vw,1.12rem);line-height:1.75}
+.card p+p,.card p+.anat,.card .anat+p,.card .tbl-wrap+p{margin-top:12px}
+.card a{color:var(--indigo);font-weight:600}
+.card code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--indigo-lt);color:var(--indigo-dark);padding:1px 6px;border-radius:5px}
+.card.accent{background:#eef2ff;border-color:#c7d2fe}
+.card.teal{background:#f0fdfa;border-color:#99f6e4}
+.cap{font-size:clamp(.88rem,1.1vw,1rem);color:var(--muted);line-height:1.7;max-width:900px;margin:0 auto}
+.card .cap{margin:12px 0 0;max-width:none}
+.cap a{color:var(--indigo);font-weight:600}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,0.05)}
+.step-n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;font-weight:900;margin-bottom:10px}
+.step h4{font-size:clamp(1rem,1.4vw,1.15rem);font-weight:800;margin-bottom:6px}
+.step p{font-size:clamp(.9rem,1.15vw,1.02rem);color:var(--muted);line-height:1.65}
+
+.anat{margin-top:16px}
+.lvl{border:2px solid;border-radius:14px;padding:clamp(14px,2vw,22px);margin-top:14px}
+.lvl-model{border-color:#c7d2fe;background:#f8faff;margin-top:0}
+.lvl-layer{border-color:#a7f3d0;background:#f0fdf4}
+.lvl-attn{border-color:#c4b5fd;background:#faf5ff;margin-top:0}
+.lvl-mlp{border-color:#fcd34d;background:#fffbeb;margin-top:0}
+.lvl-h{font-weight:800;font-size:clamp(1rem,1.5vw,1.2rem);margin-bottom:8px}
+.lvl-tag{display:inline-block;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);background:#fff;border:1px solid var(--border);border-radius:100px;padding:2px 9px;margin-right:6px;vertical-align:middle}
+.lvl p{font-size:clamp(.93rem,1.2vw,1.06rem)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0 10px}
+.flow span{font-size:clamp(.82rem,1.05vw,.95rem);font-weight:700;padding:5px 11px;background:#fff;border:1px solid #c7d2fe;border-radius:8px;color:var(--indigo-dark)}
+.flow span:nth-child(even){background:none;border:none;padding:0 2px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.tbl-wrap{overflow-x:auto}
+.mtab{width:100%;border-collapse:collapse;font-size:clamp(.9rem,1.15vw,1.04rem)}
+.mtab th,.mtab td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.mtab th{font-size:.74rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);background:#f8fafc}
+
+@media(max-width:720px){.row2,.two{grid-template-columns:1fr}}
+@media(max-width:560px){.lvl{padding:10px;border-width:1.5px}.card{padding:18px 14px}.sec{padding-left:16px;padding-right:16px}}
 </style>
 </head>
 <body>
@@ -235,8 +274,8 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
   <a class="nav-link" href="#s1">1. Данные</a>
   <a class="nav-link" href="#s2">2. Токены</a>
   <a class="nav-link" href="#s3">3. Эмбеддинги</a>
-  <a class="nav-link" href="#s4">4. Трансформер</a>
-  <a class="nav-link" href="#s5">5. Обучение</a>
+  <a class="nav-link" href="#s4">4. Обучение</a>
+  <a class="nav-link" href="#s5">5. Трансформер</a>
   <a class="nav-link" href="#s6">6. Генерация</a>
   <a class="nav-link" href="#s7">7. Эволюция</a>
   <div class="nav-sep"></div>
@@ -434,10 +473,137 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
   <div class="sec">
     <div class="sec-head f">
       <div class="num-badge n4">4</div>
-      <h2 class="sec-title">Архитектура Трансформера и механизм внимания</h2>
-      <p class="sec-desc">Self-Attention позволяет каждому слову «видеть» все остальные. MLP-слои хранят выученные факты. 12 голов внимания работают параллельно, каждая со своей специализацией.</p>
+      <h2 class="sec-title">Обучение: как в весах появляются знания</h2>
+      <p class="sec-desc">Модель — это миллиарды чисел, их называют весами. Обучение — один и тот же цикл, повторённый огромное число раз: угадай следующий токен → посчитай ошибку → чуть подкрути веса. Так в весах оседают грамматика, факты и стиль.</p>
     </div>
     <div class="col">
+      <div class="card accent f">
+        <h3>Что такое веса</h3>
+        <p>Вес — одно число внутри модели. Представьте микшерный пульт с миллиардами ползунков: от их положения зависит, что модель ответит. В GPT-2 таких «ползунков» 124 миллиона, в современных моделях — сотни миллиардов.</p>
+        <p>Часть весов вы уже видели: <strong>координаты слов из блока 3 — тоже веса</strong>. Их никто не расставлял вручную, их выставило обучение. Остальные веса лежат в матрицах внутри слоёв трансформера — как они устроены, разберём в блоке 5.</p>
+      </div>
+      <div class="steps f">
+        <div class="step"><span class="step-n">1</span><h4>Старт: случайные числа</h4><p>Перед обучением все веса заполнены случайными числами. Модель выдаёт бессмыслицу.</p></div>
+        <div class="step"><span class="step-n">2</span><h4>Угадай следующий токен</h4><p>Модели показывают начало текста: «Столица Франции —». Она раздаёт вероятности всем ~100 000 токенам словаря.</p></div>
+        <div class="step"><span class="step-n">3</span><h4>Посчитай ошибку (loss)</h4><p>Правильное продолжение уже есть в самом тексте — «Париж». Ошибка тем больше, чем меньше вероятность модель дала «Парижу». Разметка людьми не нужна.</p></div>
+        <div class="step"><span class="step-n">4</span><h4>Найди, куда крутить</h4><p>Обратное распространение ошибки (backpropagation) вычисляет для каждого веса: если его чуть увеличить, ошибка вырастет или упадёт? Это градиентный спуск — как спускаться с горы в тумане, нащупывая уклон под ногами.</p></div>
+        <div class="step"><span class="step-n">5</span><h4>Маленький шаг и повтор</h4><p>Каждый вес сдвигается совсем чуть-чуть в сторону «ошибка меньше». Цикл повторяют на триллионах токенов — недели и месяцы на тысячах видеокарт.</p></div>
+      </div>
+      <div class="viz f">
+        <div class="viz-bar">
+          <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+          <span class="viz-lbl">Градиентный спуск — как обучение расставляет координаты слов</span>
+          <button class="viz-fs" onclick="openFs('web/training_embeddings.html','Обучение эмбеддингов')">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            На весь экран
+          </button>
+        </div>
+        <iframe src="web/training_embeddings.html" height="820"></iframe>
+      </div>
+      <p class="cap f">Нажмите «Авто-обучение»: слова стартуют из случайных точек, а с каждой эпохой ошибка падает и похожие по смыслу слова собираются рядом. Это тот же цикл из пяти шагов, только показаны веса-координаты из блока 3.</p>
+      <div class="card teal f">
+        <h3>Где здесь знания</h3>
+        <p>В модели нет базы данных или таблицы фактов. Чтобы раз за разом верно продолжать «Столица Франции —», веса настроились так, что сочетание «столица + Франция» ведёт к «Парижу». <strong>Знание — это настройка чисел, распределённая по множеству весов.</strong></p>
+        <p>Отсюда две границы, которые стоит помнить. Модель не «заглядывает» в источник, а воспроизводит то, что отпечаталось в весах, — поэтому может уверенно ошибаться (галлюцинации). И её знания заморожены на дате окончания обучения.</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div class="sec" style="padding-top:0;padding-bottom:32px"><div class="card f">
+    <h3>Три этапа — один и тот же цикл на разных данных</h3>
+    <p><strong>Pre-training</strong> — тот самый цикл на триллионах токенов из интернета. Получается «базовая модель»: она много знает, но умеет только продолжать текст.</p>
+    <p><strong>SFT</strong> (дообучение на примерах) — тот же цикл, но на десятках тысяч образцовых диалогов «вопрос → хороший ответ». Веса подстраиваются под формат ассистента.</p>
+    <p><strong>RLHF</strong> — люди сравнивают ответы модели, и веса сдвигаются в сторону ответов, которые им понравились больше, и прочь от плохих.</p>
+    <p>Новые знания модель получает в основном на первом этапе. Два следующих учат её этими знаниями пользоваться.</p>
+  </div></div>
+  <div class="img-bleed f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_43.webp','Этапы обучения')">
+    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_43.webp" alt="Этапы обучения">
+  </div>
+  <div class="sec">
+    <div class="col">
+      <div class="viz f">
+        <div class="viz-bar">
+          <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+          <span class="viz-lbl">SFT · LoRA · RLHF — три этапа превращения модели в ассистента</span>
+          <button class="viz-fs" onclick="openFs('web/процесс обучения.html','SFT · LoRA · RLHF')">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            На весь экран
+          </button>
+        </div>
+        <iframe src="web/процесс обучения.html" height="660"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ══════════════ БЛОК 5 ══════════════ -->
+<section id="s5">
+  <div class="sec">
+    <div class="sec-head f">
+      <div class="num-badge n5">5</div>
+      <h2 class="sec-title">Архитектура Трансформера: слои, головы и MLP</h2>
+      <p class="sec-desc">Где лежат веса, которые настраивало обучение. Модель — стопка одинаковых по устройству слоёв. В каждом слое есть блок внимания из нескольких голов и один MLP. В GPT-2 — 12 слоёв по 12 голов в каждом, всего 144 головы.</p>
+    </div>
+    <div class="col">
+      <div class="card f">
+        <h3>Анатомия модели: от целого к матрицам</h3>
+        <p>Метафора: модель — это многоэтажное здание. Текст поднимается с этажа на этаж. На каждом этаже два отдела: сначала <strong>переговорная</strong> — внимание, где слова обмениваются информацией друг с другом, затем <strong>кабинет с архивом</strong> — MLP, где каждое слово обрабатывается отдельно с опорой на выученные знания.</p>
+        <div class="anat">
+          <div class="lvl lvl-model">
+            <div class="lvl-h"><span class="lvl-tag">Уровень 1</span> Модель = стопка слоёв</div>
+            <div class="flow"><span>Таблица эмбеддингов</span><span>→</span><span>Слой 1</span><span>→</span><span>Слой 2</span><span>→</span><span>…</span><span>→</span><span>Слой N</span><span>→</span><span>Выходная матрица: вероятности следующего токена</span></div>
+            <p>Все слои устроены одинаково, но <strong>у каждого слоя свои веса</strong>: числа в слое 1 и в слое 12 разные.</p>
+            <div class="lvl lvl-layer">
+              <div class="lvl-h"><span class="lvl-tag">Уровень 2</span> Один слой = блок внимания → MLP</div>
+              <div class="two">
+                <div class="lvl lvl-attn">
+                  <div class="lvl-h"><span class="lvl-tag">Уровень 3</span> Блок внимания = несколько голов</div>
+                  <p><strong>Голова</strong> — один «прожектор» внимания со своими тремя матрицами: <code>W<sub>Q</sub></code> (что я ищу), <code>W<sub>K</sub></code> (что я могу предложить), <code>W<sub>V</sub></code> (что я передам).</p>
+                  <p>Головы одного слоя смотрят на один и тот же текст <strong>параллельно</strong>, но через разные матрицы, поэтому замечают разное. Потом их ответы склеиваются и проходят через <strong>одну общую матрицу слоя</strong> <code>W<sub>O</sub></code>.</p>
+                </div>
+                <div class="lvl lvl-mlp">
+                  <div class="lvl-h"><span class="lvl-tag">Уровень 3</span> MLP = один на слой, без голов</div>
+                  <p>MLP обрабатывает каждый токен отдельно. Классически это <strong>2 матрицы</strong>: <code>W1</code> расширяет вектор в 4 раза, фильтр-активация (ReLU / GELU) обнуляет лишнее, <code>W2</code> сжимает обратно.</p>
+                  <p>В Llama и большинстве современных моделей матриц <strong>3</strong> (вариант SwiGLU), смысл тот же.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card f">
+        <h3>Считаем матрицы одного слоя GPT-2</h3>
+        <div class="tbl-wrap"><table class="mtab">
+          <thead><tr><th>Часть слоя</th><th>Матрицы</th><th>Размер</th><th>Весов</th></tr></thead>
+          <tbody>
+            <tr><td>Внимание: головы</td><td>12 голов × 3 (<code>Q</code>, <code>K</code>, <code>V</code>) = 36</td><td>768 × 64 каждая</td><td rowspan="2">≈ 2,4 млн</td></tr>
+            <tr><td>Внимание: склейка</td><td>1 общая <code>W<sub>O</sub></code></td><td>768 × 768</td></tr>
+            <tr><td>MLP</td><td>2 (<code>W1</code>, <code>W2</code>)</td><td>768 × 3072 и 3072 × 768</td><td>≈ 4,7 млн</td></tr>
+          </tbody>
+        </table></div>
+        <p>Итого в слое около 7 млн весов, и примерно <strong>⅔ из них приходится на MLP</strong>. 12 слоёв дают ≈ 85 млн, ещё ≈ 39 млн — таблица эмбеддингов. Вместе получаются те самые 124 млн параметров GPT-2.</p>
+        <p class="cap">Почему в разных источниках пишут то «3 матрицы на слой», то «3 матрицы на голову»? На практике 12 матриц <code>W<sub>Q</sub></code> одного слоя хранятся склеенными в одну большую матрицу 768 × 768 (и так же для K и V). Это одни и те же числа, просто разрезанные по-разному.</p>
+      </div>
+      <div class="card f">
+        <h3>Масштаб: слои и головы в реальных моделях</h3>
+        <div class="tbl-wrap"><table class="mtab">
+          <thead><tr><th>Модель</th><th>Слоёв</th><th>Голов в каждом слое</th><th>Голов всего</th><th>Параметров</th></tr></thead>
+          <tbody>
+            <tr><td>GPT-2 small (2019)</td><td>12</td><td>12</td><td>144</td><td>124 млн</td></tr>
+            <tr><td>Llama 3 8B (2024)</td><td>32</td><td>32</td><td>1 024</td><td>8 млрд</td></tr>
+            <tr><td>GPT-3 (2020)</td><td>96</td><td>96</td><td>9 216</td><td>175 млрд</td></tr>
+          </tbody>
+        </table></div>
+        <p class="cap">Источники: технические отчёты разработчиков — <a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf" target="_blank" rel="noopener">GPT-2</a>, <a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">GPT-3</a>, <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener">Llama 3</a>.</p>
+      </div>
+      <div class="card teal f">
+        <h3>Кто за что отвечает — и где граница знания</h3>
+        <p><strong>Внимание</strong> собирает контекст: какие слова в тексте важны для текущего. <strong>MLP</strong> добавляет выученное: исследования показывают, что факты в основном «вспоминаются» именно через MLP-слои (<a href="https://arxiv.org/abs/2012.14913" target="_blank" rel="noopener">Geva и др., 2021</a>; <a href="https://arxiv.org/abs/2202.05262" target="_blank" rel="noopener">Meng и др., 2022</a>).</p>
+        <p>Граница: «специальности» голов (грамматика, смысл, пунктуация) никто не назначает — они складываются сами в ходе обучения. Разглядеть удаётся лишь часть из них, многие головы дублируют друг друга, и их можно отключить почти без потерь (<a href="https://arxiv.org/abs/1905.10650" target="_blank" rel="noopener">Michel и др., 2019</a>). Подписи голов на картинках ниже — упрощение для наглядности.</p>
+      </div>
       <div class="viz f">
         <div class="viz-bar">
           <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
@@ -462,14 +628,16 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
       </div>
     </div>
   </div>
-  <div class="img-bleed f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_13.webp','Архитектура Трансформера')">
-    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_13.webp" alt="Трансформер">
+  <div class="sec" style="padding-top:0;padding-bottom:24px"><p class="cap f">На двух картинках ниже — головы <strong>одного</strong> слоя. В GPT-2 такой набор из 12 голов повторяется в каждом из 12 слоёв, у каждого слоя — свои матрицы.</p></div>
+  <div class="img-bleed f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_13.webp','Многоголовое внимание: головы одного слоя')">
+    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_13.webp" alt="Многоголовое внимание: головы одного слоя">
   </div>
-  <div class="img-bleed gap f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_31.webp','Многоголовое внимание')">
-    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_31.webp" alt="Многоголовое внимание">
+  <div class="img-bleed gap f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_31.webp','Специализация и избыточность голов')">
+    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_31.webp" alt="Специализация и избыточность голов">
   </div>
   <div class="sec">
     <div class="col">
+      <p class="cap f">Демо показывает один MLP одного слоя: матрица W1 расширяет вектор, ReLU обнуляет лишнее, матрица W2 сжимает обратно.</p>
       <div class="viz f">
         <div class="viz-bar">
           <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
@@ -480,37 +648,6 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
           </button>
         </div>
         <iframe src="web/Слои MLP.html" height="588"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ══════════════ БЛОК 5 ══════════════ -->
-<section id="s5">
-  <div class="sec">
-    <div class="sec-head f">
-      <div class="num-badge n5">5</div>
-      <h2 class="sec-title">Этапы обучения</h2>
-      <p class="sec-desc">Pre-training: чтение всего интернета — предсказание следующего токена. SFT: тонкая настройка на примерах диалогов. RLHF: оценки людей «выравнивают» модель под человеческие ценности.</p>
-    </div>
-  </div>
-  <div class="img-bleed f" onclick="openLb('png/ChatGPT Image 26 апр. 2026 г., 15_50_43.webp','Этапы обучения')">
-    <img loading="lazy" decoding="async" src="png/ChatGPT Image 26 апр. 2026 г., 15_50_43.webp" alt="Этапы обучения">
-  </div>
-  <div class="sec">
-    <div class="col">
-      <div class="viz f">
-        <div class="viz-bar">
-          <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
-          <span class="viz-lbl">SFT · LoRA · RLHF — три этапа превращения модели в ассистента</span>
-          <button class="viz-fs" onclick="openFs('web/процесс обучения.html','SFT · LoRA · RLHF')">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            На весь экран
-          </button>
-        </div>
-        <iframe src="web/процесс обучения.html" height="660"></iframe>
       </div>
     </div>
   </div>
@@ -753,7 +890,7 @@ function setActive(id) {
 }
 const secObs = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }),
-  { threshold: 0.22 }
+  { rootMargin: '-45% 0px -50% 0px' }
 );
 document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
 const heroObs = new IntersectionObserver(
