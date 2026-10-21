@@ -211,6 +211,8 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
 .card .cap{margin:12px 0 0;max-width:none}
 .cap a{color:var(--indigo);font-weight:600}
 
+.img-card{border-radius:16px;overflow:hidden;cursor:zoom-in;box-shadow:0 4px 24px rgba(0,0,0,0.08);border:1px solid var(--border);background:#fff}
+.img-card img{width:100%;height:auto;display:block}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
 .step{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:0 2px 14px rgba(0,0,0,0.05)}
 .step-n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#fff;font-weight:900;margin-bottom:10px}
@@ -482,12 +484,18 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
         <p>Вес — одно число внутри модели. Представьте микшерный пульт с миллиардами ползунков: от их положения зависит, что модель ответит. В GPT-2 таких «ползунков» 124 миллиона, в современных моделях — сотни миллиардов.</p>
         <p>Часть весов вы уже видели: <strong>координаты слов из блока 3 — тоже веса</strong>. Их никто не расставлял вручную, их выставило обучение. Остальные веса лежат в матрицах внутри слоёв трансформера — как они устроены, разберём в блоке 5.</p>
       </div>
+      <div class="img-card f" onclick="openLb('png/llm_vesa_01_chto_takoe_vesa.webp','Что такое веса')">
+        <img loading="lazy" decoding="async" src="png/llm_vesa_01_chto_takoe_vesa.webp" alt="Что такое веса">
+      </div>
       <div class="steps f">
         <div class="step"><span class="step-n">1</span><h4>Старт: случайные числа</h4><p>Перед обучением все веса заполнены случайными числами. Модель выдаёт бессмыслицу.</p></div>
         <div class="step"><span class="step-n">2</span><h4>Угадай следующий токен</h4><p>Модели показывают начало текста: «Столица Франции —». Она раздаёт вероятности всем ~100 000 токенам словаря.</p></div>
         <div class="step"><span class="step-n">3</span><h4>Посчитай ошибку (loss)</h4><p>Правильное продолжение уже есть в самом тексте — «Париж». Ошибка тем больше, чем меньше вероятность модель дала «Парижу». Разметка людьми не нужна.</p></div>
         <div class="step"><span class="step-n">4</span><h4>Найди, куда крутить</h4><p>Обратное распространение ошибки (backpropagation) вычисляет для каждого веса: если его чуть увеличить, ошибка вырастет или упадёт? Это градиентный спуск — как спускаться с горы в тумане, нащупывая уклон под ногами.</p></div>
         <div class="step"><span class="step-n">5</span><h4>Маленький шаг и повтор</h4><p>Каждый вес сдвигается совсем чуть-чуть в сторону «ошибка меньше». Цикл повторяют на триллионах токенов — недели и месяцы на тысячах видеокарт.</p></div>
+      </div>
+      <div class="img-card f" onclick="openLb('png/llm_vesa_02_cikl_obucheniya.webp','Цикл обучения: как в весах появляются знания')">
+        <img loading="lazy" decoding="async" src="png/llm_vesa_02_cikl_obucheniya.webp" alt="Цикл обучения: как в весах появляются знания">
       </div>
       <div class="viz f">
         <div class="viz-bar">
@@ -573,6 +581,9 @@ footer{padding:44px 24px;text-align:center;color:var(--muted);font-size:.84rem;b
             </div>
           </div>
         </div>
+      </div>
+      <div class="img-card f" onclick="openLb('png/llm_vesa_03_anatomiya.webp','Из чего состоит модель: слои, головы, MLP')">
+        <img loading="lazy" decoding="async" src="png/llm_vesa_03_anatomiya.webp" alt="Из чего состоит модель: слои, головы, MLP">
       </div>
       <div class="card f">
         <h3>Считаем матрицы одного слоя GPT-2</h3>
